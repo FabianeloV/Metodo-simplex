@@ -1,0 +1,114 @@
+.card {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 12px 12px 10px;
+}
+
+.plot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plotBg {
+  fill: #FFFFFF;
+  stroke: #E5E7EB;
+}
+
+.gridLine {
+  stroke: #E5E7EB;
+  stroke-dasharray: 3 4;
+  stroke-width: 1;
+}
+
+.axisLine {
+  stroke: #9CA3AF;
+  stroke-width: 1.2;
+}
+
+.constraintLine {
+  stroke: #2563EB;
+  stroke-width: 1.5;
+  opacity: 0.85;
+}
+
+.feasibleArea {
+  fill: rgba(191, 219, 254, 0.55);
+  stroke: #60A5FA;
+  stroke-width: 1.5;
+}
+
+.objectiveLine {
+  stroke: #F59E0B;
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+
+.vertexPoint {
+  fill: #2563EB;
+  stroke: #FFFFFF;
+  stroke-width: 1;
+}
+
+.optimalPoint {
+  fill: #F97316;
+  stroke: #FFFFFF;
+  stroke-width: 1.5;
+}
+
+.tickLabel {
+  font-size: 10px;
+  fill: #6B7280;
+  text-anchor: middle;
+}
+
+.axisLabel {
+  font-size: 11px;
+  fill: #374151;
+  font-family: "DM Mono", monospace;
+}
+
+.legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: #6B7280;
+  margin-top: 8px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legendSwatch {
+  width: 14px;
+  height: 4px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.swatchConstraint {
+  background: #2563EB;
+}
+
+.swatchRegion {
+  background: rgba(96, 165, 250, 0.8);
+}
+
+.swatchObjective {
+  background: #F59E0B;
+}
+
+.swatchOptimal {
+  background: #F97316;
+}
+
+.statusNote {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: #B91C1C;
+}

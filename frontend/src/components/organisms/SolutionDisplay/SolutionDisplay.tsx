@@ -2,6 +2,7 @@ import React from "react";
 import { Badge } from "../../atoms/Badge";
 import { MetricCard } from "../../molecules/MetricCard";
 import { TableauTable } from "../../molecules/TableauTable";
+import { GraphicalPlot } from "../../molecules/GraphicalPlot";
 import { ErrorBanner } from "../../molecules/ErrorBanner";
 import { Spinner } from "../../atoms/Spinner";
 import type { SimplexResponse, VariableCount } from "../../../types/simplex";
@@ -48,6 +49,7 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
   if (!result) return null;
 
   const isOptimal = result.status === "optimal";
+  const showGraph = nVars === 2 && !!result.graphical;
 
   return (
     <section className={styles.card} aria-labelledby="result-heading">
@@ -80,6 +82,18 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
               );
             })}
           </div>
+
+          {showGraph && result.graphical && (
+            <div className={styles.graphSection}>
+              <div className={styles.graphHeader}>
+                <h3 className={styles.graphTitle}>Graphical Method (2 variables)</h3>
+                <p className={styles.graphSub}>
+                  Feasible region, constraint lines, and objective line at the optimum.
+                </p>
+              </div>
+              <GraphicalPlot data={result.graphical} />
+            </div>
+          )}
 
           {result.tableau_headers && result.tableau_rows && (
             <>

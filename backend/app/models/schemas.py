@@ -38,6 +38,39 @@ class TableauRow(BaseModel):
     values: list[float]
 
 
+class GraphPoint(BaseModel):
+    x: float
+    y: float
+
+
+class GraphLine(BaseModel):
+    a: float
+    b: float
+    c: float
+    points: list[GraphPoint]
+    label: str | None = None
+    inequality: Literal["<=", ">=", "="] | None = None
+
+
+class GraphBounds(BaseModel):
+    x_min: float
+    x_max: float
+    y_min: float
+    y_max: float
+
+
+class GraphicalData(BaseModel):
+    status: Literal["optimal", "unbounded", "infeasible"]
+    bounds: GraphBounds
+    constraints: list[GraphLine]
+    feasible_polygon: list[GraphPoint] | None = None
+    vertices: list[GraphPoint]
+    objective_line: GraphLine | None = None
+    optimal_point: GraphPoint | None = None
+    objective_value: float | None = None
+    goal: Literal["max", "min"]
+
+
 class SimplexResponse(BaseModel):
     status: Literal["optimal", "unbounded", "infeasible"]
     objective_value: float | None = None
@@ -46,3 +79,4 @@ class SimplexResponse(BaseModel):
     tableau_headers: list[str] | None = None
     tableau_rows: list[TableauRow] | None = None
     message: str | None = None
+    graphical: GraphicalData | None = None

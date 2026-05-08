@@ -23,6 +23,10 @@
   font-size: 11px; font-weight: 600; color: #9CA3AF;
   text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px;
 }
+.graphSection { margin-bottom: 1.25rem; }
+.graphHeader { margin: 0 0 8px; }
+.graphTitle { font-size: 13px; font-weight: 600; color: #111827; margin: 0 0 2px; }
+.graphSub { font-size: 11px; color: #9CA3AF; margin: 0; }
 .loadingCard {
   display: flex; align-items: center; gap: 12px;
   background: #fff; border: 1px solid #E5E7EB;

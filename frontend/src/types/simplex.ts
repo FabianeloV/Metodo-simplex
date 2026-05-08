@@ -34,6 +34,39 @@ export interface TableauRow {
   values: number[];
 }
 
+export interface GraphPoint {
+  x: number;
+  y: number;
+}
+
+export interface GraphLine {
+  a: number;
+  b: number;
+  c: number;
+  points: GraphPoint[];
+  label?: string;
+  inequality?: Inequality;
+}
+
+export interface GraphBounds {
+  x_min: number;
+  x_max: number;
+  y_min: number;
+  y_max: number;
+}
+
+export interface GraphicalData {
+  status: SolveStatus;
+  bounds: GraphBounds;
+  constraints: GraphLine[];
+  feasible_polygon?: GraphPoint[] | null;
+  vertices: GraphPoint[];
+  objective_line?: GraphLine | null;
+  optimal_point?: GraphPoint | null;
+  objective_value?: number | null;
+  goal: Goal;
+}
+
 export interface SimplexResponse {
   status: SolveStatus;
   objective_value?: number;
@@ -42,6 +75,7 @@ export interface SimplexResponse {
   tableau_headers?: string[];
   tableau_rows?: TableauRow[];
   message?: string;
+  graphical?: GraphicalData | null;
 }
 
 // ─── UI state ─────────────────────────────────────────────────────────────────

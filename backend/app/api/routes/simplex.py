@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from app.models.schemas import SimplexRequest, SimplexResponse, TableauRow
 from app.core.simplex_engine import SimplexEngine
+from app.core.graphical_method import build_graphical_data
 
 router = APIRouter(prefix="/simplex", tags=["simplex"])
 
@@ -24,6 +25,25 @@ def solve(payload: SimplexRequest) -> SimplexResponse:
     except Exception as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
+    graphical = None
+    if len(payload.objective) == 2:
+        optimal_point = None
+        if result.status == "optimal" and result.variables is not None:
+            optimal_point = {
+                "x": result.variables.get("x1", 0.0),
+                "y": result.variables.get("x2", 0.0),
+            }
+        graphical = build_graphical_data(
+            objective=payload.objective,
+            goal=payload.goal,
+            constraint_coeffs=[c.coefficients for c in payload.constraints],
+            inequalities=[c.inequality for c in payload.constraints],
+            rhs_values=[c.rhs for c in payload.constraints],
+            status=result.status,
+            optimal_point=optimal_point,
+            objective_value=result.objective_value,
+        )
+
     if result.status == "optimal":
         return SimplexResponse(
             status="optimal",
@@ -36,9 +56,14 @@ def solve(payload: SimplexRequest) -> SimplexResponse:
                 for r in result.tableau_rows
             ],
             message=result.message,
+            graphical=graphical,
         )
 
-    return SimplexResponse(status=result.status, message=result.message)
+    return SimplexResponse(
+        status=result.status,
+        message=result.message,
+        graphical=graphical,
+    )
 
 
 @router.get("/health", summary="Health check")
