@@ -1,0 +1,19 @@
+.card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.cardTitle { font-size: 15px; font-weight: 600; color: #111827; margin: 0 0 3px; }
+.cardSub   { font-size: 12px; color: #9CA3AF; margin: 0; }
+.constraintList { min-height: 20px; }
+.empty { font-size: 12px; color: #9CA3AF; padding: 8px 0; }
+.toolbar { display: flex; justify-content: flex-end; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #F3F4F6; }

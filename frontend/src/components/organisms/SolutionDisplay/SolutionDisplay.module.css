@@ -1,0 +1,32 @@
+.card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  animation: fadeUp .3s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.resultHeader {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 12px; margin-bottom: 1.25rem;
+}
+.cardTitle { font-size: 15px; font-weight: 600; color: #111827; margin: 0 0 3px; }
+.cardSub   { font-size: 12px; color: #9CA3AF; margin: 0; }
+.metrics {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem;
+}
+.tableauLabel {
+  font-size: 11px; font-weight: 600; color: #9CA3AF;
+  text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px;
+}
+.loadingCard {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid #E5E7EB;
+  border-radius: 14px; padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.loadingText { font-size: 13px; color: #6B7280; }

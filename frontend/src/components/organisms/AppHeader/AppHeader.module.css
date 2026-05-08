@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logoBox {
+  width: 38px; height: 38px;
+  background: #EFF6FF; border: 1px solid #BFDBFE;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  color: #2563EB; font-size: 18px; font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+}
+.title { font-size: 17px; font-weight: 600; color: #111827; margin: 0; }
+.sub   { font-size: 11px; color: #9CA3AF; margin: 2px 0 0; }

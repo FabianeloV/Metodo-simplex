@@ -1,0 +1,4 @@
+.row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.num { font-size: 11px; color: #9CA3AF; width: 22px; text-align: right; flex-shrink: 0; }
+.plus { font-size: 14px; color: #9CA3AF; }
+.varLabel { font-size: 12px; font-family: 'DM Mono', monospace; color: #6B7280; }

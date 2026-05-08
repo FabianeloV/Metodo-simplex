@@ -1,0 +1,21 @@
+.input {
+  height: 34px;
+  width: 64px;
+  padding: 0 8px;
+  text-align: center;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 13px;
+  color: #111827;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  /* hide arrows */
+  -moz-appearance: textfield;
+}
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.input:hover  { border-color: #9ca3af; }
+.input:focus  { border-color: #2563EB; box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.error        { border-color: #dc2626; }
