@@ -7,11 +7,11 @@ class Constraint(BaseModel):
     inequality: Literal["<=", ">=", "="]
     rhs: float
 
-    @field_validator("coefficients")
+    @field_validator("coeficientes")
     @classmethod
     def check_length(cls, v: list[float]) -> list[float]:
         if not (2 <= len(v) <= 4):
-            raise ValueError("coefficients must have between 2 and 4 elements")
+            raise ValueError("Los coeficientes deben estar entre 2 y 4 elementos")
         return v
 
 
@@ -28,7 +28,7 @@ class SimplexRequest(BaseModel):
             for c in v:
                 if len(c.coefficients) != n:
                     raise ValueError(
-                        f"All constraints must have {n} coefficients to match the objective function"
+                        f"Las restricciones deben tener {n} coeficientes para coincidir con la función objetivo"
                     )
         return v
 

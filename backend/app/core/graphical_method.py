@@ -69,7 +69,7 @@ def build_graphical_data(
                 "b": _round(objective[1]),
                 "c": _round(objective_value),
                 "points": [_round_point(*segment[0]), _round_point(*segment[1])],
-                "label": "objective",
+                "label": "objetivo",
             }
 
     optimal = None

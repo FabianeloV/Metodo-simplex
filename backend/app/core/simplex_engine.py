@@ -213,7 +213,7 @@ class SimplexEngine:
             if prow == -1:
                 return SimplexResult(
                     status="unbounded",
-                    message="The problem is unbounded: no finite optimum exists.",
+                    message="El problema no está acotado: no existe un óptimo finito.",
                 )
             self._pivot(prow, pcol)
             iterations += 1
@@ -225,7 +225,7 @@ class SimplexEngine:
                 if abs(rhs_val) > EPSILON:
                     return SimplexResult(
                         status="infeasible",
-                        message="The problem has no feasible solution.",
+                        message="El problema no tiene una solución factible.",
                     )
 
         # Extract solution
@@ -240,7 +240,7 @@ class SimplexEngine:
 
         # Build final tableau for display (only decision + slack rows, no artificials)
         display_cols = self.n_total - self.n_artificial
-        headers = ["Basic", "Z"] + self.var_names[:display_cols] + ["RHS"]
+        headers = ["Básica", "Z"] + self.var_names[:display_cols] + ["RHS"]
 
         tableau_rows: list[dict] = []
         for i in range(m):
@@ -258,7 +258,7 @@ class SimplexEngine:
             iterations=iterations,
             tableau_headers=headers,
             tableau_rows=tableau_rows,
-            message=f"Optimal solution found after {iterations} iteration(s).",
+            message=f"Se encontró una solución óptima después de {iterations} iteración(es).",
         )
 
 
