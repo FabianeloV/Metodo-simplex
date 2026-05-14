@@ -7,7 +7,7 @@ class Constraint(BaseModel):
     inequality: Literal["<=", ">=", "="]
     rhs: float
 
-    @field_validator("coeficientes")
+    @field_validator("coefficients")
     @classmethod
     def check_length(cls, v: list[float]) -> list[float]:
         if not (2 <= len(v) <= 4):
