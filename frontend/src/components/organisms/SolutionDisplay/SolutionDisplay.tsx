@@ -24,9 +24,9 @@ function fmtNum(n: number): string {
 const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄"];
 
 const statusBadge = (status: string) => {
-  if (status === "optimal")    return <Badge color="green">✓ Optimal</Badge>;
-  if (status === "unbounded")  return <Badge color="red">Unbounded</Badge>;
-  if (status === "infeasible") return <Badge color="red">Infeasible</Badge>;
+  if (status === "optimal")    return <Badge color="green">✓ Óptimo</Badge>;
+  if (status === "unbounded")  return <Badge color="red">No acotado</Badge>;
+  if (status === "infeasible") return <Badge color="red">No factible</Badge>;
   return null;
 };
 
@@ -40,7 +40,7 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
     return (
       <div className={styles.loadingCard}>
         <Spinner size={22} />
-        <span className={styles.loadingText}>Solving…</span>
+        <span className={styles.loadingText}>Resolviendo…</span>
       </div>
     );
   }
@@ -56,7 +56,7 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
       <div className={styles.resultHeader}>
         <div>
           <h2 id="result-heading" className={styles.cardTitle}>
-            {isOptimal ? "Solution: Optimal Result Found" : `Solution: ${result.status}`}
+            {isOptimal ? "Solución: Resultado Óptimo Encontrado" : `Solución: ${result.status}`}
           </h2>
           <p className={styles.cardSub}>{result.message}</p>
         </div>
@@ -67,7 +67,7 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
         <>
           <div className={styles.metrics}>
             <MetricCard
-              label="Objective (Z)"
+              label="Objetivo (Z)"
               value={fmtNum(result.objective_value)}
               highlight
             />
@@ -86,9 +86,9 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
           {showGraph && result.graphical && (
             <div className={styles.graphSection}>
               <div className={styles.graphHeader}>
-                <h3 className={styles.graphTitle}>Graphical Method (2 variables)</h3>
+                <h3 className={styles.graphTitle}>Método Gráfico (2 variables)</h3>
                 <p className={styles.graphSub}>
-                  Feasible region, constraint lines, and objective line at the optimum.
+                  Región factible, líneas de restricción y línea objetivo en el óptimo.
                 </p>
               </div>
               <GraphicalPlot data={result.graphical} />
@@ -97,7 +97,7 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
 
           {result.tableau_headers && result.tableau_rows && (
             <>
-              <p className={styles.tableauLabel}>Final Simplex Tableau</p>
+              <p className={styles.tableauLabel}>Tabla Simplex Final</p>
               <TableauTable
                 headers={result.tableau_headers}
                 rows={result.tableau_rows}

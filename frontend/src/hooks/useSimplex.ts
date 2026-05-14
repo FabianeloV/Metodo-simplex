@@ -42,7 +42,7 @@ export function useSimplex() {
         setState({ result, loading: false, error: null });
       } catch (err) {
         const message =
-          err instanceof Error ? err.message : "Unexpected error occurred";
+          err instanceof Error ? err.message : "Ocurrió un error inesperado";
         setState({ result: null, loading: false, error: message });
       }
     },

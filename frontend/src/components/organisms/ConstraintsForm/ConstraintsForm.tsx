@@ -45,20 +45,20 @@ export const ConstraintsForm: React.FC<ConstraintsFormProps> = ({
   <section className={styles.card} aria-labelledby="constr-heading">
     <div className={styles.sectionHeader}>
       <div>
-        <h2 id="constr-heading" className={styles.cardTitle}>Constraints</h2>
+        <h2 id="constr-heading" className={styles.cardTitle}>Restricciones</h2>
         <p className={styles.cardSub}>
-          Add the linear inequalities that limit your objective function.
+          Añada las desigualdades lineales que limitan su función objetivo.
         </p>
       </div>
       <Button variant="ghost" size="sm" onClick={onAdd} icon={<PlusIcon />}>
-        Add Constraint
+        Añadir Restricción
       </Button>
     </div>
 
     <div className={styles.constraintList} role="list">
       {constraints.length === 0 ? (
         <p className={styles.empty}>
-          No constraints yet. Add at least one to solve.
+          Aún no hay restricciones. Añada al menos una para resolver.
         </p>
       ) : (
         constraints.map((c, i) => (
@@ -88,7 +88,7 @@ export const ConstraintsForm: React.FC<ConstraintsFormProps> = ({
         onClick={onSolve}
         icon={<GridIcon />}
       >
-        Solve via Simplex
+        Resolver mediante Simplex
       </Button>
     </div>
   </section>

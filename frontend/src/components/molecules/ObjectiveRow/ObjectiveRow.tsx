@@ -25,7 +25,7 @@ export const ObjectiveRow: React.FC<ObjectiveRowProps> = ({
           step="any"
           value={coefficients[i] ?? 1}
           onChange={(e) => onChange(i, parseFloat(e.target.value) || 0)}
-          aria-label={`Coefficient of x${i + 1}`}
+          aria-label={`Coeficiente de x${i + 1}`}
         />
         <span className={styles.varLabel}>
           x<sub>{i + 1}</sub>

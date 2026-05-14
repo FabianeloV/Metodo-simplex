@@ -14,7 +14,7 @@ const TABS: { label: string; value: VariableCount }[] = [
 ];
 
 export const TabGroup: React.FC<TabGroupProps> = ({ value, onChange }) => (
-  <nav className={styles.tabGroup} role="tablist" aria-label="Variable count">
+  <nav className={styles.tabGroup} role="tablist" aria-label="Cantidad de variables">
     {TABS.map((tab) => (
       <button
         key={tab.value}

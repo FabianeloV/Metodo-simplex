@@ -55,7 +55,7 @@ export const GraphicalPlot: React.FC<GraphicalPlotProps> = ({ data }) => {
         className={styles.plot}
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
-        aria-label="Graphical method plot"
+        aria-label="Gráfico del método gráfico"
       >
         <rect
           x={PADDING.left}
@@ -144,25 +144,25 @@ export const GraphicalPlot: React.FC<GraphicalPlotProps> = ({ data }) => {
       <div className={styles.legend}>
         <span className={styles.legendItem}>
           <span className={[styles.legendSwatch, styles.swatchConstraint].join(" ")} />
-          Constraints
+          Restricciones
         </span>
         <span className={styles.legendItem}>
           <span className={[styles.legendSwatch, styles.swatchRegion].join(" ")} />
-          Feasible region
+          Región factible
         </span>
         <span className={styles.legendItem}>
           <span className={[styles.legendSwatch, styles.swatchObjective].join(" ")} />
-          Objective line
+          Línea objetivo
         </span>
         <span className={styles.legendItem}>
           <span className={[styles.legendSwatch, styles.swatchOptimal].join(" ")} />
-          Optimal point
+          Punto óptimo
         </span>
       </div>
 
       {data.status !== "optimal" && (
         <p className={styles.statusNote}>
-          Status: {data.status}. The plot still shows the constraints and available intersections.
+          Estado: {data.status}. El gráfico aún muestra las restricciones e intersecciones disponibles.
         </p>
       )}
     </div>

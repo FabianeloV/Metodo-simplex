@@ -30,7 +30,7 @@ export const ConstraintRow: React.FC<ConstraintRowProps> = ({
   onRhsChange,
   onRemove,
 }) => (
-  <div className={styles.row} role="group" aria-label={`Constraint ${index + 1}`}>
+  <div className={styles.row} role="group" aria-label={`Restricción ${index + 1}`}>
     <span className={styles.num}>#{index + 1}</span>
 
     {Array.from({ length: nVars }, (_, i) => (
@@ -41,7 +41,7 @@ export const ConstraintRow: React.FC<ConstraintRowProps> = ({
           step="any"
           value={constraint.coefficients[i] ?? 1}
           onChange={(e) => onCoefficientChange(i, parseFloat(e.target.value) || 0)}
-          aria-label={`Constraint ${index + 1} x${i + 1} coefficient`}
+          aria-label={`Coeficiente x${i + 1} de la restricción ${index + 1}`}
         />
         <span className={styles.varLabel}>
           x<sub>{i + 1}</sub>
@@ -54,7 +54,7 @@ export const ConstraintRow: React.FC<ConstraintRowProps> = ({
       value={constraint.inequality}
       onChange={(e) => onInequalityChange(e.target.value as Inequality)}
       style={{ width: 56 }}
-      aria-label="Inequality sign"
+      aria-label="Signo de desigualdad"
     />
 
     <Input
@@ -62,7 +62,7 @@ export const ConstraintRow: React.FC<ConstraintRowProps> = ({
       step="any"
       value={constraint.rhs}
       onChange={(e) => onRhsChange(parseFloat(e.target.value) || 0)}
-      aria-label={`Constraint ${index + 1} right-hand side`}
+      aria-label={`Lado derecho de la restricción ${index + 1}`}
       style={{ width: 72 }}
     />
 
@@ -70,7 +70,7 @@ export const ConstraintRow: React.FC<ConstraintRowProps> = ({
       variant="danger"
       size="sm"
       onClick={onRemove}
-      aria-label={`Remove constraint ${index + 1}`}
+      aria-label={`Eliminar restricción ${index + 1}`}
       style={{ padding: "4px 8px" }}
     >
       ×

@@ -6,8 +6,8 @@ import type { Goal, VariableCount } from "../../../types/simplex";
 import styles from "./ObjectiveForm.module.css";
 
 const GOAL_OPTIONS = [
-  { value: "max", label: "Maximize" },
-  { value: "min", label: "Minimize" },
+  { value: "max", label: "Maximizar" },
+  { value: "min", label: "Minimizar" },
 ];
 
 interface ObjectiveFormProps {
@@ -26,14 +26,14 @@ export const ObjectiveForm: React.FC<ObjectiveFormProps> = ({
   onCoefficientChange,
 }) => (
   <section className={styles.card} aria-labelledby="obj-heading">
-    <h2 id="obj-heading" className={styles.cardTitle}>Objective Function</h2>
+    <h2 id="obj-heading" className={styles.cardTitle}>Función Objetivo</h2>
     <p className={styles.cardSub}>
-      Define the main function to optimize and choose the objective.
+      Defina la función principal a optimizar y elija el objetivo.
     </p>
 
     <div className={styles.body}>
       <div className={styles.goalBlock}>
-        <Label htmlFor="goal-select">Optimization Goal</Label>
+        <Label htmlFor="goal-select">Meta de Optimización</Label>
         <Select
           id="goal-select"
           options={GOAL_OPTIONS}
@@ -44,7 +44,7 @@ export const ObjectiveForm: React.FC<ObjectiveFormProps> = ({
       </div>
 
       <div className={styles.funcBlock}>
-        <Label>Function (Z)</Label>
+        <Label>Función (Z)</Label>
         <ObjectiveRow
           nVars={nVars}
           coefficients={coefficients}

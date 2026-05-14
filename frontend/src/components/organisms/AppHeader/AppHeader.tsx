@@ -13,8 +13,8 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ nVars, onVarsChange }) => 
     <div className={styles.brand}>
       <div className={styles.logoBox} aria-hidden="true">Σ</div>
       <div>
-        <h1 className={styles.title}>Simplex Optimization</h1>
-        <p className={styles.sub}>Linear Programming Solver</p>
+        <h1 className={styles.title}>Optimización Simplex</h1>
+        <p className={styles.sub}>Solver de Programación Lineal</p>
       </div>
     </div>
     <TabGroup value={nVars} onChange={onVarsChange} />
