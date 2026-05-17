@@ -29,7 +29,6 @@ jobs:
         run: npm run build
         working-directory: frontend
         env:
-          # Aquí apuntas al backend de Railway
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to GitHub Pages
