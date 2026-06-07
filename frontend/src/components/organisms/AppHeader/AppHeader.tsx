@@ -1,22 +1,45 @@
 import React from "react";
 import { TabGroup } from "../../molecules/TabGroup";
+import { MethodSwitcher } from "../../molecules/MethodSwitcher";
+import type { Method } from "../../molecules/MethodSwitcher";
 import type { VariableCount } from "../../../types/simplex";
 import styles from "./AppHeader.module.css";
 
 interface AppHeaderProps {
-  nVars: VariableCount;
-  onVarsChange: (n: VariableCount) => void;
+  method: Method;
+  onMethodChange: (m: Method) => void;
+  nVars?: VariableCount;
+  onVarsChange?: (n: VariableCount) => void;
 }
 
-export const AppHeader: React.FC<AppHeaderProps> = ({ nVars, onVarsChange }) => (
-  <header className={styles.header}>
-    <div className={styles.brand}>
-      <div className={styles.logoBox} aria-hidden="true">Σ</div>
-      <div>
-        <h1 className={styles.title}>Optimización Simplex</h1>
-        <p className={styles.sub}>Solver de Programación Lineal</p>
+const META: Record<Method, { title: string; sub: string; logo: string }> = {
+  simplex: { title: "Método Simplex", sub: "Solver de Programación Lineal", logo: "Σ" },
+  binary:  { title: "Entera Binaria", sub: "Branch & Bound — Variables 0/1",  logo: "01" },
+};
+
+export const AppHeader: React.FC<AppHeaderProps> = ({
+  method,
+  onMethodChange,
+  nVars,
+  onVarsChange,
+}) => {
+  const meta = META[method];
+  return (
+    <header className={styles.header}>
+      <div className={styles.brand}>
+        <div className={styles.logoBox} aria-hidden="true">{meta.logo}</div>
+        <div>
+          <h1 className={styles.title}>{meta.title}</h1>
+          <p className={styles.sub}>{meta.sub}</p>
+        </div>
       </div>
-    </div>
-    <TabGroup value={nVars} onChange={onVarsChange} />
-  </header>
-);
+
+      <div className={styles.controls}>
+        <MethodSwitcher value={method} onChange={onMethodChange} />
+        {nVars !== undefined && onVarsChange !== undefined && (
+          <TabGroup value={nVars} onChange={onVarsChange} />
+        )}
+      </div>
+    </header>
+  );
+};

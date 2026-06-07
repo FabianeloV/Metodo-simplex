@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip3 show *)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -m pip show numpy)",
+      "Bash(python3.11 -c \"import numpy; print\\(numpy.__version__\\)\")",
+      "Read(//usr/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(compgen -c python)",
+      "Bash(python3.13 -c \"import numpy; print\\('numpy ok'\\)\")",
+      "Bash(python3.13 -m pip install numpy --quiet)",
+      "Bash(python3.13 -c ' *)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

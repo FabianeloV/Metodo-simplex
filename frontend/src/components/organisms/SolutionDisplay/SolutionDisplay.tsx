@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Badge } from "../../atoms/Badge";
 import { MetricCard } from "../../molecules/MetricCard";
 import { TableauTable } from "../../molecules/TableauTable";
@@ -36,6 +36,8 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
   loading,
   error,
 }) => {
+  const [expandedIter, setExpandedIter] = useState<number | null>(null);
+
   if (loading) {
     return (
       <div className={styles.loadingCard}>
@@ -103,6 +105,46 @@ export const SolutionDisplay: React.FC<SolutionDisplayProps> = ({
                 rows={result.tableau_rows}
               />
             </>
+          )}
+
+          {result.iteration_tableaux && result.iteration_tableaux.length > 0 && (
+            <div className={styles.iterationsSection}>
+              <p className={styles.tableauLabel}>Iteraciones del Método Simplex</p>
+              <div className={styles.iterationList}>
+                {result.iteration_tableaux.map((iter) => {
+                  const isOpen = expandedIter === iter.iteration;
+                  const isInitial = iter.iteration === 0;
+                  return (
+                    <div key={iter.iteration} className={styles.iterationBlock}>
+                      <button
+                        className={[styles.iterationHeader, isOpen ? styles.iterationHeaderOpen : ""].join(" ")}
+                        onClick={() => setExpandedIter(isOpen ? null : iter.iteration)}
+                        aria-expanded={isOpen}
+                      >
+                        <span className={styles.iterationTitle}>
+                          {isInitial ? "Tabla Inicial" : `Iteración ${iter.iteration}`}
+                        </span>
+                        {!isInitial && iter.entering && iter.leaving && (
+                          <span className={styles.iterationMeta}>
+                            <span className={styles.chipEnter}>↑ {iter.entering}</span>
+                            <span className={styles.chipLeave}>↓ {iter.leaving}</span>
+                          </span>
+                        )}
+                        <span className={styles.iterationChevron}>{isOpen ? "▲" : "▼"}</span>
+                      </button>
+                      {isOpen && (
+                        <div className={styles.iterationBody}>
+                          <TableauTable
+                            headers={iter.tableau_headers}
+                            rows={iter.tableau_rows}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           )}
         </>
       )}

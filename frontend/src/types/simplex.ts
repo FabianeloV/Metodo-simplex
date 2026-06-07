@@ -67,6 +67,14 @@ export interface GraphicalData {
   goal: Goal;
 }
 
+export interface IterationTableau {
+  iteration: number;
+  entering?: string | null;
+  leaving?: string | null;
+  tableau_headers: string[];
+  tableau_rows: TableauRow[];
+}
+
 export interface SimplexResponse {
   status: SolveStatus;
   objective_value?: number;
@@ -76,6 +84,7 @@ export interface SimplexResponse {
   tableau_rows?: TableauRow[];
   message?: string;
   graphical?: GraphicalData | null;
+  iteration_tableaux?: IterationTableau[] | null;
 }
 
 // ─── UI state ─────────────────────────────────────────────────────────────────

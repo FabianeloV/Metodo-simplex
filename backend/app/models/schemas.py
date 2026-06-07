@@ -71,6 +71,56 @@ class GraphicalData(BaseModel):
     goal: Literal["max", "min"]
 
 
+# ─── Binary Integer Programming ──────────────────────────────────────────────
+
+class BinaryRequest(BaseModel):
+    objective: list[float] = Field(..., min_length=2, max_length=4)
+    goal: Literal["max", "min"]
+    constraints: list[Constraint] = Field(..., min_length=1)
+
+    @field_validator("constraints")
+    @classmethod
+    def same_size(cls, v: list[Constraint], info) -> list[Constraint]:
+        if "objective" in (info.data or {}):
+            n = len(info.data["objective"])
+            for c in v:
+                if len(c.coefficients) != n:
+                    raise ValueError(
+                        f"Las restricciones deben tener {n} coeficientes"
+                    )
+        return v
+
+
+class BBNode(BaseModel):
+    node_id: int
+    parent_id: int | None = None
+    depth: int
+    fixed_vars: dict[str, int]
+    lp_value: float | None = None
+    lp_vars: dict[str, float] | None = None
+    status: str
+    branched_on: str | None = None
+
+
+class BinaryResponse(BaseModel):
+    status: Literal["optimal", "infeasible", "limit"]
+    objective_value: float | None = None
+    variables: dict[str, int] | None = None
+    nodes_explored: int
+    nodes: list[BBNode]
+    message: str
+
+
+# ─── Simplex iteration snapshots ─────────────────────────────────────────────
+
+class IterationTableau(BaseModel):
+    iteration: int
+    entering: str | None = None
+    leaving: str | None = None
+    tableau_headers: list[str]
+    tableau_rows: list[TableauRow]
+
+
 class SimplexResponse(BaseModel):
     status: Literal["optimal", "unbounded", "infeasible"]
     objective_value: float | None = None
@@ -80,3 +130,4 @@ class SimplexResponse(BaseModel):
     tableau_rows: list[TableauRow] | None = None
     message: str | None = None
     graphical: GraphicalData | None = None
+    iteration_tableaux: list[IterationTableau] | None = None

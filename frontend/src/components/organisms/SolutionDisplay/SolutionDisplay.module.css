@@ -1,36 +1,97 @@
 .card {
-  background: #fff;
-  border: 1px solid #E5E7EB;
-  border-radius: 14px;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
   padding: 1.25rem 1.5rem;
   margin-bottom: 1rem;
-  animation: fadeUp .3s ease;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: fadeUp .35s ease;
 }
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #059669, #2563EB, #7C3AED);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
 .resultHeader {
   display: flex; justify-content: space-between;
   align-items: flex-start; gap: 12px; margin-bottom: 1.25rem;
 }
-.cardTitle { font-size: 15px; font-weight: 600; color: #111827; margin: 0 0 3px; }
+.cardTitle { font-size: 15px; font-weight: 700; color: #111827; margin: 0 0 3px; }
 .cardSub   { font-size: 12px; color: #9CA3AF; margin: 0; }
-.metrics {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem;
-}
+
+.metrics { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
 .tableauLabel {
-  font-size: 11px; font-weight: 600; color: #9CA3AF;
-  text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px;
+  font-size: 10px; font-weight: 700; color: #6366F1;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px;
 }
+
 .graphSection { margin-bottom: 1.25rem; }
-.graphHeader { margin: 0 0 8px; }
-.graphTitle { font-size: 13px; font-weight: 600; color: #111827; margin: 0 0 2px; }
-.graphSub { font-size: 11px; color: #9CA3AF; margin: 0; }
+.graphHeader  { margin: 0 0 8px; }
+.graphTitle   { font-size: 13px; font-weight: 700; color: #111827; margin: 0 0 2px; }
+.graphSub     { font-size: 11px; color: #9CA3AF; margin: 0; }
+
 .loadingCard {
   display: flex; align-items: center; gap: 12px;
-  background: #fff; border: 1px solid #E5E7EB;
-  border-radius: 14px; padding: 1.25rem 1.5rem;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
   margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
 }
 .loadingText { font-size: 13px; color: #6B7280; }
+
+/* ── Iterations ───────────────────────────────────────────────────────────── */
+.iterationsSection { margin-top: 1.25rem; }
+.iterationList { display: flex; flex-direction: column; gap: 5px; }
+
+.iterationBlock {
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.iterationHeader {
+  width: 100%;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px;
+  background: #FAFAFA;
+  border: none; cursor: pointer;
+  font-family: inherit; font-size: 12px;
+  text-align: left;
+  transition: background .15s;
+}
+.iterationHeader:hover { background: #F0F0F8; }
+.iterationHeaderOpen   { background: #EEF2FF; }
+.iterationHeaderOpen:hover { background: #E0E7FF; }
+
+.iterationTitle { font-weight: 700; color: #374151; flex-shrink: 0; }
+.iterationHeaderOpen .iterationTitle { color: #4338CA; }
+
+.iterationMeta { display: flex; gap: 4px; flex: 1; }
+
+.chipEnter {
+  background: #ECFDF5; color: #047857;
+  border-radius: 5px; padding: 1px 7px;
+  font-size: 11px; font-weight: 600;
+}
+.chipLeave {
+  background: #FFF1F2; color: #BE123C;
+  border-radius: 5px; padding: 1px 7px;
+  font-size: 11px; font-weight: 600;
+}
+
+.iterationChevron { margin-left: auto; font-size: 9px; color: #9CA3AF; flex-shrink: 0; }
+.iterationBody { padding: 8px; background: #FDFCFF; }

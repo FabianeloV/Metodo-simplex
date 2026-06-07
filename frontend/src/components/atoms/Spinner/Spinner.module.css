@@ -1,8 +1,8 @@
 .spinner {
   display: inline-block;
-  border: 2px solid #e5e7eb;
-  border-top-color: #2563EB;
+  border: 2.5px solid rgba(124,58,237,.15);
+  border-top-color: #7C3AED;
   border-radius: 50%;
-  animation: spin .7s linear infinite;
+  animation: spin .65s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }

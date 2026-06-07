@@ -44,6 +44,7 @@ class SimplexResult:
     tableau_headers: list[str] = field(default_factory=list)
     tableau_rows: list[dict] = field(default_factory=list)
     message: str = ""
+    iteration_tableaux: list[dict] = field(default_factory=list)
 
 
 class SimplexEngine:
@@ -187,6 +188,25 @@ class SimplexEngine:
         col = int(np.argmin(obj))
         return col if obj[col] < -EPSILON else -1
 
+    def _snapshot(self, iteration: int, entering: str | None, leaving: str | None) -> dict:
+        display_cols = self.n_total - self.n_artificial
+        headers = ["Básica", "Z"] + self.var_names[:display_cols] + ["RHS"]
+        m = len(self.basic)
+        rows: list[dict] = []
+        for i in range(m):
+            bv_name = self.var_names[self.basic[i]] if self.basic[i] < len(self.var_names) else "?"
+            row_vals = [0.0] + list(self.T[i, :display_cols]) + [float(self.T[i, -1])]
+            rows.append({"basic_variable": bv_name, "values": _round_list(row_vals)})
+        z_row = [1.0] + list(self.T[-1, :display_cols]) + [float(self.T[-1, -1])]
+        rows.append({"basic_variable": "Z", "values": _round_list(z_row)})
+        return {
+            "iteration": iteration,
+            "entering": entering,
+            "leaving": leaving,
+            "tableau_headers": headers,
+            "tableau_rows": rows,
+        }
+
     def _find_pivot_row(self, col: int) -> int:
         """Minimum ratio test."""
         m = len(self.basic)
@@ -204,6 +224,7 @@ class SimplexEngine:
     # ------------------------------------------------------------------
 
     def solve(self) -> SimplexResult:
+        iteration_snapshots: list[dict] = [self._snapshot(0, None, None)]
         iterations = 0
         for _ in range(MAX_ITER):
             pcol = self._find_pivot_col()
@@ -215,8 +236,11 @@ class SimplexEngine:
                     status="unbounded",
                     message="El problema no está acotado: no existe un óptimo finito.",
                 )
+            entering = self.var_names[pcol] if pcol < len(self.var_names) else "?"
+            leaving = self.var_names[self.basic[prow]] if self.basic[prow] < len(self.var_names) else "?"
             self._pivot(prow, pcol)
             iterations += 1
+            iteration_snapshots.append(self._snapshot(iterations, entering, leaving))
 
         # Check for artificials still in basis (infeasible)
         for bv in self.basic:
@@ -259,6 +283,7 @@ class SimplexEngine:
             tableau_headers=headers,
             tableau_rows=tableau_rows,
             message=f"Se encontró una solución óptima después de {iterations} iteración(es).",
+            iteration_tableaux=iteration_snapshots,
         )
 
 

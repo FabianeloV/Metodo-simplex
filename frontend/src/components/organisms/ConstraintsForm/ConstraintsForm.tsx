@@ -14,6 +14,7 @@ interface ConstraintsFormProps {
   onInequalityChange: (id: string, ineq: Inequality) => void;
   onRhsChange: (id: string, value: number) => void;
   onSolve: () => void;
+  solveLabel?: string;
 }
 
 const PlusIcon = () => (
@@ -41,6 +42,7 @@ export const ConstraintsForm: React.FC<ConstraintsFormProps> = ({
   onInequalityChange,
   onRhsChange,
   onSolve,
+  solveLabel = "Resolver mediante Simplex",
 }) => (
   <section className={styles.card} aria-labelledby="constr-heading">
     <div className={styles.sectionHeader}>
@@ -88,7 +90,7 @@ export const ConstraintsForm: React.FC<ConstraintsFormProps> = ({
         onClick={onSolve}
         icon={<GridIcon />}
       >
-        Resolver mediante Simplex
+        {solveLabel}
       </Button>
     </div>
   </section>

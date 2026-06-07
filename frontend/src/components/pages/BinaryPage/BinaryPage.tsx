@@ -1,26 +1,25 @@
 import React, { useCallback, useState } from "react";
-import { AppHeader }        from "../../organisms/AppHeader";
-import { ObjectiveForm }    from "../../organisms/ObjectiveForm";
-import { ConstraintsForm }  from "../../organisms/ConstraintsForm";
-import { SolutionDisplay }  from "../../organisms/SolutionDisplay";
-import { SolverTemplate }   from "../../templates/SolverTemplate";
-import { useConstraints }   from "../../../hooks/useConstraints";
-import { useSimplex }       from "../../../hooks/useSimplex";
-import type { Method }      from "../../molecules/MethodSwitcher";
+import { AppHeader }           from "../../organisms/AppHeader";
+import { ObjectiveForm }       from "../../organisms/ObjectiveForm";
+import { ConstraintsForm }     from "../../organisms/ConstraintsForm";
+import { BinarySolutionDisplay } from "../../organisms/BinarySolutionDisplay";
+import { SolverTemplate }      from "../../templates/SolverTemplate";
+import { useConstraints }      from "../../../hooks/useConstraints";
+import { useBinary }           from "../../../hooks/useBinary";
+import type { Method }         from "../../molecules/MethodSwitcher";
 import type { Goal, VariableCount } from "../../../types/simplex";
 
-// ─── Default objective coefficients per variable count ───────────────────────
 const DEFAULT_OBJ: Record<VariableCount, number[]> = {
   2: [3, 5],
   3: [3, 2, 5],
   4: [2, 3, 1, 4],
 };
 
-interface SolverPageProps {
+interface BinaryPageProps {
   onMethodChange: (m: Method) => void;
 }
 
-export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
+export const BinaryPage: React.FC<BinaryPageProps> = ({ onMethodChange }) => {
   const [nVars, setNVars]         = useState<VariableCount>(3);
   const [goal, setGoal]           = useState<Goal>("max");
   const [objCoeffs, setObjCoeffs] = useState<number[]>(DEFAULT_OBJ[3]);
@@ -28,9 +27,8 @@ export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
   const { constraints, add, remove, updateCoefficient,
           updateInequality, updateRhs, resize, reset } = useConstraints(nVars, 3);
 
-  const { result, loading, error, solve, reset: resetResult } = useSimplex();
+  const { result, loading, error, solve, reset: resetResult } = useBinary();
 
-  // ── Variable count change ──────────────────────────────────────────────────
   const handleVarsChange = useCallback((n: VariableCount) => {
     setNVars(n);
     setObjCoeffs(DEFAULT_OBJ[n]);
@@ -38,7 +36,6 @@ export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
     resetResult();
   }, [resize, resetResult]);
 
-  // ── Objective coefficient change ───────────────────────────────────────────
   const handleObjCoeff = useCallback((idx: number, val: number) => {
     setObjCoeffs((prev) => {
       const next = [...prev];
@@ -47,7 +44,6 @@ export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
     });
   }, []);
 
-  // ── Solve ──────────────────────────────────────────────────────────────────
   const handleSolve = useCallback(() => {
     solve(nVars, objCoeffs, goal, constraints);
   }, [nVars, objCoeffs, goal, constraints, solve]);
@@ -56,7 +52,7 @@ export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
     <SolverTemplate
       header={
         <AppHeader
-          method="simplex"
+          method="binary"
           onMethodChange={onMethodChange}
           nVars={nVars}
           onVarsChange={handleVarsChange}
@@ -82,10 +78,11 @@ export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
           onInequalityChange={updateInequality}
           onRhsChange={updateRhs}
           onSolve={handleSolve}
+          solveLabel="Resolver con Branch & Bound"
         />
       }
       solution={
-        <SolutionDisplay
+        <BinarySolutionDisplay
           nVars={nVars}
           result={result}
           loading={loading}

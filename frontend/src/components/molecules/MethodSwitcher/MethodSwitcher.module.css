@@ -1,4 +1,4 @@
-.tabGroup {
+.switcher {
   display: flex;
   background: #F3F4F6;
   border: 1.5px solid #E5E7EB;
@@ -6,7 +6,11 @@
   padding: 3px;
   gap: 2px;
 }
+
 .tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   padding: 5px 14px;
   border-radius: 8px;
   font-size: 12px;
@@ -17,11 +21,29 @@
   color: #6B7280;
   transition: all .15s;
   font-family: inherit;
+  white-space: nowrap;
   letter-spacing: .01em;
 }
 .tab:hover { color: #374151; }
+
 .active {
   background: var(--grad-primary);
   color: #fff;
   box-shadow: 0 2px 8px rgba(124,58,237,.35);
+}
+
+.icon {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255,255,255,.25);
+  color: inherit;
+  border-radius: 5px;
+  padding: 1px 5px;
+  letter-spacing: -.03em;
+}
+/* Inactive icon stays tinted */
+.tab:not(.active) .icon {
+  background: #EEF2FF;
+  color: #6366F1;
 }

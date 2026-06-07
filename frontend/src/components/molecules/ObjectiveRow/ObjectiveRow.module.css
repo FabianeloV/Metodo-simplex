@@ -1,4 +1,4 @@
 .row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.zEq { font-size: 14px; font-family: 'DM Mono', monospace; font-weight: 500; color: #111827; margin-right: 2px; }
-.plus { font-size: 14px; color: #9CA3AF; }
-.varLabel { font-size: 13px; font-family: 'DM Mono', monospace; color: #6B7280; }
+.zEq { font-size: 15px; font-family: 'DM Mono', monospace; font-weight: 700; color: #1E1B4B; margin-right: 2px; }
+.plus { font-size: 16px; color: #A5B4FC; font-weight: 700; }
+.varLabel { font-size: 13px; font-family: 'DM Mono', monospace; color: #6D28D9; font-weight: 600; }

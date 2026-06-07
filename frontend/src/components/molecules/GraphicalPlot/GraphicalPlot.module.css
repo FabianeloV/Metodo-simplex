@@ -1,114 +1,57 @@
 .card {
-  background: #F9FAFB;
-  border: 1px solid #E5E7EB;
+  background: #F8FAFF;
+  border: 1px solid #C7D2FE;
   border-radius: 12px;
   padding: 12px 12px 10px;
 }
 
-.plot {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+.plot { width: 100%; height: auto; display: block; }
 
-.plotBg {
-  fill: #FFFFFF;
-  stroke: #E5E7EB;
-}
+.plotBg { fill: #FFFFFF; stroke: #E0E7FF; }
 
 .gridLine {
-  stroke: #E5E7EB;
+  stroke: #E0E7FF;
   stroke-dasharray: 3 4;
   stroke-width: 1;
 }
 
-.axisLine {
-  stroke: #9CA3AF;
-  stroke-width: 1.2;
-}
+.axisLine { stroke: #818CF8; stroke-width: 1.5; }
 
 .constraintLine {
-  stroke: #2563EB;
-  stroke-width: 1.5;
-  opacity: 0.85;
+  stroke: #4F46E5;
+  stroke-width: 2;
+  opacity: 0.9;
 }
 
 .feasibleArea {
-  fill: rgba(191, 219, 254, 0.55);
-  stroke: #60A5FA;
-  stroke-width: 1.5;
+  fill: rgba(167,139,250,0.22);
+  stroke: #A78BFA;
+  stroke-width: 2;
 }
 
 .objectiveLine {
   stroke: #F59E0B;
-  stroke-width: 2;
-  stroke-dasharray: 6 4;
+  stroke-width: 2.5;
+  stroke-dasharray: 7 4;
 }
 
-.vertexPoint {
-  fill: #2563EB;
-  stroke: #FFFFFF;
-  stroke-width: 1;
-}
+.vertexPoint { fill: #4F46E5; stroke: #FFFFFF; stroke-width: 2; }
 
-.optimalPoint {
-  fill: #F97316;
-  stroke: #FFFFFF;
-  stroke-width: 1.5;
-}
+.optimalPoint { fill: #F43F5E; stroke: #FFFFFF; stroke-width: 2; }
 
-.tickLabel {
-  font-size: 10px;
-  fill: #6B7280;
-  text-anchor: middle;
-}
-
-.axisLabel {
-  font-size: 11px;
-  fill: #374151;
-  font-family: "DM Mono", monospace;
-}
+.tickLabel { font-size: 10px; fill: #6B7280; text-anchor: middle; }
+.axisLabel { font-size: 11px; fill: #4338CA; font-family: "DM Mono", monospace; font-weight: 600; }
 
 .legend {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  font-size: 11px;
-  color: #6B7280;
-  margin-top: 8px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+  font-size: 11px; color: #6B7280; margin-top: 10px;
 }
+.legendItem { display: flex; align-items: center; gap: 6px; }
+.legendSwatch { width: 16px; height: 4px; border-radius: 6px; display: inline-block; }
 
-.legendItem {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+.swatchConstraint { background: #4F46E5; }
+.swatchRegion     { background: rgba(167,139,250,0.7); }
+.swatchObjective  { background: #F59E0B; }
+.swatchOptimal    { background: #F43F5E; }
 
-.legendSwatch {
-  width: 14px;
-  height: 4px;
-  border-radius: 6px;
-  display: inline-block;
-}
-
-.swatchConstraint {
-  background: #2563EB;
-}
-
-.swatchRegion {
-  background: rgba(96, 165, 250, 0.8);
-}
-
-.swatchObjective {
-  background: #F59E0B;
-}
-
-.swatchOptimal {
-  background: #F97316;
-}
-
-.statusNote {
-  margin: 8px 0 0;
-  font-size: 11px;
-  color: #B91C1C;
-}
+.statusNote { margin: 8px 0 0; font-size: 11px; color: #BE123C; }

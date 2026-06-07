@@ -1,19 +1,53 @@
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
   flex-wrap: wrap;
   gap: 12px;
+
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.7);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-card-lg);
+  overflow: hidden;
 }
+
+/* Gradient top accent bar */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad-header);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+
 .brand { display: flex; align-items: center; gap: 12px; }
+
 .logoBox {
-  width: 38px; height: 38px;
-  background: #EFF6FF; border: 1px solid #BFDBFE;
-  border-radius: 9px;
+  width: 40px; height: 40px;
+  background: var(--grad-primary);
+  border: none;
+  border-radius: 11px;
   display: flex; align-items: center; justify-content: center;
-  color: #2563EB; font-size: 18px; font-family: 'DM Mono', monospace;
+  color: #fff;
+  font-size: 15px; font-family: 'DM Mono', monospace;
+  font-weight: 700; letter-spacing: -.04em;
   flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(124,58,237,.35);
 }
-.title { font-size: 17px; font-weight: 600; color: #111827; margin: 0; }
-.sub   { font-size: 11px; color: #9CA3AF; margin: 2px 0 0; }
+
+.title {
+  font-size: 17px; font-weight: 700; margin: 0;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sub { font-size: 11px; color: #9CA3AF; margin: 2px 0 0; }
+
+.controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }

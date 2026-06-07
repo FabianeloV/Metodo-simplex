@@ -1,11 +1,17 @@
 .banner {
   display: flex; align-items: flex-start; gap: 10px;
-  background: #FEF2F2; border: 1px solid #FECACA;
-  border-radius: 9px; padding: 12px 14px; margin-top: 12px;
+  background: #FFF1F2;
+  border: 1.5px solid #FECDD3;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 12px;
 }
 .icon {
-  width: 18px; height: 18px; border-radius: 50%;
-  background: #DC2626; color: #fff; font-size: 11px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: linear-gradient(135deg, #E11D48, #9F1239);
+  color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+  box-shadow: 0 2px 6px rgba(225,29,72,.35);
 }
-.msg { font-size: 13px; color: #991B1B; line-height: 1.5; }
+.msg { font-size: 13px; color: #9F1239; line-height: 1.5; font-weight: 500; }

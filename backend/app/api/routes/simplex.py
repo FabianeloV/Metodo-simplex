@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.models.schemas import SimplexRequest, SimplexResponse, TableauRow
+from app.models.schemas import SimplexRequest, SimplexResponse, TableauRow, IterationTableau
 from app.core.simplex_engine import SimplexEngine
 from app.core.graphical_method import build_graphical_data
 
@@ -44,6 +44,21 @@ def solve(payload: SimplexRequest) -> SimplexResponse:
             objective_value=result.objective_value,
         )
 
+    def _build_iteration_tableaux(snapshots: list[dict]) -> list[IterationTableau]:
+        return [
+            IterationTableau(
+                iteration=s["iteration"],
+                entering=s.get("entering"),
+                leaving=s.get("leaving"),
+                tableau_headers=s["tableau_headers"],
+                tableau_rows=[
+                    TableauRow(basic_variable=r["basic_variable"], values=r["values"])
+                    for r in s["tableau_rows"]
+                ],
+            )
+            for s in snapshots
+        ]
+
     if result.status == "optimal":
         return SimplexResponse(
             status="optimal",
@@ -57,6 +72,7 @@ def solve(payload: SimplexRequest) -> SimplexResponse:
             ],
             message=result.message,
             graphical=graphical,
+            iteration_tableaux=_build_iteration_tableaux(result.iteration_tableaux),
         )
 
     return SimplexResponse(
