@@ -111,6 +111,48 @@ class BinaryResponse(BaseModel):
     message: str
 
 
+# ─── Pure Integer Programming ────────────────────────────────────────────────
+
+class IntegerRequest(BaseModel):
+    objective: list[float] = Field(..., min_length=2, max_length=4)
+    goal: Literal["max", "min"]
+    constraints: list[Constraint] = Field(..., min_length=1)
+
+    @field_validator("constraints")
+    @classmethod
+    def same_size(cls, v: list[Constraint], info) -> list[Constraint]:
+        if "objective" in (info.data or {}):
+            n = len(info.data["objective"])
+            for c in v:
+                if len(c.coefficients) != n:
+                    raise ValueError(
+                        f"Las restricciones deben tener {n} coeficientes"
+                    )
+        return v
+
+
+class IntegerNode(BaseModel):
+    node_id: int
+    parent_id: int | None = None
+    depth: int
+    lower_bounds: dict[str, float]
+    upper_bounds: dict[str, float]
+    lp_value: float | None = None
+    lp_vars: dict[str, float] | None = None
+    status: str
+    branched_on: str | None = None
+    branch_direction: str | None = None
+
+
+class IntegerResponse(BaseModel):
+    status: Literal["optimal", "infeasible", "limit"]
+    objective_value: float | None = None
+    variables: dict[str, int] | None = None
+    nodes_explored: int
+    nodes: list[IntegerNode]
+    message: str
+
+
 # ─── Simplex iteration snapshots ─────────────────────────────────────────────
 
 class IterationTableau(BaseModel):

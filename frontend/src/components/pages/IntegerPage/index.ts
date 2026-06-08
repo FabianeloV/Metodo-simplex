@@ -1,0 +1,1 @@
+export { IntegerPage } from "./IntegerPage";

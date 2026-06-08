@@ -1,0 +1,94 @@
+.card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: fadeUp .35s ease;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #059669, #06B6D4, #2563EB);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.resultHeader {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 12px; margin-bottom: 1.25rem;
+}
+.cardTitle { font-size: 15px; font-weight: 700; color: #111827; margin: 0 0 3px; }
+.cardSub   { font-size: 12px; color: #9CA3AF; margin: 0; }
+.metrics   { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+.loadingCard {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card); padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem; box-shadow: var(--shadow-card);
+}
+.loadingText { font-size: 13px; color: #6B7280; }
+
+/* ── B&B Tree ─────────────────────────────────────────────────────────────── */
+.treeSection  { margin-top: 1.25rem; }
+.sectionLabel {
+  font-size: 10px; font-weight: 700; color: #059669;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px;
+}
+.nodeList { display: flex; flex-direction: column; gap: 5px; }
+
+.nodeBlock { border: 1px solid #E5E7EB; border-radius: 10px; overflow: hidden; }
+
+.nodeHeader {
+  width: 100%; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 7px 12px; background: #F9FAFB; border: none; cursor: pointer;
+  font-family: inherit; font-size: 12px; text-align: left; transition: background .15s;
+}
+.nodeHeader:hover { background: #ECFDF5; }
+.nodeHeaderOpen   { background: #ECFDF5; }
+.nodeHeaderOpen:hover { background: #D1FAE5; }
+
+.nodeId    { font-weight: 700; color: #374151; font-size: 12px; flex-shrink: 0; }
+.nodeDepth { font-size: 11px; color: #9CA3AF; flex-shrink: 0; }
+.lpVal     { font-size: 11px; color: #6B7280; margin-left: auto; font-family: 'DM Mono', monospace; font-weight: 600; }
+.chevron   { font-size: 9px; color: #9CA3AF; flex-shrink: 0; }
+
+.branchChip { background: #ECFDF5; color: #065F46; border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 600; font-family: 'DM Mono', monospace; }
+.chipFloor  { background: #EFF6FF; color: #1D4ED8; border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 700; }
+.chipCeil   { background: #F0FDF4; color: #166534; border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 700; }
+
+/* Status badges */
+.nodeBadge        { border-radius: 5px; padding: 2px 8px; font-size: 10px; font-weight: 700; flex-shrink: 0; letter-spacing: .02em; }
+.branched         { background: #ECFDF5; color: #065F46; }
+.prunedBound      { background: #FFFBEB; color: #92400E; }
+.prunedInfeasible { background: #FFF1F2; color: #9F1239; }
+.integer          { background: #EFF6FF; color: #1D4ED8; }
+
+/* Node body */
+.nodeBody {
+  padding: 10px 12px; border-top: 1px solid #F3F4F6;
+  display: flex; flex-direction: column; gap: 8px; background: #FAFFFE;
+}
+.detailRow  { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.detailLabel {
+  font-size: 11px; font-weight: 600; color: #6B7280;
+  flex-shrink: 0; padding-top: 2px; min-width: 130px;
+}
+.chipGroup { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.chipLb  { background: #ECFDF5; color: #065F46; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+.chipUb  { background: #EFF6FF; color: #1D4ED8; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+.chipLp  { background: #F0FDFA; color: #115E59; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-family: 'DM Mono', monospace; }
+
+.infeasNote  { font-size: 11px; color: #9F1239; margin: 0; font-weight: 500; }
+.boundNote   { font-size: 11px; color: #92400E; margin: 0; font-weight: 500; }
+.integerNote { font-size: 11px; color: #065F46; margin: 0; font-weight: 500; }

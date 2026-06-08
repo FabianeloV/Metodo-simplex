@@ -702,6 +702,100 @@
 
 ._infeasNote_1o3qf_109 { font-size: 11px; color: #9F1239; margin: 0; font-weight: 500; }
 ._boundNote_1o3qf_110  { font-size: 11px; color: #92400E; margin: 0; font-weight: 500; }
+._card_10ewe_1 {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: _fadeUp_10ewe_1 .35s ease;
+}
+._card_10ewe_1::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #059669, #06B6D4, #2563EB);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+@keyframes _fadeUp_10ewe_1 {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+._resultHeader_10ewe_25 {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 12px; margin-bottom: 1.25rem;
+}
+._cardTitle_10ewe_29 { font-size: 15px; font-weight: 700; color: #111827; margin: 0 0 3px; }
+._cardSub_10ewe_30   { font-size: 12px; color: #9CA3AF; margin: 0; }
+._metrics_10ewe_31   { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+._loadingCard_10ewe_33 {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card); padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem; box-shadow: var(--shadow-card);
+}
+._loadingText_10ewe_39 { font-size: 13px; color: #6B7280; }
+
+/* ── B&B Tree ─────────────────────────────────────────────────────────────── */
+._treeSection_10ewe_42  { margin-top: 1.25rem; }
+._sectionLabel_10ewe_43 {
+  font-size: 10px; font-weight: 700; color: #059669;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px;
+}
+._nodeList_10ewe_47 { display: flex; flex-direction: column; gap: 5px; }
+
+._nodeBlock_10ewe_49 { border: 1px solid #E5E7EB; border-radius: 10px; overflow: hidden; }
+
+._nodeHeader_10ewe_51 {
+  width: 100%; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 7px 12px; background: #F9FAFB; border: none; cursor: pointer;
+  font-family: inherit; font-size: 12px; text-align: left; transition: background .15s;
+}
+._nodeHeader_10ewe_51:hover { background: #ECFDF5; }
+._nodeHeaderOpen_10ewe_57   { background: #ECFDF5; }
+._nodeHeaderOpen_10ewe_57:hover { background: #D1FAE5; }
+
+._nodeId_10ewe_60    { font-weight: 700; color: #374151; font-size: 12px; flex-shrink: 0; }
+._nodeDepth_10ewe_61 { font-size: 11px; color: #9CA3AF; flex-shrink: 0; }
+._lpVal_10ewe_62     { font-size: 11px; color: #6B7280; margin-left: auto; font-family: 'DM Mono', monospace; font-weight: 600; }
+._chevron_10ewe_63   { font-size: 9px; color: #9CA3AF; flex-shrink: 0; }
+
+._branchChip_10ewe_65 { background: #ECFDF5; color: #065F46; border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 600; font-family: 'DM Mono', monospace; }
+._chipFloor_10ewe_66  { background: #EFF6FF; color: #1D4ED8; border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 700; }
+._chipCeil_10ewe_67   { background: #F0FDF4; color: #166534; border-radius: 5px; padding: 1px 7px; font-size: 11px; font-weight: 700; }
+
+/* Status badges */
+._nodeBadge_10ewe_70        { border-radius: 5px; padding: 2px 8px; font-size: 10px; font-weight: 700; flex-shrink: 0; letter-spacing: .02em; }
+._branched_10ewe_71         { background: #ECFDF5; color: #065F46; }
+._prunedBound_10ewe_72      { background: #FFFBEB; color: #92400E; }
+._prunedInfeasible_10ewe_73 { background: #FFF1F2; color: #9F1239; }
+._integer_10ewe_74          { background: #EFF6FF; color: #1D4ED8; }
+
+/* Node body */
+._nodeBody_10ewe_77 {
+  padding: 10px 12px; border-top: 1px solid #F3F4F6;
+  display: flex; flex-direction: column; gap: 8px; background: #FAFFFE;
+}
+._detailRow_10ewe_81  { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+._detailLabel_10ewe_82 {
+  font-size: 11px; font-weight: 600; color: #6B7280;
+  flex-shrink: 0; padding-top: 2px; min-width: 130px;
+}
+._chipGroup_10ewe_86 { display: flex; gap: 4px; flex-wrap: wrap; }
+
+._chipLb_10ewe_88  { background: #ECFDF5; color: #065F46; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+._chipUb_10ewe_89  { background: #EFF6FF; color: #1D4ED8; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+._chipLp_10ewe_90  { background: #F0FDFA; color: #115E59; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-family: 'DM Mono', monospace; }
+
+._infeasNote_10ewe_92  { font-size: 11px; color: #9F1239; margin: 0; font-weight: 500; }
+._boundNote_10ewe_93   { font-size: 11px; color: #92400E; margin: 0; font-weight: 500; }
+._integerNote_10ewe_94 { font-size: 11px; color: #065F46; margin: 0; font-weight: 500; }
 
 
 /* ── Design tokens ───────────────────────────────────────────────────────── */

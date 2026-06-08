@@ -7006,7 +7006,7 @@ var m = reactDomExports;
 const tabGroup = "_tabGroup_wbqba_1";
 const tab$1 = "_tab_wbqba_1";
 const active$1 = "_active_wbqba_23";
-const styles$j = {
+const styles$k = {
   tabGroup,
   tab: tab$1,
   active: active$1
@@ -7016,12 +7016,12 @@ const TABS = [
   { label: "3 Variables", value: 3 },
   { label: "4 Variables", value: 4 }
 ];
-const TabGroup = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$j.tabGroup, role: "tablist", "aria-label": "Cantidad de variables", children: TABS.map((tab2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+const TabGroup = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$k.tabGroup, role: "tablist", "aria-label": "Cantidad de variables", children: TABS.map((tab2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "button",
   {
     role: "tab",
     "aria-selected": value2 === tab2.value,
-    className: [styles$j.tab, value2 === tab2.value ? styles$j.active : ""].join(" "),
+    className: [styles$k.tab, value2 === tab2.value ? styles$k.active : ""].join(" "),
     onClick: () => onChange(tab2.value),
     children: tab2.label
   },
@@ -7031,25 +7031,26 @@ const switcher = "_switcher_1cq5n_1";
 const tab = "_tab_1cq5n_10";
 const active = "_active_1cq5n_29";
 const icon$2 = "_icon_1cq5n_35";
-const styles$i = {
+const styles$j = {
   switcher,
   tab,
   active,
   icon: icon$2
 };
 const METHODS = [
-  { label: "Método Simplex", value: "simplex", icon: "Σ" },
-  { label: "Entera Binaria", value: "binary", icon: "01" }
+  { label: "Simplex", value: "simplex", icon: "Σ" },
+  { label: "Binaria", value: "binary", icon: "01" },
+  { label: "Entera", value: "integer", icon: "IP" }
 ];
-const MethodSwitcher = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$i.switcher, role: "tablist", "aria-label": "Método de optimización", children: METHODS.map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+const MethodSwitcher = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$j.switcher, role: "tablist", "aria-label": "Método de optimización", children: METHODS.map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
   "button",
   {
     role: "tab",
     "aria-selected": value2 === m2.value,
-    className: [styles$i.tab, value2 === m2.value ? styles$i.active : ""].join(" "),
+    className: [styles$j.tab, value2 === m2.value ? styles$j.active : ""].join(" "),
     onClick: () => onChange(m2.value),
     children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$i.icon, children: m2.icon }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$j.icon, children: m2.icon }),
       m2.label
     ]
   },
@@ -7061,7 +7062,7 @@ const logoBox = "_logoBox_10x12_30";
 const title = "_title_10x12_43";
 const sub = "_sub_10x12_51";
 const controls = "_controls_10x12_53";
-const styles$h = {
+const styles$i = {
   header,
   brand,
   logoBox,
@@ -7071,7 +7072,8 @@ const styles$h = {
 };
 const META = {
   simplex: { title: "Método Simplex", sub: "Solver de Programación Lineal", logo: "Σ" },
-  binary: { title: "Entera Binaria", sub: "Branch & Bound — Variables 0/1", logo: "01" }
+  binary: { title: "Entera Binaria", sub: "Branch & Bound — Variables 0/1", logo: "01" },
+  integer: { title: "Entera Pura", sub: "Branch & Bound — Variables enteras ≥ 0", logo: "IP" }
 };
 const AppHeader = ({
   method,
@@ -7080,37 +7082,37 @@ const AppHeader = ({
   onVarsChange
 }) => {
   const meta = META[method];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: styles$h.header, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$h.brand, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$h.logoBox, "aria-hidden": "true", children: meta.logo }),
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: styles$i.header, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$i.brand, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$i.logoBox, "aria-hidden": "true", children: meta.logo }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles$h.title, children: meta.title }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$h.sub, children: meta.sub })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles$i.title, children: meta.title }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$i.sub, children: meta.sub })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$h.controls, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$i.controls, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MethodSwitcher, { value: method, onChange: onMethodChange }),
       nVars !== void 0 && onVarsChange !== void 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(TabGroup, { value: nVars, onChange: onVarsChange })
     ] })
   ] });
 };
 const label$1 = "_label_1yaof_1";
-const styles$g = {
+const styles$h = {
   label: label$1
 };
-const Label = ({ children, className = "", ...rest }) => /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: [styles$g.label, className].join(" "), ...rest, children });
+const Label = ({ children, className = "", ...rest }) => /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: [styles$h.label, className].join(" "), ...rest, children });
 const select = "_select_o88ml_1";
-const styles$f = {
+const styles$g = {
   select
 };
 const Select = ({
   options,
   className = "",
   ...rest
-}) => /* @__PURE__ */ jsxRuntimeExports.jsx("select", { className: [styles$f.select, className].join(" "), ...rest, children: options.map((o) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: o.value, children: o.label }, o.value)) });
+}) => /* @__PURE__ */ jsxRuntimeExports.jsx("select", { className: [styles$g.select, className].join(" "), ...rest, children: options.map((o) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: o.value, children: o.label }, o.value)) });
 const input = "_input_yhpl8_1";
 const error = "_error_yhpl8_25";
-const styles$e = {
+const styles$f = {
   input,
   error
 };
@@ -7121,7 +7123,7 @@ const Input = ({
 }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "input",
   {
-    className: [styles$e.input, error2 ? styles$e.error : "", className].join(" "),
+    className: [styles$f.input, error2 ? styles$f.error : "", className].join(" "),
     ...rest
   }
 );
@@ -7129,7 +7131,7 @@ const row$1 = "_row_70m3e_1";
 const zEq = "_zEq_70m3e_2";
 const plus$1 = "_plus_70m3e_3";
 const varLabel$1 = "_varLabel_70m3e_4";
-const styles$d = {
+const styles$e = {
   row: row$1,
   zEq,
   plus: plus$1,
@@ -7139,10 +7141,10 @@ const ObjectiveRow = ({
   nVars,
   coefficients,
   onChange
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.row, children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$d.zEq, children: "Z =" }),
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$e.row, children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$e.zEq, children: "Z =" }),
   Array.from({ length: nVars }, (_, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(React.Fragment, { children: [
-    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$d.plus, children: "+" }),
+    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$e.plus, children: "+" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       Input,
       {
@@ -7153,22 +7155,22 @@ const ObjectiveRow = ({
         "aria-label": `Coeficiente de x${i + 1}`
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$d.varLabel, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$e.varLabel, children: [
       "x",
       /* @__PURE__ */ jsxRuntimeExports.jsx("sub", { children: i + 1 })
     ] })
   ] }, i))
 ] });
-const card$5 = "_card_886vo_1";
-const cardTitle$3 = "_cardTitle_886vo_20";
-const cardSub$3 = "_cardSub_886vo_21";
+const card$6 = "_card_886vo_1";
+const cardTitle$4 = "_cardTitle_886vo_20";
+const cardSub$4 = "_cardSub_886vo_21";
 const body = "_body_886vo_22";
 const goalBlock = "_goalBlock_886vo_23";
 const funcBlock = "_funcBlock_886vo_23";
-const styles$c = {
-  card: card$5,
-  cardTitle: cardTitle$3,
-  cardSub: cardSub$3,
+const styles$d = {
+  card: card$6,
+  cardTitle: cardTitle$4,
+  cardSub: cardSub$4,
   body,
   goalBlock,
   funcBlock
@@ -7183,11 +7185,11 @@ const ObjectiveForm = ({
   coefficients,
   onGoalChange,
   onCoefficientChange
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$c.card, "aria-labelledby": "obj-heading", children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "obj-heading", className: styles$c.cardTitle, children: "Función Objetivo" }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$c.cardSub, children: "Defina la función principal a optimizar y elija el objetivo." }),
-  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$c.body, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$c.goalBlock, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$d.card, "aria-labelledby": "obj-heading", children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "obj-heading", className: styles$d.cardTitle, children: "Función Objetivo" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$d.cardSub, children: "Defina la función principal a optimizar y elija el objetivo." }),
+  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.body, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.goalBlock, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "goal-select", children: "Meta de Optimización" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         Select,
@@ -7200,7 +7202,7 @@ const ObjectiveForm = ({
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$c.funcBlock, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.funcBlock, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Función (Z)" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         ObjectiveRow,
@@ -7222,7 +7224,7 @@ const danger = "_danger_1hv09_46";
 const icon$1 = "_icon_1hv09_54";
 const spinner$1 = "_spinner_1hv09_57";
 const spin = "_spin_1hv09_57";
-const styles$b = {
+const styles$c = {
   btn,
   sm,
   md,
@@ -7245,11 +7247,11 @@ const Button = ({
 }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
   "button",
   {
-    className: [styles$b.btn, styles$b[variant], styles$b[size], className].join(" "),
+    className: [styles$c.btn, styles$c[variant], styles$c[size], className].join(" "),
     disabled: disabled || loading,
     ...rest,
     children: [
-      loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$b.spinner, "aria-label": "loading" }) : icon2 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$b.icon, children: icon2 }),
+      loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$c.spinner, "aria-label": "loading" }) : icon2 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$c.icon, children: icon2 }),
       children
     ]
   }
@@ -7258,7 +7260,7 @@ const row = "_row_7hld8_1";
 const num = "_num_7hld8_2";
 const plus = "_plus_7hld8_10";
 const varLabel = "_varLabel_7hld8_11";
-const styles$a = {
+const styles$b = {
   row,
   num,
   plus,
@@ -7277,13 +7279,13 @@ const ConstraintRow = ({
   onInequalityChange,
   onRhsChange,
   onRemove
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$a.row, role: "group", "aria-label": `Restricción ${index + 1}`, children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$a.num, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$b.row, role: "group", "aria-label": `Restricción ${index + 1}`, children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$b.num, children: [
     "#",
     index + 1
   ] }),
   Array.from({ length: nVars }, (_, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(React.Fragment, { children: [
-    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$a.plus, children: "+" }),
+    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$b.plus, children: "+" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       Input,
       {
@@ -7294,7 +7296,7 @@ const ConstraintRow = ({
         "aria-label": `Coeficiente x${i + 1} de la restricción ${index + 1}`
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$a.varLabel, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$b.varLabel, children: [
       "x",
       /* @__PURE__ */ jsxRuntimeExports.jsx("sub", { children: i + 1 })
     ] })
@@ -7332,18 +7334,18 @@ const ConstraintRow = ({
     }
   )
 ] });
-const card$4 = "_card_1h33b_1";
+const card$5 = "_card_1h33b_1";
 const sectionHeader = "_sectionHeader_1h33b_20";
-const cardTitle$2 = "_cardTitle_1h33b_24";
-const cardSub$2 = "_cardSub_1h33b_25";
+const cardTitle$3 = "_cardTitle_1h33b_24";
+const cardSub$3 = "_cardSub_1h33b_25";
 const constraintList = "_constraintList_1h33b_26";
 const empty = "_empty_1h33b_27";
 const toolbar = "_toolbar_1h33b_28";
-const styles$9 = {
-  card: card$4,
+const styles$a = {
+  card: card$5,
   sectionHeader,
-  cardTitle: cardTitle$2,
-  cardSub: cardSub$2,
+  cardTitle: cardTitle$3,
+  cardSub: cardSub$3,
   constraintList,
   empty,
   toolbar
@@ -7366,15 +7368,15 @@ const ConstraintsForm = ({
   onRhsChange,
   onSolve,
   solveLabel = "Resolver mediante Simplex"
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$9.card, "aria-labelledby": "constr-heading", children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$9.sectionHeader, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$a.card, "aria-labelledby": "constr-heading", children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$a.sectionHeader, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "constr-heading", className: styles$9.cardTitle, children: "Restricciones" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$9.cardSub, children: "Añada las desigualdades lineales que limitan su función objetivo." })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "constr-heading", className: styles$a.cardTitle, children: "Restricciones" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$a.cardSub, children: "Añada las desigualdades lineales que limitan su función objetivo." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "ghost", size: "sm", onClick: onAdd, icon: /* @__PURE__ */ jsxRuntimeExports.jsx(PlusIcon, {}), children: "Añadir Restricción" })
   ] }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$9.constraintList, role: "list", children: constraints.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$9.empty, children: "Aún no hay restricciones. Añada al menos una para resolver." }) : constraints.map((c, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { role: "listitem", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$a.constraintList, role: "list", children: constraints.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$a.empty, children: "Aún no hay restricciones. Añada al menos una para resolver." }) : constraints.map((c, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { role: "listitem", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     ConstraintRow,
     {
       index: i,
@@ -7386,7 +7388,7 @@ const ConstraintsForm = ({
       onRemove: () => onRemove(c.id)
     }
   ) }, c.id)) }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$9.toolbar, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$a.toolbar, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     Button,
     {
       variant: "primary",
@@ -7404,20 +7406,20 @@ const blue = "_blue_1lz70_8";
 const green = "_green_1lz70_9";
 const red = "_red_1lz70_10";
 const gray = "_gray_1lz70_11";
-const styles$8 = {
+const styles$9 = {
   badge,
   blue,
   green,
   red,
   gray
 };
-const Badge = ({ color = "gray", children }) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$8.badge, styles$8[color]].join(" "), children });
-const card$3 = "_card_mqv6q_1";
+const Badge = ({ color = "gray", children }) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$9.badge, styles$9[color]].join(" "), children });
+const card$4 = "_card_mqv6q_1";
 const highlight = "_highlight_mqv6q_15";
 const label = "_label_mqv6q_22";
 const value = "_value_mqv6q_31";
-const styles$7 = {
-  card: card$3,
+const styles$8 = {
+  card: card$4,
   highlight,
   label,
   value
@@ -7426,9 +7428,9 @@ const MetricCard = ({
   label: label2,
   value: value2,
   highlight: highlight2 = false
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: [styles$7.card, highlight2 ? styles$7.highlight : ""].join(" "), children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$7.label, children: label2 }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$7.value, children: value2 })
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: [styles$8.card, highlight2 ? styles$8.highlight : ""].join(" "), children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$8.label, children: label2 }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$8.value, children: value2 })
 ] });
 const wrapper = "_wrapper_y4juy_1";
 const table = "_table_y4juy_2";
@@ -7436,7 +7438,7 @@ const basicCell = "_basicCell_y4juy_26";
 const rhs = "_rhs_y4juy_27";
 const zRow = "_zRow_y4juy_29";
 const zCell = "_zCell_y4juy_33";
-const styles$6 = {
+const styles$7 = {
   wrapper,
   table,
   basicCell,
@@ -7444,22 +7446,22 @@ const styles$6 = {
   zRow,
   zCell
 };
-function fmt(n2) {
+function fmt$1(n2) {
   if (Math.abs(n2) < 1e-8) return "0";
   const r2 = Math.round(n2 * 1e4) / 1e4;
   return Number.isInteger(r2) ? String(r2) : r2.toFixed(4).replace(/\.?0+$/, "");
 }
-const TableauTable = ({ headers, rows }) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$6.wrapper, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("table", { className: styles$6.table, children: [
+const TableauTable = ({ headers, rows }) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$7.wrapper, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("table", { className: styles$7.table, children: [
   /* @__PURE__ */ jsxRuntimeExports.jsx("thead", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("tr", { children: headers.map((h) => /* @__PURE__ */ jsxRuntimeExports.jsx("th", { children: h }, h)) }) }),
   /* @__PURE__ */ jsxRuntimeExports.jsx("tbody", { children: rows.map((row2, i) => {
     const isZ = row2.basic_variable === "Z";
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { className: isZ ? styles$6.zRow : "", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: isZ ? styles$6.zCell : styles$6.basicCell, children: row2.basic_variable }),
-      row2.values.map((v2, j) => /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: j === row2.values.length - 1 ? styles$6.rhs : "", children: fmt(v2) }, j))
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { className: isZ ? styles$7.zRow : "", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: isZ ? styles$7.zCell : styles$7.basicCell, children: row2.basic_variable }),
+      row2.values.map((v2, j) => /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: j === row2.values.length - 1 ? styles$7.rhs : "", children: fmt$1(v2) }, j))
     ] }, i);
   }) })
 ] }) });
-const card$2 = "_card_foylc_1";
+const card$3 = "_card_foylc_1";
 const plot = "_plot_foylc_8";
 const plotBg = "_plotBg_foylc_10";
 const gridLine = "_gridLine_foylc_12";
@@ -7479,8 +7481,8 @@ const swatchRegion = "_swatchRegion_foylc_53";
 const swatchObjective = "_swatchObjective_foylc_54";
 const swatchOptimal = "_swatchOptimal_foylc_55";
 const statusNote = "_statusNote_foylc_57";
-const styles$5 = {
-  card: card$2,
+const styles$6 = {
+  card: card$3,
   plot,
   plotBg,
   gridLine,
@@ -7534,11 +7536,11 @@ const GraphicalPlot = ({ data }) => {
     const [p1, p2] = points;
     return `M ${scaleX(p1.x)} ${scaleY(p1.y)} L ${scaleX(p2.x)} ${scaleY(p2.y)}`;
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5.card, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$6.card, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "svg",
       {
-        className: styles$5.plot,
+        className: styles$6.plot,
         viewBox: `0 0 ${WIDTH} ${HEIGHT}`,
         role: "img",
         "aria-label": "Gráfico del método gráfico",
@@ -7550,7 +7552,7 @@ const GraphicalPlot = ({ data }) => {
               y: PADDING.top,
               width: plotWidth,
               height: plotHeight,
-              className: styles$5.plotBg
+              className: styles$6.plotBg
             }
           ),
           xTicks.map((x2, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { children: [
@@ -7561,10 +7563,10 @@ const GraphicalPlot = ({ data }) => {
                 y1: PADDING.top,
                 x2: scaleX(x2),
                 y2: PADDING.top + plotHeight,
-                className: styles$5.gridLine
+                className: styles$6.gridLine
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: scaleX(x2), y: PADDING.top + plotHeight + 18, className: styles$5.tickLabel, children: fmtTick(x2) })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: scaleX(x2), y: PADDING.top + plotHeight + 18, className: styles$6.tickLabel, children: fmtTick(x2) })
           ] }, `x-${i}`)),
           yTicks.map((y2, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -7574,10 +7576,10 @@ const GraphicalPlot = ({ data }) => {
                 y1: scaleY(y2),
                 x2: PADDING.left + plotWidth,
                 y2: scaleY(y2),
-                className: styles$5.gridLine
+                className: styles$6.gridLine
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 10, y: scaleY(y2) + 4, className: styles$5.tickLabel, children: fmtTick(y2) })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 10, y: scaleY(y2) + 4, className: styles$6.tickLabel, children: fmtTick(y2) })
           ] }, `y-${i}`)),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "line",
@@ -7586,7 +7588,7 @@ const GraphicalPlot = ({ data }) => {
               y1: PADDING.top,
               x2: scaleX(0),
               y2: PADDING.top + plotHeight,
-              className: styles$5.axisLine
+              className: styles$6.axisLine
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -7596,46 +7598,46 @@ const GraphicalPlot = ({ data }) => {
               y1: scaleY(0),
               x2: PADDING.left + plotWidth,
               y2: scaleY(0),
-              className: styles$5.axisLine
+              className: styles$6.axisLine
             }
           ),
-          polygonPath && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: polygonPath, className: styles$5.feasibleArea }),
-          data.constraints.map((line) => /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(line.points), className: styles$5.constraintLine }, line.label ?? `${line.a}-${line.b}-${line.c}`)),
-          data.objective_line && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(data.objective_line.points), className: styles$5.objectiveLine }),
-          data.vertices.map((p2, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: scaleX(p2.x), cy: scaleY(p2.y), r: 3, className: styles$5.vertexPoint }, `v-${i}`)),
+          polygonPath && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: polygonPath, className: styles$6.feasibleArea }),
+          data.constraints.map((line) => /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(line.points), className: styles$6.constraintLine }, line.label ?? `${line.a}-${line.b}-${line.c}`)),
+          data.objective_line && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(data.objective_line.points), className: styles$6.objectiveLine }),
+          data.vertices.map((p2, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: scaleX(p2.x), cy: scaleY(p2.y), r: 3, className: styles$6.vertexPoint }, `v-${i}`)),
           data.optimal_point && /* @__PURE__ */ jsxRuntimeExports.jsx(
             "circle",
             {
               cx: scaleX(data.optimal_point.x),
               cy: scaleY(data.optimal_point.y),
               r: 5,
-              className: styles$5.optimalPoint
+              className: styles$6.optimalPoint
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left + plotWidth - 8, y: PADDING.top + plotHeight + 28, className: styles$5.axisLabel, children: "x1" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 24, y: PADDING.top + 4, className: styles$5.axisLabel, children: "x2" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left + plotWidth - 8, y: PADDING.top + plotHeight + 28, className: styles$6.axisLabel, children: "x1" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 24, y: PADDING.top + 4, className: styles$6.axisLabel, children: "x2" })
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5.legend, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$5.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$5.legendSwatch, styles$5.swatchConstraint].join(" ") }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$6.legend, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchConstraint].join(" ") }),
         "Restricciones"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$5.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$5.legendSwatch, styles$5.swatchRegion].join(" ") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchRegion].join(" ") }),
         "Región factible"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$5.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$5.legendSwatch, styles$5.swatchObjective].join(" ") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchObjective].join(" ") }),
         "Línea objetivo"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$5.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$5.legendSwatch, styles$5.swatchOptimal].join(" ") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchOptimal].join(" ") }),
         "Punto óptimo"
       ] })
     ] }),
-    data.status !== "optimal" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles$5.statusNote, children: [
+    data.status !== "optimal" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles$6.statusNote, children: [
       "Estado: ",
       data.status,
       ". El gráfico aún muestra las restricciones e intersecciones disponibles."
@@ -7649,40 +7651,40 @@ function fmtTick(value2) {
 const banner = "_banner_vvetx_1";
 const icon = "_icon_vvetx_9";
 const msg = "_msg_vvetx_17";
-const styles$4 = {
+const styles$5 = {
   banner,
   icon,
   msg
 };
-const ErrorBanner = ({ message }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.banner, role: "alert", children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$4.icon, children: "!" }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$4.msg, children: message })
+const ErrorBanner = ({ message }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5.banner, role: "alert", children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$5.icon, children: "!" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$5.msg, children: message })
 ] });
 const spinner = "_spinner_1qv0n_1";
-const styles$3 = {
+const styles$4 = {
   spinner
 };
 const Spinner = ({ size = 20 }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "span",
   {
-    className: styles$3.spinner,
+    className: styles$4.spinner,
     style: { width: size, height: size },
     role: "status",
     "aria-label": "Loading"
   }
 );
-const card$1 = "_card_p9ez8_1";
-const resultHeader$1 = "_resultHeader_p9ez8_26";
-const cardTitle$1 = "_cardTitle_p9ez8_30";
-const cardSub$1 = "_cardSub_p9ez8_31";
-const metrics$1 = "_metrics_p9ez8_33";
+const card$2 = "_card_p9ez8_1";
+const resultHeader$2 = "_resultHeader_p9ez8_26";
+const cardTitle$2 = "_cardTitle_p9ez8_30";
+const cardSub$2 = "_cardSub_p9ez8_31";
+const metrics$2 = "_metrics_p9ez8_33";
 const tableauLabel = "_tableauLabel_p9ez8_35";
 const graphSection = "_graphSection_p9ez8_40";
 const graphHeader = "_graphHeader_p9ez8_41";
 const graphTitle = "_graphTitle_p9ez8_42";
 const graphSub = "_graphSub_p9ez8_43";
-const loadingCard$1 = "_loadingCard_p9ez8_45";
-const loadingText$1 = "_loadingText_p9ez8_54";
+const loadingCard$2 = "_loadingCard_p9ez8_45";
+const loadingText$2 = "_loadingText_p9ez8_54";
 const iterationsSection = "_iterationsSection_p9ez8_57";
 const iterationList = "_iterationList_p9ez8_58";
 const iterationBlock = "_iterationBlock_p9ez8_60";
@@ -7694,19 +7696,19 @@ const chipEnter = "_chipEnter_p9ez8_85";
 const chipLeave = "_chipLeave_p9ez8_90";
 const iterationChevron = "_iterationChevron_p9ez8_96";
 const iterationBody = "_iterationBody_p9ez8_97";
-const styles$2 = {
-  card: card$1,
-  resultHeader: resultHeader$1,
-  cardTitle: cardTitle$1,
-  cardSub: cardSub$1,
-  metrics: metrics$1,
+const styles$3 = {
+  card: card$2,
+  resultHeader: resultHeader$2,
+  cardTitle: cardTitle$2,
+  cardSub: cardSub$2,
+  metrics: metrics$2,
   tableauLabel,
   graphSection,
   graphHeader,
   graphTitle,
   graphSub,
-  loadingCard: loadingCard$1,
-  loadingText: loadingText$1,
+  loadingCard: loadingCard$2,
+  loadingText: loadingText$2,
   iterationsSection,
   iterationList,
   iterationBlock,
@@ -7724,7 +7726,7 @@ function fmtNum(n2) {
   const r2 = Math.round(n2 * 1e4) / 1e4;
   return Number.isInteger(r2) ? String(r2) : r2.toFixed(4).replace(/\.?0+$/, "");
 }
-const VAR_LABELS$1 = ["x₁", "x₂", "x₃", "x₄"];
+const VAR_LABELS$2 = ["x₁", "x₂", "x₃", "x₄"];
 const statusBadge = (status) => {
   if (status === "optimal") return /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "green", children: "✓ Óptimo" });
   if (status === "unbounded") return /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "red", children: "No acotado" });
@@ -7739,25 +7741,25 @@ const SolutionDisplay = ({
 }) => {
   const [expandedIter, setExpandedIter] = reactExports.useState(null);
   if (loading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.loadingCard, children: [
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.loadingCard, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Spinner, { size: 22 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$2.loadingText, children: "Resolviendo…" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$3.loadingText, children: "Resolviendo…" })
     ] });
   }
   if (error2) return /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: error2 });
   if (!result) return null;
   const isOptimal = result.status === "optimal";
   const showGraph = nVars === 2 && !!result.graphical;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$2.card, "aria-labelledby": "result-heading", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.resultHeader, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$3.card, "aria-labelledby": "result-heading", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.resultHeader, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "result-heading", className: styles$2.cardTitle, children: isOptimal ? "Solución: Resultado Óptimo Encontrado" : `Solución: ${result.status}` }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$2.cardSub, children: result.message })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "result-heading", className: styles$3.cardTitle, children: isOptimal ? "Solución: Resultado Óptimo Encontrado" : `Solución: ${result.status}` }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.cardSub, children: result.message })
       ] }),
       statusBadge(result.status)
     ] }),
     isOptimal && result.variables && result.objective_value !== void 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.metrics, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.metrics, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           MetricCard,
           {
@@ -7771,22 +7773,22 @@ const SolutionDisplay = ({
           return /* @__PURE__ */ jsxRuntimeExports.jsx(
             MetricCard,
             {
-              label: VAR_LABELS$1[i],
+              label: VAR_LABELS$2[i],
               value: fmtNum(result.variables[key] ?? 0)
             },
             key
           );
         })
       ] }),
-      showGraph && result.graphical && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.graphSection, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.graphHeader, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: styles$2.graphTitle, children: "Método Gráfico (2 variables)" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$2.graphSub, children: "Región factible, líneas de restricción y línea objetivo en el óptimo." })
+      showGraph && result.graphical && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.graphSection, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.graphHeader, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: styles$3.graphTitle, children: "Método Gráfico (2 variables)" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.graphSub, children: "Región factible, líneas de restricción y línea objetivo en el óptimo." })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(GraphicalPlot, { data: result.graphical })
       ] }),
       result.tableau_headers && result.tableau_rows && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$2.tableauLabel, children: "Tabla Simplex Final" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.tableauLabel, children: "Tabla Simplex Final" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           TableauTable,
           {
@@ -7795,35 +7797,35 @@ const SolutionDisplay = ({
           }
         )
       ] }),
-      result.iteration_tableaux && result.iteration_tableaux.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.iterationsSection, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$2.tableauLabel, children: "Iteraciones del Método Simplex" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$2.iterationList, children: result.iteration_tableaux.map((iter) => {
+      result.iteration_tableaux && result.iteration_tableaux.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.iterationsSection, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.tableauLabel, children: "Iteraciones del Método Simplex" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$3.iterationList, children: result.iteration_tableaux.map((iter) => {
           const isOpen = expandedIter === iter.iteration;
           const isInitial = iter.iteration === 0;
-          return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.iterationBlock, children: [
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.iterationBlock, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                className: [styles$2.iterationHeader, isOpen ? styles$2.iterationHeaderOpen : ""].join(" "),
+                className: [styles$3.iterationHeader, isOpen ? styles$3.iterationHeaderOpen : ""].join(" "),
                 onClick: () => setExpandedIter(isOpen ? null : iter.iteration),
                 "aria-expanded": isOpen,
                 children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$2.iterationTitle, children: isInitial ? "Tabla Inicial" : `Iteración ${iter.iteration}` }),
-                  !isInitial && iter.entering && iter.leaving && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$2.iterationMeta, children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$2.chipEnter, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$3.iterationTitle, children: isInitial ? "Tabla Inicial" : `Iteración ${iter.iteration}` }),
+                  !isInitial && iter.entering && iter.leaving && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$3.iterationMeta, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$3.chipEnter, children: [
                       "↑ ",
                       iter.entering
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$2.chipLeave, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$3.chipLeave, children: [
                       "↓ ",
                       iter.leaving
                     ] })
                   ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$2.iterationChevron, children: isOpen ? "▲" : "▼" })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$3.iterationChevron, children: isOpen ? "▲" : "▼" })
                 ]
               }
             ),
-            isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$2.iterationBody, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$3.iterationBody, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
               TableauTable,
               {
                 headers: iter.tableau_headers,
@@ -7839,7 +7841,7 @@ const SolutionDisplay = ({
 };
 const page = "_page_65drl_1";
 const container = "_container_65drl_11";
-const styles$1 = {
+const styles$2 = {
   page,
   container
 };
@@ -7848,7 +7850,7 @@ const SolverTemplate = ({
   objective,
   constraints,
   solution
-}) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$1.page, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.container, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$2.page, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.container, children: [
   header2,
   objective,
   constraints,
@@ -7914,28 +7916,28 @@ function useConstraints(nVars, initial = 1) {
     reset: (n2) => setConstraints([makeConstraint(n2)])
   };
 }
-const BASE_URL$1 = "http://localhost:8000/api/v1";
-let ApiError$1 = class ApiError extends Error {
+const BASE_URL$2 = "http://localhost:8000/api/v1";
+let ApiError$2 = class ApiError extends Error {
   constructor(status, message) {
     super(message);
     this.status = status;
     this.name = "ApiError";
   }
 };
-async function post$1(path, body2) {
-  const response = await fetch(`${BASE_URL$1}${path}`, {
+async function post$2(path, body2) {
+  const response = await fetch(`${BASE_URL$2}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body2)
   });
   if (!response.ok) {
     const detail = await response.json().then((d) => d.detail ?? response.statusText).catch(() => response.statusText);
-    throw new ApiError$1(response.status, String(detail));
+    throw new ApiError$2(response.status, String(detail));
   }
   return response.json();
 }
 const simplexApi = {
-  solve: (payload) => post$1("/simplex/solve", payload)
+  solve: (payload) => post$2("/simplex/solve", payload)
 };
 function useSimplex() {
   const [state, setState] = reactExports.useState({
@@ -7969,7 +7971,7 @@ function useSimplex() {
   }, []);
   return { ...state, solve, reset };
 }
-const DEFAULT_OBJ$1 = {
+const DEFAULT_OBJ$2 = {
   2: [3, 5],
   3: [3, 2, 5],
   4: [2, 3, 1, 4]
@@ -7977,7 +7979,7 @@ const DEFAULT_OBJ$1 = {
 const SolverPage = ({ onMethodChange }) => {
   const [nVars, setNVars] = reactExports.useState(3);
   const [goal, setGoal] = reactExports.useState("max");
-  const [objCoeffs, setObjCoeffs] = reactExports.useState(DEFAULT_OBJ$1[3]);
+  const [objCoeffs, setObjCoeffs] = reactExports.useState(DEFAULT_OBJ$2[3]);
   const {
     constraints,
     add,
@@ -7990,7 +7992,7 @@ const SolverPage = ({ onMethodChange }) => {
   const { result, loading, error: error2, solve, reset: resetResult } = useSimplex();
   const handleVarsChange = reactExports.useCallback((n2) => {
     setNVars(n2);
-    setObjCoeffs(DEFAULT_OBJ$1[n2]);
+    setObjCoeffs(DEFAULT_OBJ$2[n2]);
     resize(n2);
     resetResult();
   }, [resize, resetResult]);
@@ -8052,75 +8054,75 @@ const SolverPage = ({ onMethodChange }) => {
     }
   );
 };
-const card = "_card_1o3qf_1";
-const fadeUp = "_fadeUp_1o3qf_1";
-const resultHeader = "_resultHeader_1o3qf_25";
-const cardTitle = "_cardTitle_1o3qf_29";
-const cardSub = "_cardSub_1o3qf_30";
-const metrics = "_metrics_1o3qf_32";
-const loadingCard = "_loadingCard_1o3qf_34";
-const loadingText = "_loadingText_1o3qf_43";
-const treeSection = "_treeSection_1o3qf_46";
-const sectionLabel = "_sectionLabel_1o3qf_47";
-const nodeList = "_nodeList_1o3qf_51";
-const nodeBlock = "_nodeBlock_1o3qf_53";
-const nodeHeader = "_nodeHeader_1o3qf_55";
-const nodeHeaderOpen = "_nodeHeaderOpen_1o3qf_66";
-const nodeId = "_nodeId_1o3qf_69";
-const nodeDepth = "_nodeDepth_1o3qf_70";
-const lpVal = "_lpVal_1o3qf_71";
-const chevron = "_chevron_1o3qf_72";
-const branchChip = "_branchChip_1o3qf_74";
-const nodeBadge = "_nodeBadge_1o3qf_81";
-const branched = "_branched_1o3qf_86";
-const prunedBound = "_prunedBound_1o3qf_87";
-const prunedInfeasible = "_prunedInfeasible_1o3qf_88";
-const integer = "_integer_1o3qf_89";
-const nodeBody = "_nodeBody_1o3qf_92";
-const detailRow = "_detailRow_1o3qf_98";
-const detailLabel = "_detailLabel_1o3qf_99";
-const chipGroup = "_chipGroup_1o3qf_103";
+const card$1 = "_card_1o3qf_1";
+const fadeUp$1 = "_fadeUp_1o3qf_1";
+const resultHeader$1 = "_resultHeader_1o3qf_25";
+const cardTitle$1 = "_cardTitle_1o3qf_29";
+const cardSub$1 = "_cardSub_1o3qf_30";
+const metrics$1 = "_metrics_1o3qf_32";
+const loadingCard$1 = "_loadingCard_1o3qf_34";
+const loadingText$1 = "_loadingText_1o3qf_43";
+const treeSection$1 = "_treeSection_1o3qf_46";
+const sectionLabel$1 = "_sectionLabel_1o3qf_47";
+const nodeList$1 = "_nodeList_1o3qf_51";
+const nodeBlock$1 = "_nodeBlock_1o3qf_53";
+const nodeHeader$1 = "_nodeHeader_1o3qf_55";
+const nodeHeaderOpen$1 = "_nodeHeaderOpen_1o3qf_66";
+const nodeId$1 = "_nodeId_1o3qf_69";
+const nodeDepth$1 = "_nodeDepth_1o3qf_70";
+const lpVal$1 = "_lpVal_1o3qf_71";
+const chevron$1 = "_chevron_1o3qf_72";
+const branchChip$1 = "_branchChip_1o3qf_74";
+const nodeBadge$1 = "_nodeBadge_1o3qf_81";
+const branched$1 = "_branched_1o3qf_86";
+const prunedBound$1 = "_prunedBound_1o3qf_87";
+const prunedInfeasible$1 = "_prunedInfeasible_1o3qf_88";
+const integer$1 = "_integer_1o3qf_89";
+const nodeBody$1 = "_nodeBody_1o3qf_92";
+const detailRow$1 = "_detailRow_1o3qf_98";
+const detailLabel$1 = "_detailLabel_1o3qf_99";
+const chipGroup$1 = "_chipGroup_1o3qf_103";
 const chipOne = "_chipOne_1o3qf_105";
 const chipZero = "_chipZero_1o3qf_106";
-const chipLp = "_chipLp_1o3qf_107";
-const infeasNote = "_infeasNote_1o3qf_109";
-const boundNote = "_boundNote_1o3qf_110";
-const styles = {
-  card,
-  fadeUp,
-  resultHeader,
-  cardTitle,
-  cardSub,
-  metrics,
-  loadingCard,
-  loadingText,
-  treeSection,
-  sectionLabel,
-  nodeList,
-  nodeBlock,
-  nodeHeader,
-  nodeHeaderOpen,
-  nodeId,
-  nodeDepth,
-  lpVal,
-  chevron,
-  branchChip,
-  nodeBadge,
-  branched,
-  prunedBound,
-  prunedInfeasible,
-  integer,
-  nodeBody,
-  detailRow,
-  detailLabel,
-  chipGroup,
+const chipLp$1 = "_chipLp_1o3qf_107";
+const infeasNote$1 = "_infeasNote_1o3qf_109";
+const boundNote$1 = "_boundNote_1o3qf_110";
+const styles$1 = {
+  card: card$1,
+  fadeUp: fadeUp$1,
+  resultHeader: resultHeader$1,
+  cardTitle: cardTitle$1,
+  cardSub: cardSub$1,
+  metrics: metrics$1,
+  loadingCard: loadingCard$1,
+  loadingText: loadingText$1,
+  treeSection: treeSection$1,
+  sectionLabel: sectionLabel$1,
+  nodeList: nodeList$1,
+  nodeBlock: nodeBlock$1,
+  nodeHeader: nodeHeader$1,
+  nodeHeaderOpen: nodeHeaderOpen$1,
+  nodeId: nodeId$1,
+  nodeDepth: nodeDepth$1,
+  lpVal: lpVal$1,
+  chevron: chevron$1,
+  branchChip: branchChip$1,
+  nodeBadge: nodeBadge$1,
+  branched: branched$1,
+  prunedBound: prunedBound$1,
+  prunedInfeasible: prunedInfeasible$1,
+  integer: integer$1,
+  nodeBody: nodeBody$1,
+  detailRow: detailRow$1,
+  detailLabel: detailLabel$1,
+  chipGroup: chipGroup$1,
   chipOne,
   chipZero,
-  chipLp,
-  infeasNote,
-  boundNote
+  chipLp: chipLp$1,
+  infeasNote: infeasNote$1,
+  boundNote: boundNote$1
 };
-const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄"];
+const VAR_LABELS$1 = ["x₁", "x₂", "x₃", "x₄"];
 function fmtVal(n2) {
   const r2 = Math.round(n2 * 1e4) / 1e4;
   return Number.isInteger(r2) ? String(r2) : r2.toFixed(4).replace(/\.?0+$/, "");
@@ -8133,58 +8135,58 @@ const STATUS_LABEL = {
 };
 function NodeStatusBadge({ status }) {
   const info = STATUS_LABEL[status] ?? { label: status, cls: "branched" };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles.nodeBadge, styles[info.cls]].join(" "), children: info.label });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$1.nodeBadge, styles$1[info.cls]].join(" "), children: info.label });
 }
-function NodeRow({ node, isOpen, onToggle }) {
+function NodeRow$1({ node, isOpen, onToggle }) {
   const fixedEntries = Object.entries(node.fixed_vars);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.nodeBlock, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.nodeBlock, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "button",
       {
-        className: [styles.nodeHeader, isOpen ? styles.nodeHeaderOpen : ""].join(" "),
+        className: [styles$1.nodeHeader, isOpen ? styles$1.nodeHeaderOpen : ""].join(" "),
         onClick: onToggle,
         "aria-expanded": isOpen,
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.nodeId, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$1.nodeId, children: [
             "Nodo ",
             node.node_id
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.nodeDepth, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$1.nodeDepth, children: [
             "Prof. ",
             node.depth
           ] }),
-          node.branched_on && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.branchChip, children: [
+          node.branched_on && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$1.branchChip, children: [
             "rama: ",
             node.branched_on
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(NodeStatusBadge, { status: node.status }),
-          node.lp_value !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.lpVal, children: [
+          node.lp_value !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$1.lpVal, children: [
             "Z_LP = ",
             fmtVal(node.lp_value)
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chevron, children: isOpen ? "▲" : "▼" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$1.chevron, children: isOpen ? "▲" : "▼" })
         ]
       }
     ),
-    isOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.nodeBody, children: [
-      fixedEntries.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.detailRow, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.detailLabel, children: "Variables fijas:" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chipGroup, children: fixedEntries.map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: v2 === 1 ? styles.chipOne : styles.chipZero, children: [
+    isOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.nodeBody, children: [
+      fixedEntries.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.detailRow, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$1.detailLabel, children: "Variables fijas:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$1.chipGroup, children: fixedEntries.map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: v2 === 1 ? styles$1.chipOne : styles$1.chipZero, children: [
           k2,
           " = ",
           v2
         ] }, k2)) })
       ] }),
-      node.lp_vars && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.detailRow, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.detailLabel, children: "Relajación LP:" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chipGroup, children: Object.entries(node.lp_vars).map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.chipLp, children: [
+      node.lp_vars && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.detailRow, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$1.detailLabel, children: "Relajación LP:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$1.chipGroup, children: Object.entries(node.lp_vars).map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$1.chipLp, children: [
           k2,
           " = ",
           fmtVal(v2)
         ] }, k2)) })
       ] }),
-      node.status === "pruned_infeasible" && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.infeasNote, children: "La relajación LP de este nodo es infactible." }),
-      node.status === "pruned_bound" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles.boundNote, children: [
+      node.status === "pruned_infeasible" && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$1.infeasNote, children: "La relajación LP de este nodo es infactible." }),
+      node.status === "pruned_bound" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles$1.boundNote, children: [
         "La cota LP (",
         node.lp_value !== null ? fmtVal(node.lp_value) : "—",
         ") no mejora la mejor solución entera conocida."
@@ -8208,30 +8210,30 @@ const BinarySolutionDisplay = ({
     });
   };
   if (loading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.loadingCard, children: [
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.loadingCard, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Spinner, { size: 22 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.loadingText, children: "Resolviendo con Branch & Bound…" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$1.loadingText, children: "Resolviendo con Branch & Bound…" })
     ] });
   }
   if (error2) return /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: error2 });
   if (!result) return null;
   const isOptimal = result.status === "optimal";
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles.card, "aria-labelledby": "bin-result-heading", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.resultHeader, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$1.card, "aria-labelledby": "bin-result-heading", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.resultHeader, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "bin-result-heading", className: styles.cardTitle, children: isOptimal ? "Solución: Óptimo Entero Encontrado" : `Solución: ${result.status}` }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.cardSub, children: result.message })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "bin-result-heading", className: styles$1.cardTitle, children: isOptimal ? "Solución: Óptimo Entero Encontrado" : `Solución: ${result.status}` }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$1.cardSub, children: result.message })
       ] }),
       isOptimal ? /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "green", children: "✓ Óptimo" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "red", children: "Sin solución" })
     ] }),
-    isOptimal && result.variables && result.objective_value !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.metrics, children: [
+    isOptimal && result.variables && result.objective_value !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.metrics, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MetricCard, { label: "Objetivo (Z)", value: fmtVal(result.objective_value), highlight: true }),
       Array.from({ length: nVars }, (_, i) => {
         const key = `x${i + 1}`;
         return /* @__PURE__ */ jsxRuntimeExports.jsx(
           MetricCard,
           {
-            label: VAR_LABELS[i],
+            label: VAR_LABELS$1[i],
             value: String(result.variables[key] ?? 0)
           },
           key
@@ -8240,10 +8242,10 @@ const BinarySolutionDisplay = ({
       /* @__PURE__ */ jsxRuntimeExports.jsx(MetricCard, { label: "Nodos explorados", value: String(result.nodes_explored) })
     ] }),
     !isOptimal && /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: result.message }),
-    result.nodes.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.treeSection, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.sectionLabel, children: "Árbol de Branch & Bound" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles.nodeList, children: result.nodes.map((node) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-        NodeRow,
+    result.nodes.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.treeSection, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$1.sectionLabel, children: "Árbol de Branch & Bound" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$1.nodeList, children: result.nodes.map((node) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        NodeRow$1,
         {
           node,
           isOpen: openNodes.has(node.node_id),
@@ -8254,28 +8256,28 @@ const BinarySolutionDisplay = ({
     ] })
   ] });
 };
-const BASE_URL = "http://localhost:8000/api/v1";
-class ApiError2 extends Error {
+const BASE_URL$1 = "http://localhost:8000/api/v1";
+let ApiError$1 = class ApiError2 extends Error {
   constructor(status, message) {
     super(message);
     this.status = status;
     this.name = "ApiError";
   }
-}
-async function post(path, body2) {
-  const response = await fetch(`${BASE_URL}${path}`, {
+};
+async function post$1(path, body2) {
+  const response = await fetch(`${BASE_URL$1}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body2)
   });
   if (!response.ok) {
     const detail = await response.json().then((d) => d.detail ?? response.statusText).catch(() => response.statusText);
-    throw new ApiError2(response.status, String(detail));
+    throw new ApiError$1(response.status, String(detail));
   }
   return response.json();
 }
 const binaryApi = {
-  solve: (payload) => post("/binary/solve", payload)
+  solve: (payload) => post$1("/binary/solve", payload)
 };
 function useBinary() {
   const [state, setState] = reactExports.useState({
@@ -8309,7 +8311,7 @@ function useBinary() {
   }, []);
   return { ...state, solve, reset };
 }
-const DEFAULT_OBJ = {
+const DEFAULT_OBJ$1 = {
   2: [3, 5],
   3: [3, 2, 5],
   4: [2, 3, 1, 4]
@@ -8317,7 +8319,7 @@ const DEFAULT_OBJ = {
 const BinaryPage = ({ onMethodChange }) => {
   const [nVars, setNVars] = reactExports.useState(3);
   const [goal, setGoal] = reactExports.useState("max");
-  const [objCoeffs, setObjCoeffs] = reactExports.useState(DEFAULT_OBJ[3]);
+  const [objCoeffs, setObjCoeffs] = reactExports.useState(DEFAULT_OBJ$1[3]);
   const {
     constraints,
     add,
@@ -8330,7 +8332,7 @@ const BinaryPage = ({ onMethodChange }) => {
   const { result, loading, error: error2, solve, reset: resetResult } = useBinary();
   const handleVarsChange = reactExports.useCallback((n2) => {
     setNVars(n2);
-    setObjCoeffs(DEFAULT_OBJ[n2]);
+    setObjCoeffs(DEFAULT_OBJ$1[n2]);
     resize(n2);
     resetResult();
   }, [resize, resetResult]);
@@ -8393,11 +8395,369 @@ const BinaryPage = ({ onMethodChange }) => {
     }
   );
 };
+const card = "_card_10ewe_1";
+const fadeUp = "_fadeUp_10ewe_1";
+const resultHeader = "_resultHeader_10ewe_25";
+const cardTitle = "_cardTitle_10ewe_29";
+const cardSub = "_cardSub_10ewe_30";
+const metrics = "_metrics_10ewe_31";
+const loadingCard = "_loadingCard_10ewe_33";
+const loadingText = "_loadingText_10ewe_39";
+const treeSection = "_treeSection_10ewe_42";
+const sectionLabel = "_sectionLabel_10ewe_43";
+const nodeList = "_nodeList_10ewe_47";
+const nodeBlock = "_nodeBlock_10ewe_49";
+const nodeHeader = "_nodeHeader_10ewe_51";
+const nodeHeaderOpen = "_nodeHeaderOpen_10ewe_57";
+const nodeId = "_nodeId_10ewe_60";
+const nodeDepth = "_nodeDepth_10ewe_61";
+const lpVal = "_lpVal_10ewe_62";
+const chevron = "_chevron_10ewe_63";
+const branchChip = "_branchChip_10ewe_65";
+const chipFloor = "_chipFloor_10ewe_66";
+const chipCeil = "_chipCeil_10ewe_67";
+const nodeBadge = "_nodeBadge_10ewe_70";
+const branched = "_branched_10ewe_71";
+const prunedBound = "_prunedBound_10ewe_72";
+const prunedInfeasible = "_prunedInfeasible_10ewe_73";
+const integer = "_integer_10ewe_74";
+const nodeBody = "_nodeBody_10ewe_77";
+const detailRow = "_detailRow_10ewe_81";
+const detailLabel = "_detailLabel_10ewe_82";
+const chipGroup = "_chipGroup_10ewe_86";
+const chipLb = "_chipLb_10ewe_88";
+const chipUb = "_chipUb_10ewe_89";
+const chipLp = "_chipLp_10ewe_90";
+const infeasNote = "_infeasNote_10ewe_92";
+const boundNote = "_boundNote_10ewe_93";
+const integerNote = "_integerNote_10ewe_94";
+const styles = {
+  card,
+  fadeUp,
+  resultHeader,
+  cardTitle,
+  cardSub,
+  metrics,
+  loadingCard,
+  loadingText,
+  treeSection,
+  sectionLabel,
+  nodeList,
+  nodeBlock,
+  nodeHeader,
+  nodeHeaderOpen,
+  nodeId,
+  nodeDepth,
+  lpVal,
+  chevron,
+  branchChip,
+  chipFloor,
+  chipCeil,
+  nodeBadge,
+  branched,
+  prunedBound,
+  prunedInfeasible,
+  integer,
+  nodeBody,
+  detailRow,
+  detailLabel,
+  chipGroup,
+  chipLb,
+  chipUb,
+  chipLp,
+  infeasNote,
+  boundNote,
+  integerNote
+};
+const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄"];
+function fmt(n2) {
+  const r2 = Math.round(n2 * 1e4) / 1e4;
+  return Number.isInteger(r2) ? String(r2) : r2.toFixed(4).replace(/\.?0+$/, "");
+}
+const STATUS_META = {
+  branched: { label: "Ramificado", cls: "branched" },
+  pruned_bound: { label: "Podado (cota)", cls: "prunedBound" },
+  pruned_infeasible: { label: "Podado (infactible)", cls: "prunedInfeasible" },
+  integer: { label: "Solución entera", cls: "integer" }
+};
+function StatusBadge({ status }) {
+  const m2 = STATUS_META[status] ?? { label: status, cls: "branched" };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles.nodeBadge, styles[m2.cls]].join(" "), children: m2.label });
+}
+function DirectionChip({ dir }) {
+  if (!dir) return null;
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: dir === "floor" ? styles.chipFloor : styles.chipCeil, children: dir === "floor" ? "⌊piso⌋" : "⌈techo⌉" });
+}
+function NodeRow({ node, open, onToggle }) {
+  const lbEntries = Object.entries(node.lower_bounds);
+  const ubEntries = Object.entries(node.upper_bounds);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.nodeBlock, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "button",
+      {
+        className: [styles.nodeHeader, open ? styles.nodeHeaderOpen : ""].join(" "),
+        onClick: onToggle,
+        "aria-expanded": open,
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.nodeId, children: [
+            "Nodo ",
+            node.node_id
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.nodeDepth, children: [
+            "Prof. ",
+            node.depth
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(DirectionChip, { dir: node.branch_direction }),
+          node.branched_on && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.branchChip, children: [
+            "rama: ",
+            node.branched_on
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(StatusBadge, { status: node.status }),
+          node.lp_value !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.lpVal, children: [
+            "Z_LP = ",
+            fmt(node.lp_value)
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chevron, children: open ? "▲" : "▼" })
+        ]
+      }
+    ),
+    open && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.nodeBody, children: [
+      lbEntries.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.detailRow, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.detailLabel, children: "Cotas inferiores:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chipGroup, children: lbEntries.map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.chipLb, children: [
+          k2,
+          " ≥ ",
+          fmt(v2)
+        ] }, k2)) })
+      ] }),
+      ubEntries.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.detailRow, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.detailLabel, children: "Cotas superiores:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chipGroup, children: ubEntries.map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.chipUb, children: [
+          k2,
+          " ≤ ",
+          fmt(v2)
+        ] }, k2)) })
+      ] }),
+      node.lp_vars && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.detailRow, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.detailLabel, children: "Relajación LP:" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.chipGroup, children: Object.entries(node.lp_vars).map(([k2, v2]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles.chipLp, children: [
+          k2,
+          " = ",
+          fmt(v2)
+        ] }, k2)) })
+      ] }),
+      node.status === "pruned_infeasible" && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.infeasNote, children: "La relajación LP de este nodo es infactible." }),
+      node.status === "pruned_bound" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles.boundNote, children: [
+        "Cota LP (",
+        node.lp_value !== null ? fmt(node.lp_value) : "—",
+        ") no mejora la mejor solución entera conocida."
+      ] }),
+      node.status === "integer" && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.integerNote, children: "Todas las variables son enteras. Solución candidata registrada." })
+    ] })
+  ] });
+}
+const IntegerSolutionDisplay = ({
+  nVars,
+  result,
+  loading,
+  error: error2
+}) => {
+  const [openNodes, setOpenNodes] = reactExports.useState(/* @__PURE__ */ new Set());
+  const toggle = (id2) => setOpenNodes((prev) => {
+    const next = new Set(prev);
+    next.has(id2) ? next.delete(id2) : next.add(id2);
+    return next;
+  });
+  if (loading) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.loadingCard, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Spinner, { size: 22 }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles.loadingText, children: "Resolviendo con Branch & Bound entero…" })
+    ] });
+  }
+  if (error2) return /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: error2 });
+  if (!result) return null;
+  const isOptimal = result.status === "optimal";
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles.card, "aria-labelledby": "int-result-heading", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.resultHeader, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "int-result-heading", className: styles.cardTitle, children: isOptimal ? "Solución: Óptimo Entero Encontrado" : result.status === "limit" ? "Solución: Límite de nodos alcanzado" : "Solución: Sin solución entera" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.cardSub, children: result.message })
+      ] }),
+      isOptimal ? /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "green", children: "✓ Óptimo" }) : result.status === "limit" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "blue", children: "Límite" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { color: "red", children: "Sin solución" })
+    ] }),
+    (isOptimal || result.status === "limit") && result.variables && result.objective_value !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.metrics, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(MetricCard, { label: "Objetivo (Z)", value: fmt(result.objective_value), highlight: true }),
+      Array.from({ length: nVars }, (_, i) => {
+        const key = `x${i + 1}`;
+        return /* @__PURE__ */ jsxRuntimeExports.jsx(
+          MetricCard,
+          {
+            label: VAR_LABELS[i],
+            value: String(result.variables[key] ?? 0)
+          },
+          key
+        );
+      }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(MetricCard, { label: "Nodos explorados", value: String(result.nodes_explored) })
+    ] }),
+    !isOptimal && result.status !== "limit" && /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: result.message }),
+    result.nodes.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.treeSection, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.sectionLabel, children: "Árbol de Branch & Bound" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles.nodeList, children: result.nodes.map((node) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        NodeRow,
+        {
+          node,
+          open: openNodes.has(node.node_id),
+          onToggle: () => toggle(node.node_id)
+        },
+        node.node_id
+      )) })
+    ] })
+  ] });
+};
+const BASE_URL = "http://localhost:8000/api/v1";
+class ApiError3 extends Error {
+  constructor(status, message) {
+    super(message);
+    this.status = status;
+    this.name = "ApiError";
+  }
+}
+async function post(path, body2) {
+  const response = await fetch(`${BASE_URL}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body2)
+  });
+  if (!response.ok) {
+    const detail = await response.json().then((d) => d.detail ?? response.statusText).catch(() => response.statusText);
+    throw new ApiError3(response.status, String(detail));
+  }
+  return response.json();
+}
+const integerApi = {
+  solve: (payload) => post("/integer/solve", payload)
+};
+function useInteger() {
+  const [state, setState] = reactExports.useState({
+    result: null,
+    loading: false,
+    error: null
+  });
+  const solve = reactExports.useCallback(
+    async (nVars, objCoeffs, goal, constraints) => {
+      setState({ result: null, loading: true, error: null });
+      try {
+        const result = await integerApi.solve({
+          objective: objCoeffs.slice(0, nVars),
+          goal,
+          constraints: constraints.map((c) => ({
+            coefficients: c.coefficients.slice(0, nVars),
+            inequality: c.inequality,
+            rhs: c.rhs
+          }))
+        });
+        setState({ result, loading: false, error: null });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Ocurrió un error inesperado";
+        setState({ result: null, loading: false, error: message });
+      }
+    },
+    []
+  );
+  const reset = reactExports.useCallback(() => {
+    setState({ result: null, loading: false, error: null });
+  }, []);
+  return { ...state, solve, reset };
+}
+const DEFAULT_OBJ = {
+  2: [1, 2],
+  3: [1, 2, 3],
+  4: [1, 2, 3, 4]
+};
+const IntegerPage = ({ onMethodChange }) => {
+  const [nVars, setNVars] = reactExports.useState(3);
+  const [goal, setGoal] = reactExports.useState("max");
+  const [objCoeffs, setObjCoeffs] = reactExports.useState(DEFAULT_OBJ[3]);
+  const {
+    constraints,
+    add,
+    remove,
+    updateCoefficient,
+    updateInequality,
+    updateRhs,
+    resize
+  } = useConstraints(nVars, 3);
+  const { result, loading, error: error2, solve, reset: resetResult } = useInteger();
+  const handleVarsChange = reactExports.useCallback((n2) => {
+    setNVars(n2);
+    setObjCoeffs(DEFAULT_OBJ[n2]);
+    resize(n2);
+    resetResult();
+  }, [resize, resetResult]);
+  const handleObjCoeff = reactExports.useCallback((idx, val) => {
+    setObjCoeffs((prev) => {
+      const next = [...prev];
+      next[idx] = val;
+      return next;
+    });
+  }, []);
+  const handleSolve = reactExports.useCallback(() => {
+    solve(nVars, objCoeffs, goal, constraints);
+  }, [nVars, objCoeffs, goal, constraints, solve]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    SolverTemplate,
+    {
+      header: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        AppHeader,
+        {
+          method: "integer",
+          onMethodChange,
+          nVars,
+          onVarsChange: handleVarsChange
+        }
+      ),
+      objective: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ObjectiveForm,
+        {
+          nVars,
+          goal,
+          coefficients: objCoeffs,
+          onGoalChange: setGoal,
+          onCoefficientChange: handleObjCoeff
+        }
+      ),
+      constraints: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        ConstraintsForm,
+        {
+          nVars,
+          constraints,
+          loading,
+          onAdd: add,
+          onRemove: remove,
+          onCoefficientChange: updateCoefficient,
+          onInequalityChange: updateInequality,
+          onRhsChange: updateRhs,
+          onSolve: handleSolve,
+          solveLabel: "Resolver con Branch & Bound entero"
+        }
+      ),
+      solution: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        IntegerSolutionDisplay,
+        {
+          nVars,
+          result,
+          loading,
+          error: error2
+        }
+      )
+    }
+  );
+};
 function App() {
   const [method, setMethod] = reactExports.useState("simplex");
-  if (method === "binary") {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(BinaryPage, { onMethodChange: setMethod });
-  }
+  if (method === "binary") return /* @__PURE__ */ jsxRuntimeExports.jsx(BinaryPage, { onMethodChange: setMethod });
+  if (method === "integer") return /* @__PURE__ */ jsxRuntimeExports.jsx(IntegerPage, { onMethodChange: setMethod });
   return /* @__PURE__ */ jsxRuntimeExports.jsx(SolverPage, { onMethodChange: setMethod });
 }
 client.createRoot(document.getElementById("root")).render(

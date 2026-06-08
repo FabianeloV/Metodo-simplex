@@ -13,8 +13,9 @@ interface AppHeaderProps {
 }
 
 const META: Record<Method, { title: string; sub: string; logo: string }> = {
-  simplex: { title: "Método Simplex", sub: "Solver de Programación Lineal", logo: "Σ" },
-  binary:  { title: "Entera Binaria", sub: "Branch & Bound — Variables 0/1",  logo: "01" },
+  simplex: { title: "Método Simplex",  sub: "Solver de Programación Lineal",           logo: "Σ"  },
+  binary:  { title: "Entera Binaria",  sub: "Branch & Bound — Variables 0/1",          logo: "01" },
+  integer: { title: "Entera Pura",     sub: "Branch & Bound — Variables enteras ≥ 0",  logo: "IP" },
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({

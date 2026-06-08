@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes.simplex import router as simplex_router
 from app.api.routes.binary import router as binary_router
+from app.api.routes.integer import router as integer_router
 
 app = FastAPI(
     title="API de Optimización",
@@ -21,6 +22,7 @@ app.add_middleware(
 
 app.include_router(simplex_router, prefix="/api/v1")
 app.include_router(binary_router, prefix="/api/v1")
+app.include_router(integer_router, prefix="/api/v1")
 
 
 @app.get("/", tags=["root"])
