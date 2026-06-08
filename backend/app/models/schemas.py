@@ -100,6 +100,7 @@ class BBNode(BaseModel):
     lp_vars: dict[str, float] | None = None
     status: str
     branched_on: str | None = None
+    edge_label: str | None = None
 
 
 class BinaryResponse(BaseModel):
@@ -142,6 +143,7 @@ class IntegerNode(BaseModel):
     status: str
     branched_on: str | None = None
     branch_direction: str | None = None
+    edge_label: str | None = None
 
 
 class IntegerResponse(BaseModel):

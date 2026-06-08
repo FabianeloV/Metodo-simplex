@@ -1,0 +1,101 @@
+.container {
+  background: #0b1120;
+  border-radius: 12px;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid rgba(255 255 255 / 0.08);
+  max-height: 560px;
+  position: relative;
+}
+
+.svg {
+  display: block;
+}
+
+/* Edges */
+.edge {
+  stroke: rgba(255 255 255 / 0.22);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.edgeLabelBg {
+  fill: #0b1120;
+}
+
+.edgeLabel {
+  font-size: 10px;
+  font-family: ui-monospace, monospace;
+  fill: rgba(255 255 255 / 0.7);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+/* Node shared */
+.nodeGroup {
+  cursor: default;
+}
+.nodeGroup:hover .nodeRect {
+  filter: brightness(1.25);
+}
+
+.nodeId {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: ui-monospace, monospace;
+  fill: rgba(255 255 255 / 0.6);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.nodeVal {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: ui-monospace, monospace;
+  fill: #fff;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.nodeDetail {
+  font-size: 9px;
+  font-family: ui-monospace, monospace;
+  fill: rgba(255 255 255 / 0.72);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 12px 4px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255 255 255 / 0.7);
+  font-family: ui-monospace, monospace;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.maxNote {
+  padding: 4px 12px 8px;
+  font-size: 11px;
+  color: rgba(255 255 255 / 0.45);
+  font-family: ui-monospace, monospace;
+}

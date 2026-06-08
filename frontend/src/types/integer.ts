@@ -38,6 +38,7 @@ export interface IntegerNode {
   status: IntegerNodeStatus;
   branched_on: string | null;
   branch_direction: "floor" | "ceil" | null;
+  edge_label: string | null;
 }
 
 export interface IntegerResponse {

@@ -3,6 +3,8 @@ import { Badge } from "../../atoms/Badge";
 import { MetricCard } from "../../molecules/MetricCard";
 import { ErrorBanner } from "../../molecules/ErrorBanner";
 import { Spinner } from "../../atoms/Spinner";
+import { BBTreeGraph } from "../../molecules/BBTreeGraph";
+import type { TreeNodeData } from "../../molecules/BBTreeGraph";
 import type { IntegerNode, IntegerResponse } from "../../../types/integer";
 import type { VariableCount } from "../../../types/simplex";
 import styles from "./IntegerSolutionDisplay.module.css";
@@ -122,6 +124,23 @@ function NodeRow({ node, open, onToggle }: {
   );
 }
 
+function toIntegerTree(nodes: IntegerNode[]): TreeNodeData[] {
+  return nodes.map(n => {
+    const lbStr = Object.entries(n.lower_bounds).map(([k, v]) => `${k}≥${v}`).join(",");
+    const ubStr = Object.entries(n.upper_bounds).map(([k, v]) => `${k}≤${v}`).join(",");
+    const parts = [lbStr, ubStr].filter(Boolean);
+    return {
+      id: n.node_id,
+      parentId: n.parent_id,
+      depth: n.depth,
+      status: n.status,
+      lpValue: n.lp_value,
+      detail: parts.length ? parts.join(" ") : "raíz",
+      edgeLabel: n.edge_label,
+    };
+  });
+}
+
 export const IntegerSolutionDisplay: React.FC<Props> = ({
   nVars, result, loading, error,
 }) => {
@@ -192,6 +211,10 @@ export const IntegerSolutionDisplay: React.FC<Props> = ({
       {result.nodes.length > 0 && (
         <div className={styles.treeSection}>
           <p className={styles.sectionLabel}>Árbol de Branch &amp; Bound</p>
+          <BBTreeGraph nodes={toIntegerTree(result.nodes)} />
+          <p className={styles.sectionLabel} style={{ marginTop: "1.2rem" }}>
+            Detalle de nodos
+          </p>
           <div className={styles.nodeList}>
             {result.nodes.map(node => (
               <NodeRow

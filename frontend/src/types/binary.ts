@@ -36,6 +36,7 @@ export interface BBNode {
   lp_vars: Record<string, number> | null;
   status: BBNodeStatus;
   branched_on: string | null;
+  edge_label: string | null;
 }
 
 export interface BinaryResponse {

@@ -34,6 +34,7 @@ class BBNodeInfo:
     lp_vars: dict[str, float] | None
     status: str  # "branched" | "pruned_bound" | "pruned_infeasible" | "integer"
     branched_on: str | None = None
+    edge_label: str | None = None
 
 
 @dataclass
@@ -121,11 +122,11 @@ class BinaryEngine:
         nodes: list[BBNodeInfo] = []
         node_counter = 0
 
-        # DFS stack: (fixed_vars_by_index, parent_id, depth)
-        stack: list[tuple[dict[int, int], int | None, int]] = [({}, None, 0)]
+        # DFS stack: (fixed_vars_by_index, parent_id, depth, edge_label)
+        stack: list[tuple[dict[int, int], int | None, int, str | None]] = [({}, None, 0, None)]
 
         while stack and len(nodes) < MAX_NODES:
-            fixed, parent_id, depth = stack.pop()
+            fixed, parent_id, depth, edge_label = stack.pop()
             node_id = node_counter
             node_counter += 1
 
@@ -142,7 +143,7 @@ class BinaryEngine:
                 nodes.append(BBNodeInfo(
                     node_id=node_id, parent_id=parent_id, depth=depth,
                     fixed_vars=fixed_named, lp_value=None, lp_vars=None,
-                    status="pruned_infeasible",
+                    status="pruned_infeasible", edge_label=edge_label,
                 ))
                 continue
 
@@ -151,7 +152,7 @@ class BinaryEngine:
                 nodes.append(BBNodeInfo(
                     node_id=node_id, parent_id=parent_id, depth=depth,
                     fixed_vars=fixed_named, lp_value=round(lp_val, 6), lp_vars=lp_vars_named,
-                    status="pruned_bound",
+                    status="pruned_bound", edge_label=edge_label,
                 ))
                 continue
 
@@ -170,7 +171,7 @@ class BinaryEngine:
                 nodes.append(BBNodeInfo(
                     node_id=node_id, parent_id=parent_id, depth=depth,
                     fixed_vars=fixed_named, lp_value=round(lp_val, 6), lp_vars=lp_vars_named,
-                    status="integer",
+                    status="integer", edge_label=edge_label,
                 ))
                 continue
 
@@ -181,12 +182,13 @@ class BinaryEngine:
             nodes.append(BBNodeInfo(
                 node_id=node_id, parent_id=parent_id, depth=depth,
                 fixed_vars=fixed_named, lp_value=round(lp_val, 6), lp_vars=lp_vars_named,
-                status="branched", branched_on=branch_name,
+                status="branched", branched_on=branch_name, edge_label=edge_label,
             ))
 
             # Push both children (push 0 last so DFS explores 1 first, usually better for max)
             for val in [0, 1]:
-                stack.append(({**fixed, branch_idx: val}, node_id, depth + 1))
+                child_label = f"{branch_name} = {val}"
+                stack.append(({**fixed, branch_idx: val}, node_id, depth + 1, child_label))
 
         if best_vars is None:
             return BinaryResult(

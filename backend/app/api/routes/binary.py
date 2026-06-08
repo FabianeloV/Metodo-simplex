@@ -43,6 +43,7 @@ def solve_binary(payload: BinaryRequest) -> BinaryResponse:
                 lp_vars=n.lp_vars,
                 status=n.status,
                 branched_on=n.branched_on,
+                edge_label=n.edge_label,
             )
             for n in result.nodes
         ],

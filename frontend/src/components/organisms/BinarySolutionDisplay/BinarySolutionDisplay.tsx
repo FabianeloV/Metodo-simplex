@@ -3,6 +3,8 @@ import { Badge } from "../../atoms/Badge";
 import { MetricCard } from "../../molecules/MetricCard";
 import { ErrorBanner } from "../../molecules/ErrorBanner";
 import { Spinner } from "../../atoms/Spinner";
+import { BBTreeGraph } from "../../molecules/BBTreeGraph";
+import type { TreeNodeData } from "../../molecules/BBTreeGraph";
 import type { BBNode, BinaryResponse } from "../../../types/binary";
 import type { VariableCount } from "../../../types/simplex";
 import styles from "./BinarySolutionDisplay.module.css";
@@ -102,6 +104,23 @@ function NodeRow({ node, isOpen, onToggle }: {
   );
 }
 
+function toBinaryTree(nodes: BBNode[]): TreeNodeData[] {
+  return nodes.map(n => {
+    const fixedStr = Object.entries(n.fixed_vars)
+      .map(([k, v]) => `${k}=${v}`)
+      .join(", ");
+    return {
+      id: n.node_id,
+      parentId: n.parent_id,
+      depth: n.depth,
+      status: n.status,
+      lpValue: n.lp_value,
+      detail: fixedStr || "raíz",
+      edgeLabel: n.edge_label,
+    };
+  });
+}
+
 export const BinarySolutionDisplay: React.FC<BinarySolutionDisplayProps> = ({
   nVars,
   result,
@@ -169,6 +188,10 @@ export const BinarySolutionDisplay: React.FC<BinarySolutionDisplayProps> = ({
       {result.nodes.length > 0 && (
         <div className={styles.treeSection}>
           <p className={styles.sectionLabel}>Árbol de Branch &amp; Bound</p>
+          <BBTreeGraph nodes={toBinaryTree(result.nodes)} />
+          <p className={styles.sectionLabel} style={{ marginTop: "1.2rem" }}>
+            Detalle de nodos
+          </p>
           <div className={styles.nodeList}>
             {result.nodes.map((node) => (
               <NodeRow

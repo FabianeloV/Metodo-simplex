@@ -39,6 +39,7 @@ class IntegerNodeInfo:
     status: str   # "branched" | "pruned_bound" | "pruned_infeasible" | "integer"
     branched_on: str | None = None
     branch_direction: str | None = None  # "floor" | "ceil"
+    edge_label: str | None = None
 
 
 @dataclass
@@ -123,13 +124,13 @@ class IntegerEngine:
         nodes: list[IntegerNodeInfo] = []
         node_counter = 0
 
-        # DFS stack: (lower_bounds, upper_bounds, parent_id, depth, branch_direction)
-        stack: list[tuple[dict[int, float], dict[int, float], int | None, int, str | None]] = [
-            ({}, {}, None, 0, None)
+        # DFS stack: (lower_bounds, upper_bounds, parent_id, depth, branch_direction, edge_label)
+        stack: list[tuple[dict[int, float], dict[int, float], int | None, int, str | None, str | None]] = [
+            ({}, {}, None, 0, None, None)
         ]
 
         while stack and len(nodes) < MAX_NODES:
-            lower, upper, parent_id, depth, branch_dir = stack.pop()
+            lower, upper, parent_id, depth, branch_dir, edge_label = stack.pop()
             node_id = node_counter
             node_counter += 1
 
@@ -149,7 +150,7 @@ class IntegerEngine:
                     lower_bounds=lower_named, upper_bounds=upper_named,
                     lp_value=None, lp_vars=None,
                     status="pruned_infeasible",
-                    branch_direction=branch_dir,
+                    branch_direction=branch_dir, edge_label=edge_label,
                 ))
                 continue
 
@@ -160,7 +161,7 @@ class IntegerEngine:
                     lower_bounds=lower_named, upper_bounds=upper_named,
                     lp_value=round(lp_val, 6), lp_vars=lp_vars_named,
                     status="pruned_bound",
-                    branch_direction=branch_dir,
+                    branch_direction=branch_dir, edge_label=edge_label,
                 ))
                 continue
 
@@ -183,7 +184,7 @@ class IntegerEngine:
                     lower_bounds=lower_named, upper_bounds=upper_named,
                     lp_value=round(lp_val, 6), lp_vars=lp_vars_named,
                     status="integer",
-                    branch_direction=branch_dir,
+                    branch_direction=branch_dir, edge_label=edge_label,
                 ))
                 continue
 
@@ -202,15 +203,17 @@ class IntegerEngine:
                 lower_bounds=lower_named, upper_bounds=upper_named,
                 lp_value=round(lp_val, 6), lp_vars=lp_vars_named,
                 status="branched", branched_on=branch_name,
-                branch_direction=branch_dir,
+                branch_direction=branch_dir, edge_label=edge_label,
             ))
 
             # Push floor branch last so DFS explores ceil (usually tighter) first
             floor_upper = {**upper, branch_idx: float(floor_val)}
-            stack.append(({**lower}, floor_upper, node_id, depth + 1, "floor"))
+            stack.append(({**lower}, floor_upper, node_id, depth + 1, "floor",
+                          f"{branch_name} ≤ {int(floor_val)}"))
 
             ceil_lower = {**lower, branch_idx: float(ceil_val)}
-            stack.append((ceil_lower, {**upper}, node_id, depth + 1, "ceil"))
+            stack.append((ceil_lower, {**upper}, node_id, depth + 1, "ceil",
+                          f"{branch_name} ≥ {int(ceil_val)}"))
 
         if best_vars is None:
             if len(nodes) >= MAX_NODES:

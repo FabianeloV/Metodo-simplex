@@ -7006,7 +7006,7 @@ var m = reactDomExports;
 const tabGroup = "_tabGroup_wbqba_1";
 const tab$1 = "_tab_wbqba_1";
 const active$1 = "_active_wbqba_23";
-const styles$k = {
+const styles$l = {
   tabGroup,
   tab: tab$1,
   active: active$1
@@ -7016,12 +7016,12 @@ const TABS = [
   { label: "3 Variables", value: 3 },
   { label: "4 Variables", value: 4 }
 ];
-const TabGroup = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$k.tabGroup, role: "tablist", "aria-label": "Cantidad de variables", children: TABS.map((tab2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+const TabGroup = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$l.tabGroup, role: "tablist", "aria-label": "Cantidad de variables", children: TABS.map((tab2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "button",
   {
     role: "tab",
     "aria-selected": value2 === tab2.value,
-    className: [styles$k.tab, value2 === tab2.value ? styles$k.active : ""].join(" "),
+    className: [styles$l.tab, value2 === tab2.value ? styles$l.active : ""].join(" "),
     onClick: () => onChange(tab2.value),
     children: tab2.label
   },
@@ -7031,7 +7031,7 @@ const switcher = "_switcher_1cq5n_1";
 const tab = "_tab_1cq5n_10";
 const active = "_active_1cq5n_29";
 const icon$2 = "_icon_1cq5n_35";
-const styles$j = {
+const styles$k = {
   switcher,
   tab,
   active,
@@ -7042,15 +7042,15 @@ const METHODS = [
   { label: "Binaria", value: "binary", icon: "01" },
   { label: "Entera", value: "integer", icon: "IP" }
 ];
-const MethodSwitcher = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$j.switcher, role: "tablist", "aria-label": "Método de optimización", children: METHODS.map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+const MethodSwitcher = ({ value: value2, onChange }) => /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: styles$k.switcher, role: "tablist", "aria-label": "Método de optimización", children: METHODS.map((m2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
   "button",
   {
     role: "tab",
     "aria-selected": value2 === m2.value,
-    className: [styles$j.tab, value2 === m2.value ? styles$j.active : ""].join(" "),
+    className: [styles$k.tab, value2 === m2.value ? styles$k.active : ""].join(" "),
     onClick: () => onChange(m2.value),
     children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$j.icon, children: m2.icon }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$k.icon, children: m2.icon }),
       m2.label
     ]
   },
@@ -7062,7 +7062,7 @@ const logoBox = "_logoBox_10x12_30";
 const title = "_title_10x12_43";
 const sub = "_sub_10x12_51";
 const controls = "_controls_10x12_53";
-const styles$i = {
+const styles$j = {
   header,
   brand,
   logoBox,
@@ -7082,37 +7082,37 @@ const AppHeader = ({
   onVarsChange
 }) => {
   const meta = META[method];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: styles$i.header, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$i.brand, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$i.logoBox, "aria-hidden": "true", children: meta.logo }),
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: styles$j.header, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$j.brand, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$j.logoBox, "aria-hidden": "true", children: meta.logo }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles$i.title, children: meta.title }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$i.sub, children: meta.sub })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles$j.title, children: meta.title }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$j.sub, children: meta.sub })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$i.controls, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$j.controls, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MethodSwitcher, { value: method, onChange: onMethodChange }),
       nVars !== void 0 && onVarsChange !== void 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(TabGroup, { value: nVars, onChange: onVarsChange })
     ] })
   ] });
 };
 const label$1 = "_label_1yaof_1";
-const styles$h = {
+const styles$i = {
   label: label$1
 };
-const Label = ({ children, className = "", ...rest }) => /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: [styles$h.label, className].join(" "), ...rest, children });
+const Label = ({ children, className = "", ...rest }) => /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: [styles$i.label, className].join(" "), ...rest, children });
 const select = "_select_o88ml_1";
-const styles$g = {
+const styles$h = {
   select
 };
 const Select = ({
   options,
   className = "",
   ...rest
-}) => /* @__PURE__ */ jsxRuntimeExports.jsx("select", { className: [styles$g.select, className].join(" "), ...rest, children: options.map((o) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: o.value, children: o.label }, o.value)) });
+}) => /* @__PURE__ */ jsxRuntimeExports.jsx("select", { className: [styles$h.select, className].join(" "), ...rest, children: options.map((o) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: o.value, children: o.label }, o.value)) });
 const input = "_input_yhpl8_1";
 const error = "_error_yhpl8_25";
-const styles$f = {
+const styles$g = {
   input,
   error
 };
@@ -7123,7 +7123,7 @@ const Input = ({
 }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "input",
   {
-    className: [styles$f.input, error2 ? styles$f.error : "", className].join(" "),
+    className: [styles$g.input, error2 ? styles$g.error : "", className].join(" "),
     ...rest
   }
 );
@@ -7131,7 +7131,7 @@ const row$1 = "_row_70m3e_1";
 const zEq = "_zEq_70m3e_2";
 const plus$1 = "_plus_70m3e_3";
 const varLabel$1 = "_varLabel_70m3e_4";
-const styles$e = {
+const styles$f = {
   row: row$1,
   zEq,
   plus: plus$1,
@@ -7141,10 +7141,10 @@ const ObjectiveRow = ({
   nVars,
   coefficients,
   onChange
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$e.row, children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$e.zEq, children: "Z =" }),
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$f.row, children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$f.zEq, children: "Z =" }),
   Array.from({ length: nVars }, (_, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(React.Fragment, { children: [
-    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$e.plus, children: "+" }),
+    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$f.plus, children: "+" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       Input,
       {
@@ -7155,7 +7155,7 @@ const ObjectiveRow = ({
         "aria-label": `Coeficiente de x${i + 1}`
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$e.varLabel, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$f.varLabel, children: [
       "x",
       /* @__PURE__ */ jsxRuntimeExports.jsx("sub", { children: i + 1 })
     ] })
@@ -7167,7 +7167,7 @@ const cardSub$4 = "_cardSub_886vo_21";
 const body = "_body_886vo_22";
 const goalBlock = "_goalBlock_886vo_23";
 const funcBlock = "_funcBlock_886vo_23";
-const styles$d = {
+const styles$e = {
   card: card$6,
   cardTitle: cardTitle$4,
   cardSub: cardSub$4,
@@ -7185,11 +7185,11 @@ const ObjectiveForm = ({
   coefficients,
   onGoalChange,
   onCoefficientChange
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$d.card, "aria-labelledby": "obj-heading", children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "obj-heading", className: styles$d.cardTitle, children: "Función Objetivo" }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$d.cardSub, children: "Defina la función principal a optimizar y elija el objetivo." }),
-  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.body, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.goalBlock, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$e.card, "aria-labelledby": "obj-heading", children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "obj-heading", className: styles$e.cardTitle, children: "Función Objetivo" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$e.cardSub, children: "Defina la función principal a optimizar y elija el objetivo." }),
+  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$e.body, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$e.goalBlock, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "goal-select", children: "Meta de Optimización" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         Select,
@@ -7202,7 +7202,7 @@ const ObjectiveForm = ({
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$d.funcBlock, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$e.funcBlock, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Función (Z)" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         ObjectiveRow,
@@ -7224,7 +7224,7 @@ const danger = "_danger_1hv09_46";
 const icon$1 = "_icon_1hv09_54";
 const spinner$1 = "_spinner_1hv09_57";
 const spin = "_spin_1hv09_57";
-const styles$c = {
+const styles$d = {
   btn,
   sm,
   md,
@@ -7247,11 +7247,11 @@ const Button = ({
 }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
   "button",
   {
-    className: [styles$c.btn, styles$c[variant], styles$c[size], className].join(" "),
+    className: [styles$d.btn, styles$d[variant], styles$d[size], className].join(" "),
     disabled: disabled || loading,
     ...rest,
     children: [
-      loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$c.spinner, "aria-label": "loading" }) : icon2 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$c.icon, children: icon2 }),
+      loading ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$d.spinner, "aria-label": "loading" }) : icon2 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$d.icon, children: icon2 }),
       children
     ]
   }
@@ -7260,7 +7260,7 @@ const row = "_row_7hld8_1";
 const num = "_num_7hld8_2";
 const plus = "_plus_7hld8_10";
 const varLabel = "_varLabel_7hld8_11";
-const styles$b = {
+const styles$c = {
   row,
   num,
   plus,
@@ -7279,13 +7279,13 @@ const ConstraintRow = ({
   onInequalityChange,
   onRhsChange,
   onRemove
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$b.row, role: "group", "aria-label": `Restricción ${index + 1}`, children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$b.num, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$c.row, role: "group", "aria-label": `Restricción ${index + 1}`, children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$c.num, children: [
     "#",
     index + 1
   ] }),
   Array.from({ length: nVars }, (_, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(React.Fragment, { children: [
-    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$b.plus, children: "+" }),
+    i > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$c.plus, children: "+" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       Input,
       {
@@ -7296,7 +7296,7 @@ const ConstraintRow = ({
         "aria-label": `Coeficiente x${i + 1} de la restricción ${index + 1}`
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$b.varLabel, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$c.varLabel, children: [
       "x",
       /* @__PURE__ */ jsxRuntimeExports.jsx("sub", { children: i + 1 })
     ] })
@@ -7341,7 +7341,7 @@ const cardSub$3 = "_cardSub_1h33b_25";
 const constraintList = "_constraintList_1h33b_26";
 const empty = "_empty_1h33b_27";
 const toolbar = "_toolbar_1h33b_28";
-const styles$a = {
+const styles$b = {
   card: card$5,
   sectionHeader,
   cardTitle: cardTitle$3,
@@ -7368,15 +7368,15 @@ const ConstraintsForm = ({
   onRhsChange,
   onSolve,
   solveLabel = "Resolver mediante Simplex"
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$a.card, "aria-labelledby": "constr-heading", children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$a.sectionHeader, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$b.card, "aria-labelledby": "constr-heading", children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$b.sectionHeader, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "constr-heading", className: styles$a.cardTitle, children: "Restricciones" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$a.cardSub, children: "Añada las desigualdades lineales que limitan su función objetivo." })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "constr-heading", className: styles$b.cardTitle, children: "Restricciones" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$b.cardSub, children: "Añada las desigualdades lineales que limitan su función objetivo." })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "ghost", size: "sm", onClick: onAdd, icon: /* @__PURE__ */ jsxRuntimeExports.jsx(PlusIcon, {}), children: "Añadir Restricción" })
   ] }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$a.constraintList, role: "list", children: constraints.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$a.empty, children: "Aún no hay restricciones. Añada al menos una para resolver." }) : constraints.map((c, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { role: "listitem", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$b.constraintList, role: "list", children: constraints.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$b.empty, children: "Aún no hay restricciones. Añada al menos una para resolver." }) : constraints.map((c, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { role: "listitem", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     ConstraintRow,
     {
       index: i,
@@ -7388,7 +7388,7 @@ const ConstraintsForm = ({
       onRemove: () => onRemove(c.id)
     }
   ) }, c.id)) }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$a.toolbar, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$b.toolbar, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     Button,
     {
       variant: "primary",
@@ -7406,19 +7406,19 @@ const blue = "_blue_1lz70_8";
 const green = "_green_1lz70_9";
 const red = "_red_1lz70_10";
 const gray = "_gray_1lz70_11";
-const styles$9 = {
+const styles$a = {
   badge,
   blue,
   green,
   red,
   gray
 };
-const Badge = ({ color = "gray", children }) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$9.badge, styles$9[color]].join(" "), children });
+const Badge = ({ color = "gray", children }) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$a.badge, styles$a[color]].join(" "), children });
 const card$4 = "_card_mqv6q_1";
 const highlight = "_highlight_mqv6q_15";
 const label = "_label_mqv6q_22";
 const value = "_value_mqv6q_31";
-const styles$8 = {
+const styles$9 = {
   card: card$4,
   highlight,
   label,
@@ -7428,9 +7428,9 @@ const MetricCard = ({
   label: label2,
   value: value2,
   highlight: highlight2 = false
-}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: [styles$8.card, highlight2 ? styles$8.highlight : ""].join(" "), children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$8.label, children: label2 }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$8.value, children: value2 })
+}) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: [styles$9.card, highlight2 ? styles$9.highlight : ""].join(" "), children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$9.label, children: label2 }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$9.value, children: value2 })
 ] });
 const wrapper = "_wrapper_y4juy_1";
 const table = "_table_y4juy_2";
@@ -7438,7 +7438,7 @@ const basicCell = "_basicCell_y4juy_26";
 const rhs = "_rhs_y4juy_27";
 const zRow = "_zRow_y4juy_29";
 const zCell = "_zCell_y4juy_33";
-const styles$7 = {
+const styles$8 = {
   wrapper,
   table,
   basicCell,
@@ -7451,13 +7451,13 @@ function fmt$1(n2) {
   const r2 = Math.round(n2 * 1e4) / 1e4;
   return Number.isInteger(r2) ? String(r2) : r2.toFixed(4).replace(/\.?0+$/, "");
 }
-const TableauTable = ({ headers, rows }) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$7.wrapper, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("table", { className: styles$7.table, children: [
+const TableauTable = ({ headers, rows }) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$8.wrapper, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("table", { className: styles$8.table, children: [
   /* @__PURE__ */ jsxRuntimeExports.jsx("thead", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("tr", { children: headers.map((h) => /* @__PURE__ */ jsxRuntimeExports.jsx("th", { children: h }, h)) }) }),
   /* @__PURE__ */ jsxRuntimeExports.jsx("tbody", { children: rows.map((row2, i) => {
     const isZ = row2.basic_variable === "Z";
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { className: isZ ? styles$7.zRow : "", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: isZ ? styles$7.zCell : styles$7.basicCell, children: row2.basic_variable }),
-      row2.values.map((v2, j) => /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: j === row2.values.length - 1 ? styles$7.rhs : "", children: fmt$1(v2) }, j))
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("tr", { className: isZ ? styles$8.zRow : "", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: isZ ? styles$8.zCell : styles$8.basicCell, children: row2.basic_variable }),
+      row2.values.map((v2, j) => /* @__PURE__ */ jsxRuntimeExports.jsx("td", { className: j === row2.values.length - 1 ? styles$8.rhs : "", children: fmt$1(v2) }, j))
     ] }, i);
   }) })
 ] }) });
@@ -7473,15 +7473,15 @@ const vertexPoint = "_vertexPoint_foylc_38";
 const optimalPoint = "_optimalPoint_foylc_40";
 const tickLabel = "_tickLabel_foylc_42";
 const axisLabel = "_axisLabel_foylc_43";
-const legend = "_legend_foylc_45";
-const legendItem = "_legendItem_foylc_49";
+const legend$1 = "_legend_foylc_45";
+const legendItem$1 = "_legendItem_foylc_49";
 const legendSwatch = "_legendSwatch_foylc_50";
 const swatchConstraint = "_swatchConstraint_foylc_52";
 const swatchRegion = "_swatchRegion_foylc_53";
 const swatchObjective = "_swatchObjective_foylc_54";
 const swatchOptimal = "_swatchOptimal_foylc_55";
 const statusNote = "_statusNote_foylc_57";
-const styles$6 = {
+const styles$7 = {
   card: card$3,
   plot,
   plotBg,
@@ -7494,8 +7494,8 @@ const styles$6 = {
   optimalPoint,
   tickLabel,
   axisLabel,
-  legend,
-  legendItem,
+  legend: legend$1,
+  legendItem: legendItem$1,
   legendSwatch,
   swatchConstraint,
   swatchRegion,
@@ -7536,11 +7536,11 @@ const GraphicalPlot = ({ data }) => {
     const [p1, p2] = points;
     return `M ${scaleX(p1.x)} ${scaleY(p1.y)} L ${scaleX(p2.x)} ${scaleY(p2.y)}`;
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$6.card, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$7.card, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "svg",
       {
-        className: styles$6.plot,
+        className: styles$7.plot,
         viewBox: `0 0 ${WIDTH} ${HEIGHT}`,
         role: "img",
         "aria-label": "Gráfico del método gráfico",
@@ -7552,7 +7552,7 @@ const GraphicalPlot = ({ data }) => {
               y: PADDING.top,
               width: plotWidth,
               height: plotHeight,
-              className: styles$6.plotBg
+              className: styles$7.plotBg
             }
           ),
           xTicks.map((x2, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { children: [
@@ -7563,10 +7563,10 @@ const GraphicalPlot = ({ data }) => {
                 y1: PADDING.top,
                 x2: scaleX(x2),
                 y2: PADDING.top + plotHeight,
-                className: styles$6.gridLine
+                className: styles$7.gridLine
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: scaleX(x2), y: PADDING.top + plotHeight + 18, className: styles$6.tickLabel, children: fmtTick(x2) })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: scaleX(x2), y: PADDING.top + plotHeight + 18, className: styles$7.tickLabel, children: fmtTick(x2) })
           ] }, `x-${i}`)),
           yTicks.map((y2, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -7576,10 +7576,10 @@ const GraphicalPlot = ({ data }) => {
                 y1: scaleY(y2),
                 x2: PADDING.left + plotWidth,
                 y2: scaleY(y2),
-                className: styles$6.gridLine
+                className: styles$7.gridLine
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 10, y: scaleY(y2) + 4, className: styles$6.tickLabel, children: fmtTick(y2) })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 10, y: scaleY(y2) + 4, className: styles$7.tickLabel, children: fmtTick(y2) })
           ] }, `y-${i}`)),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "line",
@@ -7588,7 +7588,7 @@ const GraphicalPlot = ({ data }) => {
               y1: PADDING.top,
               x2: scaleX(0),
               y2: PADDING.top + plotHeight,
-              className: styles$6.axisLine
+              className: styles$7.axisLine
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -7598,46 +7598,46 @@ const GraphicalPlot = ({ data }) => {
               y1: scaleY(0),
               x2: PADDING.left + plotWidth,
               y2: scaleY(0),
-              className: styles$6.axisLine
+              className: styles$7.axisLine
             }
           ),
-          polygonPath && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: polygonPath, className: styles$6.feasibleArea }),
-          data.constraints.map((line) => /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(line.points), className: styles$6.constraintLine }, line.label ?? `${line.a}-${line.b}-${line.c}`)),
-          data.objective_line && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(data.objective_line.points), className: styles$6.objectiveLine }),
-          data.vertices.map((p2, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: scaleX(p2.x), cy: scaleY(p2.y), r: 3, className: styles$6.vertexPoint }, `v-${i}`)),
+          polygonPath && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: polygonPath, className: styles$7.feasibleArea }),
+          data.constraints.map((line) => /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(line.points), className: styles$7.constraintLine }, line.label ?? `${line.a}-${line.b}-${line.c}`)),
+          data.objective_line && /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: toPath(data.objective_line.points), className: styles$7.objectiveLine }),
+          data.vertices.map((p2, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: scaleX(p2.x), cy: scaleY(p2.y), r: 3, className: styles$7.vertexPoint }, `v-${i}`)),
           data.optimal_point && /* @__PURE__ */ jsxRuntimeExports.jsx(
             "circle",
             {
               cx: scaleX(data.optimal_point.x),
               cy: scaleY(data.optimal_point.y),
               r: 5,
-              className: styles$6.optimalPoint
+              className: styles$7.optimalPoint
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left + plotWidth - 8, y: PADDING.top + plotHeight + 28, className: styles$6.axisLabel, children: "x1" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 24, y: PADDING.top + 4, className: styles$6.axisLabel, children: "x2" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left + plotWidth - 8, y: PADDING.top + plotHeight + 28, className: styles$7.axisLabel, children: "x1" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: PADDING.left - 24, y: PADDING.top + 4, className: styles$7.axisLabel, children: "x2" })
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$6.legend, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchConstraint].join(" ") }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$7.legend, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$7.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$7.legendSwatch, styles$7.swatchConstraint].join(" ") }),
         "Restricciones"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchRegion].join(" ") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$7.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$7.legendSwatch, styles$7.swatchRegion].join(" ") }),
         "Región factible"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchObjective].join(" ") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$7.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$7.legendSwatch, styles$7.swatchObjective].join(" ") }),
         "Línea objetivo"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$6.legendItem, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$6.legendSwatch, styles$6.swatchOptimal].join(" ") }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$7.legendItem, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: [styles$7.legendSwatch, styles$7.swatchOptimal].join(" ") }),
         "Punto óptimo"
       ] })
     ] }),
-    data.status !== "optimal" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles$6.statusNote, children: [
+    data.status !== "optimal" && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles$7.statusNote, children: [
       "Estado: ",
       data.status,
       ". El gráfico aún muestra las restricciones e intersecciones disponibles."
@@ -7651,23 +7651,23 @@ function fmtTick(value2) {
 const banner = "_banner_vvetx_1";
 const icon = "_icon_vvetx_9";
 const msg = "_msg_vvetx_17";
-const styles$5 = {
+const styles$6 = {
   banner,
   icon,
   msg
 };
-const ErrorBanner = ({ message }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5.banner, role: "alert", children: [
-  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$5.icon, children: "!" }),
-  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$5.msg, children: message })
+const ErrorBanner = ({ message }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$6.banner, role: "alert", children: [
+  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$6.icon, children: "!" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$6.msg, children: message })
 ] });
 const spinner = "_spinner_1qv0n_1";
-const styles$4 = {
+const styles$5 = {
   spinner
 };
 const Spinner = ({ size = 20 }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "span",
   {
-    className: styles$4.spinner,
+    className: styles$5.spinner,
     style: { width: size, height: size },
     role: "status",
     "aria-label": "Loading"
@@ -7696,7 +7696,7 @@ const chipEnter = "_chipEnter_p9ez8_85";
 const chipLeave = "_chipLeave_p9ez8_90";
 const iterationChevron = "_iterationChevron_p9ez8_96";
 const iterationBody = "_iterationBody_p9ez8_97";
-const styles$3 = {
+const styles$4 = {
   card: card$2,
   resultHeader: resultHeader$2,
   cardTitle: cardTitle$2,
@@ -7741,25 +7741,25 @@ const SolutionDisplay = ({
 }) => {
   const [expandedIter, setExpandedIter] = reactExports.useState(null);
   if (loading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.loadingCard, children: [
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.loadingCard, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Spinner, { size: 22 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$3.loadingText, children: "Resolviendo…" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$4.loadingText, children: "Resolviendo…" })
     ] });
   }
   if (error2) return /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: error2 });
   if (!result) return null;
   const isOptimal = result.status === "optimal";
   const showGraph = nVars === 2 && !!result.graphical;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$3.card, "aria-labelledby": "result-heading", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.resultHeader, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: styles$4.card, "aria-labelledby": "result-heading", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.resultHeader, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "result-heading", className: styles$3.cardTitle, children: isOptimal ? "Solución: Resultado Óptimo Encontrado" : `Solución: ${result.status}` }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.cardSub, children: result.message })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { id: "result-heading", className: styles$4.cardTitle, children: isOptimal ? "Solución: Resultado Óptimo Encontrado" : `Solución: ${result.status}` }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$4.cardSub, children: result.message })
       ] }),
       statusBadge(result.status)
     ] }),
     isOptimal && result.variables && result.objective_value !== void 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.metrics, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.metrics, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           MetricCard,
           {
@@ -7780,15 +7780,15 @@ const SolutionDisplay = ({
           );
         })
       ] }),
-      showGraph && result.graphical && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.graphSection, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.graphHeader, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: styles$3.graphTitle, children: "Método Gráfico (2 variables)" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.graphSub, children: "Región factible, líneas de restricción y línea objetivo en el óptimo." })
+      showGraph && result.graphical && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.graphSection, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.graphHeader, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: styles$4.graphTitle, children: "Método Gráfico (2 variables)" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$4.graphSub, children: "Región factible, líneas de restricción y línea objetivo en el óptimo." })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(GraphicalPlot, { data: result.graphical })
       ] }),
       result.tableau_headers && result.tableau_rows && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.tableauLabel, children: "Tabla Simplex Final" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$4.tableauLabel, children: "Tabla Simplex Final" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           TableauTable,
           {
@@ -7797,35 +7797,35 @@ const SolutionDisplay = ({
           }
         )
       ] }),
-      result.iteration_tableaux && result.iteration_tableaux.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.iterationsSection, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$3.tableauLabel, children: "Iteraciones del Método Simplex" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$3.iterationList, children: result.iteration_tableaux.map((iter) => {
+      result.iteration_tableaux && result.iteration_tableaux.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.iterationsSection, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$4.tableauLabel, children: "Iteraciones del Método Simplex" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$4.iterationList, children: result.iteration_tableaux.map((iter) => {
           const isOpen = expandedIter === iter.iteration;
           const isInitial = iter.iteration === 0;
-          return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.iterationBlock, children: [
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4.iterationBlock, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                className: [styles$3.iterationHeader, isOpen ? styles$3.iterationHeaderOpen : ""].join(" "),
+                className: [styles$4.iterationHeader, isOpen ? styles$4.iterationHeaderOpen : ""].join(" "),
                 onClick: () => setExpandedIter(isOpen ? null : iter.iteration),
                 "aria-expanded": isOpen,
                 children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$3.iterationTitle, children: isInitial ? "Tabla Inicial" : `Iteración ${iter.iteration}` }),
-                  !isInitial && iter.entering && iter.leaving && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$3.iterationMeta, children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$3.chipEnter, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$4.iterationTitle, children: isInitial ? "Tabla Inicial" : `Iteración ${iter.iteration}` }),
+                  !isInitial && iter.entering && iter.leaving && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$4.iterationMeta, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$4.chipEnter, children: [
                       "↑ ",
                       iter.entering
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$3.chipLeave, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$4.chipLeave, children: [
                       "↓ ",
                       iter.leaving
                     ] })
                   ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$3.iterationChevron, children: isOpen ? "▲" : "▼" })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$4.iterationChevron, children: isOpen ? "▲" : "▼" })
                 ]
               }
             ),
-            isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$3.iterationBody, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$4.iterationBody, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
               TableauTable,
               {
                 headers: iter.tableau_headers,
@@ -7840,17 +7840,17 @@ const SolutionDisplay = ({
   ] });
 };
 const page = "_page_65drl_1";
-const container = "_container_65drl_11";
-const styles$2 = {
+const container$1 = "_container_65drl_11";
+const styles$3 = {
   page,
-  container
+  container: container$1
 };
 const SolverTemplate = ({
   header: header2,
   objective,
   constraints,
   solution
-}) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$2.page, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$2.container, children: [
+}) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$3.page, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$3.container, children: [
   header2,
   objective,
   constraints,
@@ -8054,6 +8054,202 @@ const SolverPage = ({ onMethodChange }) => {
     }
   );
 };
+const container = "_container_1m0oq_1";
+const svg = "_svg_1m0oq_11";
+const edge = "_edge_1m0oq_16";
+const edgeLabelBg = "_edgeLabelBg_1m0oq_22";
+const edgeLabel = "_edgeLabel_1m0oq_22";
+const nodeGroup = "_nodeGroup_1m0oq_36";
+const nodeId$2 = "_nodeId_1m0oq_43";
+const nodeVal = "_nodeVal_1m0oq_53";
+const nodeDetail = "_nodeDetail_1m0oq_63";
+const legend = "_legend_1m0oq_73";
+const legendItem = "_legendItem_1m0oq_80";
+const legendDot = "_legendDot_1m0oq_89";
+const maxNote = "_maxNote_1m0oq_96";
+const styles$2 = {
+  container,
+  svg,
+  edge,
+  edgeLabelBg,
+  edgeLabel,
+  nodeGroup,
+  nodeId: nodeId$2,
+  nodeVal,
+  nodeDetail,
+  legend,
+  legendItem,
+  legendDot,
+  maxNote
+};
+const NODE_W = 82;
+const NODE_H = 52;
+const UNIT_W = 96;
+const LEVEL_H = 92;
+const PAD_X = 24;
+const PAD_Y = 28;
+const MAX_DISPLAY = 120;
+const STATUS_STYLE = {
+  branched: { fill: "#4338CA", stroke: "#3730A3" },
+  pruned_bound: { fill: "#B45309", stroke: "#92400E" },
+  pruned_infeasible: { fill: "#B91C1C", stroke: "#991B1B" },
+  integer: { fill: "#047857", stroke: "#065F46" }
+};
+const LEGEND = [
+  { key: "branched", label: "Ramificado", color: "#4338CA" },
+  { key: "pruned_bound", label: "Podado (cota)", color: "#B45309" },
+  { key: "pruned_infeasible", label: "Podado (infactible)", color: "#B91C1C" },
+  { key: "integer", label: "Solución entera", color: "#047857" }
+];
+function fmtLp(v2) {
+  if (v2 === null) return "infact.";
+  const r2 = Math.round(v2 * 100) / 100;
+  return Number.isInteger(r2) ? `Z=${r2}` : `Z=${r2.toFixed(2)}`;
+}
+function useLayout(nodes) {
+  return reactExports.useMemo(() => {
+    if (nodes.length === 0) return { positions: /* @__PURE__ */ new Map(), svgW: 0, svgH: 0 };
+    const children = /* @__PURE__ */ new Map();
+    for (const n2 of nodes) {
+      if (!children.has(n2.id)) children.set(n2.id, []);
+      if (n2.parentId !== null) {
+        if (!children.has(n2.parentId)) children.set(n2.parentId, []);
+        children.get(n2.parentId).push(n2.id);
+      }
+    }
+    const subtreeW = /* @__PURE__ */ new Map();
+    function computeW(id2) {
+      const kids = children.get(id2) ?? [];
+      if (kids.length === 0) {
+        subtreeW.set(id2, 1);
+        return 1;
+      }
+      const total = kids.reduce((s, k2) => s + computeW(k2), 0);
+      subtreeW.set(id2, total);
+      return total;
+    }
+    const positions = /* @__PURE__ */ new Map();
+    function assign(id2, depth, xOff) {
+      const w2 = subtreeW.get(id2) ?? 1;
+      positions.set(id2, { x: xOff + w2 / 2, y: depth });
+      let cx = xOff;
+      for (const kid of children.get(id2) ?? []) {
+        const kw = subtreeW.get(kid) ?? 1;
+        assign(kid, depth + 1, cx);
+        cx += kw;
+      }
+    }
+    const root = nodes.find((n2) => n2.parentId === null);
+    if (!root) return { positions: /* @__PURE__ */ new Map(), svgW: 0, svgH: 0 };
+    computeW(root.id);
+    assign(root.id, 0, 0);
+    const xs = [...positions.values()].map((p2) => p2.x);
+    const ys = [...positions.values()].map((p2) => p2.y);
+    const svgW = (Math.max(...xs) + 0.5) * UNIT_W + PAD_X * 2;
+    const svgH = Math.max(...ys) * LEVEL_H + NODE_H + PAD_Y * 2;
+    return { positions, svgW, svgH };
+  }, [nodes]);
+}
+const BBTreeGraph = ({ nodes, title: title2 }) => {
+  const truncated = nodes.length > MAX_DISPLAY;
+  const visible = truncated ? nodes.slice(0, MAX_DISPLAY) : nodes;
+  const visibleIds = new Set(visible.map((n2) => n2.id));
+  const displayNodes = visible.filter((n2) => n2.parentId === null || visibleIds.has(n2.parentId));
+  const { positions, svgW, svgH } = useLayout(displayNodes);
+  if (displayNodes.length === 0) return null;
+  const nodeX = (id2) => {
+    var _a;
+    return PAD_X + (((_a = positions.get(id2)) == null ? void 0 : _a.x) ?? 0) * UNIT_W;
+  };
+  const nodeY = (id2) => {
+    var _a;
+    return PAD_Y + (((_a = positions.get(id2)) == null ? void 0 : _a.y) ?? 0) * LEVEL_H;
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+    title2 && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { color: "rgba(255,255,255,0.6)", fontSize: 12, fontFamily: "ui-monospace,monospace", margin: "0 0 6px 2px" }, children: title2 }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$2.container, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "svg",
+      {
+        width: Math.max(svgW, 200),
+        height: Math.max(svgH, 100),
+        className: styles$2.svg,
+        "aria-label": "Árbol Branch & Bound",
+        children: [
+          displayNodes.filter((n2) => n2.parentId !== null && visibleIds.has(n2.parentId)).map((n2) => {
+            const px = nodeX(n2.parentId);
+            const py = nodeY(n2.parentId) + NODE_H;
+            const cx = nodeX(n2.id);
+            const cy = nodeY(n2.id);
+            const mx = (px + cx) / 2;
+            const my = (py + cy) / 2;
+            const path = `M ${px} ${py} C ${px} ${(py + cy) / 2}, ${cx} ${(py + cy) / 2}, ${cx} ${cy}`;
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: path, className: styles$2.edge }),
+              n2.edgeLabel && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "rect",
+                  {
+                    x: mx - 22,
+                    y: my - 8,
+                    width: 44,
+                    height: 14,
+                    rx: 3,
+                    className: styles$2.edgeLabelBg,
+                    opacity: 0.85
+                  }
+                ),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: mx, y: my, className: styles$2.edgeLabel, children: n2.edgeLabel })
+              ] })
+            ] }, `e-${n2.id}`);
+          }),
+          displayNodes.map((n2) => {
+            const sx = nodeX(n2.id) - NODE_W / 2;
+            const sy = nodeY(n2.id);
+            const centerX = nodeX(n2.id);
+            const style = STATUS_STYLE[n2.status] ?? STATUS_STYLE.branched;
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { className: styles$2.nodeGroup, children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "rect",
+                {
+                  className: "nodeRect",
+                  x: sx,
+                  y: sy,
+                  width: NODE_W,
+                  height: NODE_H,
+                  rx: 7,
+                  ry: 7,
+                  fill: style.fill,
+                  stroke: style.stroke,
+                  strokeWidth: 1.5
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("text", { x: centerX, y: sy + 13, className: styles$2.nodeId, children: [
+                "N",
+                n2.id
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: centerX, y: sy + 28, className: styles$2.nodeVal, children: fmtLp(n2.lpValue) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: centerX, y: sy + 44, className: styles$2.nodeDetail, children: n2.detail.length > 13 ? n2.detail.slice(0, 12) + "…" : n2.detail }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("title", { children: `Nodo ${n2.id} | ${n2.status}
+LP: ${n2.lpValue ?? "infactible"}
+${n2.detail}` })
+            ] }, `n-${n2.id}`);
+          })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$2.legend, children: LEGEND.map((l2) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: styles$2.legendItem, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: styles$2.legendDot, style: { background: l2.color } }),
+      l2.label
+    ] }, l2.key)) }),
+    truncated && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: styles$2.maxNote, children: [
+      "Mostrando los primeros ",
+      MAX_DISPLAY,
+      " de ",
+      nodes.length,
+      " nodos explorados."
+    ] })
+  ] });
+};
 const card$1 = "_card_1o3qf_1";
 const fadeUp$1 = "_fadeUp_1o3qf_1";
 const resultHeader$1 = "_resultHeader_1o3qf_25";
@@ -8194,6 +8390,20 @@ function NodeRow$1({ node, isOpen, onToggle }) {
     ] })
   ] });
 }
+function toBinaryTree(nodes) {
+  return nodes.map((n2) => {
+    const fixedStr = Object.entries(n2.fixed_vars).map(([k2, v2]) => `${k2}=${v2}`).join(", ");
+    return {
+      id: n2.node_id,
+      parentId: n2.parent_id,
+      depth: n2.depth,
+      status: n2.status,
+      lpValue: n2.lp_value,
+      detail: fixedStr || "raíz",
+      edgeLabel: n2.edge_label
+    };
+  });
+}
 const BinarySolutionDisplay = ({
   nVars,
   result,
@@ -8244,6 +8454,8 @@ const BinarySolutionDisplay = ({
     !isOptimal && /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: result.message }),
     result.nodes.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$1.treeSection, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$1.sectionLabel, children: "Árbol de Branch & Bound" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(BBTreeGraph, { nodes: toBinaryTree(result.nodes) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles$1.sectionLabel, style: { marginTop: "1.2rem" }, children: "Detalle de nodos" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$1.nodeList, children: result.nodes.map((node) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         NodeRow$1,
         {
@@ -8556,6 +8768,22 @@ function NodeRow({ node, open, onToggle }) {
     ] })
   ] });
 }
+function toIntegerTree(nodes) {
+  return nodes.map((n2) => {
+    const lbStr = Object.entries(n2.lower_bounds).map(([k2, v2]) => `${k2}≥${v2}`).join(",");
+    const ubStr = Object.entries(n2.upper_bounds).map(([k2, v2]) => `${k2}≤${v2}`).join(",");
+    const parts = [lbStr, ubStr].filter(Boolean);
+    return {
+      id: n2.node_id,
+      parentId: n2.parent_id,
+      depth: n2.depth,
+      status: n2.status,
+      lpValue: n2.lp_value,
+      detail: parts.length ? parts.join(" ") : "raíz",
+      edgeLabel: n2.edge_label
+    };
+  });
+}
 const IntegerSolutionDisplay = ({
   nVars,
   result,
@@ -8603,6 +8831,8 @@ const IntegerSolutionDisplay = ({
     !isOptimal && result.status !== "limit" && /* @__PURE__ */ jsxRuntimeExports.jsx(ErrorBanner, { message: result.message }),
     result.nodes.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles.treeSection, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.sectionLabel, children: "Árbol de Branch & Bound" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(BBTreeGraph, { nodes: toIntegerTree(result.nodes) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: styles.sectionLabel, style: { marginTop: "1.2rem" }, children: "Detalle de nodos" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles.nodeList, children: result.nodes.map((node) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         NodeRow,
         {

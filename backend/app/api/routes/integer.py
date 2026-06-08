@@ -45,6 +45,7 @@ def solve_integer(payload: IntegerRequest) -> IntegerResponse:
                 status=n.status,
                 branched_on=n.branched_on,
                 branch_direction=n.branch_direction,
+                edge_label=n.edge_label,
             )
             for n in result.nodes
         ],
