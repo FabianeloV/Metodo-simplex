@@ -14,6 +14,7 @@ const DEFAULT_OBJ: Record<VariableCount, number[]> = {
   2: [3, 5],
   3: [3, 2, 5],
   4: [2, 3, 1, 4],
+  5: [2, 3, 1, 4, 2],
 };
 
 interface SolverPageProps {

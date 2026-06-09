@@ -11,6 +11,7 @@ const TABS: { label: string; value: VariableCount }[] = [
   { label: "2 Variables", value: 2 },
   { label: "3 Variables", value: 3 },
   { label: "4 Variables", value: 4 },
+  { label: "5 Variables", value: 5 },
 ];
 
 export const TabGroup: React.FC<TabGroupProps> = ({ value, onChange }) => (

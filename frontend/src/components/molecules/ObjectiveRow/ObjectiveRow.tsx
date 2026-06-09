@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "../../atoms/Input";
 import styles from "./ObjectiveRow.module.css";
 
-const SUB: Record<number, string> = { 0: "₁", 1: "₂", 2: "₃", 3: "₄" };
+const SUB: Record<number, string> = { 0: "₁", 1: "₂", 2: "₃", 3: "₄", 4: "₅" };
 
 interface ObjectiveRowProps {
   nVars: number;

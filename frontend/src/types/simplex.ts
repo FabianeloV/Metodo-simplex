@@ -2,7 +2,7 @@
 
 export type Goal = "max" | "min";
 export type Inequality = "<=" | ">=" | "=";
-export type VariableCount = 2 | 3 | 4;
+export type VariableCount = 2 | 3 | 4 | 5;
 export type SolveStatus = "optimal" | "unbounded" | "infeasible";
 
 export interface Constraint {

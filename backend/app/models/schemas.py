@@ -3,20 +3,20 @@ from typing import Literal
 
 
 class Constraint(BaseModel):
-    coefficients: list[float] = Field(..., min_length=2, max_length=4)
+    coefficients: list[float] = Field(..., min_length=2, max_length=5)
     inequality: Literal["<=", ">=", "="]
     rhs: float
 
     @field_validator("coefficients")
     @classmethod
     def check_length(cls, v: list[float]) -> list[float]:
-        if not (2 <= len(v) <= 4):
-            raise ValueError("Los coeficientes deben estar entre 2 y 4 elementos")
+        if not (2 <= len(v) <= 5):
+            raise ValueError("Los coeficientes deben estar entre 2 y 5 elementos")
         return v
 
 
 class SimplexRequest(BaseModel):
-    objective: list[float] = Field(..., min_length=2, max_length=4)
+    objective: list[float] = Field(..., min_length=2, max_length=5)
     goal: Literal["max", "min"]
     constraints: list[Constraint] = Field(..., min_length=1)
 
