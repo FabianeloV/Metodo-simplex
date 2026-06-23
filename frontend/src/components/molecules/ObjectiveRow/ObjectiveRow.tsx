@@ -12,7 +12,7 @@ interface ObjectiveRowProps {
 
 export const ObjectiveRow: React.FC<ObjectiveRowProps> = ({
   nVars,
-  coefficients,
+  coefficients = [],
   onChange,
 }) => (
   <div className={styles.row}>

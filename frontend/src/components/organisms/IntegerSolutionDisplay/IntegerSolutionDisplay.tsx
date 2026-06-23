@@ -16,7 +16,7 @@ interface Props {
   error: string | null;
 }
 
-const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄"];
+const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄", "x₅"];
 
 function fmt(n: number): string {
   const r = Math.round(n * 10000) / 10000;

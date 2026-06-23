@@ -21,7 +21,7 @@ function fmtNum(n: number): string {
   return Number.isInteger(r) ? String(r) : r.toFixed(4).replace(/\.?0+$/, "");
 }
 
-const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄"];
+const VAR_LABELS = ["x₁", "x₂", "x₃", "x₄", "x₅"];
 
 const statusBadge = (status: string) => {
   if (status === "optimal")    return <Badge color="green">✓ Óptimo</Badge>;

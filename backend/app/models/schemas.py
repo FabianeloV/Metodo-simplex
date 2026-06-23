@@ -74,7 +74,7 @@ class GraphicalData(BaseModel):
 # ─── Binary Integer Programming ──────────────────────────────────────────────
 
 class BinaryRequest(BaseModel):
-    objective: list[float] = Field(..., min_length=2, max_length=4)
+    objective: list[float] = Field(..., min_length=2, max_length=5)
     goal: Literal["max", "min"]
     constraints: list[Constraint] = Field(..., min_length=1)
 
@@ -115,7 +115,7 @@ class BinaryResponse(BaseModel):
 # ─── Pure Integer Programming ────────────────────────────────────────────────
 
 class IntegerRequest(BaseModel):
-    objective: list[float] = Field(..., min_length=2, max_length=4)
+    objective: list[float] = Field(..., min_length=2, max_length=5)
     goal: Literal["max", "min"]
     constraints: list[Constraint] = Field(..., min_length=1)
 
