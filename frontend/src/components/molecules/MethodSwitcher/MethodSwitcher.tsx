@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MethodSwitcher.module.css";
 
-export type Method = "simplex" | "binary" | "integer";
+export type Method = "simplex" | "binary" | "integer" | "bisection";
 
 interface MethodSwitcherProps {
   value: Method;
@@ -9,9 +9,10 @@ interface MethodSwitcherProps {
 }
 
 const METHODS: { label: string; value: Method; icon: string }[] = [
-  { label: "Simplex",  value: "simplex",  icon: "Σ"  },
-  { label: "Binaria",  value: "binary",   icon: "01" },
-  { label: "Entera",   value: "integer",  icon: "IP" },
+  { label: "Simplex",   value: "simplex",   icon: "Σ"  },
+  { label: "Binaria",   value: "binary",    icon: "01" },
+  { label: "Entera",    value: "integer",   icon: "IP" },
+  { label: "Bisección", value: "bisection", icon: "ƒ"  },
 ];
 
 export const MethodSwitcher: React.FC<MethodSwitcherProps> = ({ value, onChange }) => (

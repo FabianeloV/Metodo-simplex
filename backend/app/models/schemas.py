@@ -155,6 +155,47 @@ class IntegerResponse(BaseModel):
     message: str
 
 
+# ─── Optimización no restringida de una variable (Bisección) ─────────────────
+
+class BisectionRequest(BaseModel):
+    coefficients: list[float] = Field(..., min_length=1, max_length=11)
+    goal: Literal["max", "min"]
+    a: float
+    b: float
+    tolerance: float = Field(default=1e-6, gt=0, le=1.0)
+    max_iterations: int = Field(default=100, ge=1, le=500)
+
+    @field_validator("coefficients")
+    @classmethod
+    def not_all_zero(cls, v: list[float]) -> list[float]:
+        if all(abs(c) < 1e-12 for c in v):
+            raise ValueError("La función no puede ser idénticamente cero")
+        return v
+
+
+class BisectionIteration(BaseModel):
+    iteration: int
+    a: float
+    b: float
+    midpoint: float
+    f_mid: float
+    df_mid: float
+    interval_width: float
+
+
+class BisectionResponse(BaseModel):
+    status: Literal["optimal"]
+    optimal_x: float | None = None
+    optimal_value: float | None = None
+    nature: str | None = None
+    goal_satisfied: bool
+    iterations_count: int
+    iterations: list[BisectionIteration]
+    function_str: str
+    derivative_str: str
+    message: str
+
+
 # ─── Simplex iteration snapshots ─────────────────────────────────────────────
 
 class IterationTableau(BaseModel):
