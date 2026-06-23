@@ -9,10 +9,10 @@ interface MethodSwitcherProps {
 }
 
 const METHODS: { label: string; value: Method; icon: string }[] = [
-  { label: "Simplex",   value: "simplex",   icon: "Σ"  },
-  { label: "Binaria",   value: "binary",    icon: "01" },
-  { label: "Entera",    value: "integer",   icon: "IP" },
-  { label: "Bisección", value: "bisection", icon: "ƒ"  },
+  { label: "Simplex",                        value: "simplex",   icon: "Σ"  },
+  { label: "Binaria",                        value: "binary",    icon: "01" },
+  { label: "Entera",                         value: "integer",   icon: "IP" },
+  { label: "No restringida de una variable", value: "bisection", icon: "ƒ"  },
 ];
 
 export const MethodSwitcher: React.FC<MethodSwitcherProps> = ({ value, onChange }) => (

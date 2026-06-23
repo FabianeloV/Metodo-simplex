@@ -3,9 +3,17 @@ import { AppHeader }                from "../../organisms/AppHeader";
 import { BisectionForm }            from "../../organisms/BisectionForm";
 import { BisectionSolutionDisplay } from "../../organisms/BisectionSolutionDisplay";
 import { SolverTemplate }           from "../../templates/SolverTemplate";
+import { SubTabGroup }              from "../../molecules/SubTabGroup";
+import type { SubTab }              from "../../molecules/SubTabGroup";
 import { useBisection }             from "../../../hooks/useBisection";
 import type { Method }              from "../../molecules/MethodSwitcher";
 import type { Goal }                from "../../../types/bisection";
+
+// Submétodos de optimización no restringida de una variable.
+// Añadir aquí nuevos métodos (p. ej. Newton, sección áurea) creará otra sub-pestaña.
+const SUB_TABS: SubTab[] = [
+  { label: "Método de Bisección", value: "biseccion" },
+];
 
 // Polinomio por defecto: f(x) = x² - 4x + 3  (mínimo en x = 2)
 const DEFAULT_DEGREE = 2;
@@ -40,6 +48,7 @@ export const BisectionPage: React.FC<BisectionPageProps> = ({ onMethodChange }) 
   const [b, setB]                       = useState<number>(5);
   const [tolerance, setTolerance]       = useState<number>(1e-6);
   const [maxIterations, setMaxIter]     = useState<number>(100);
+  const [subMethod, setSubMethod]       = useState<string>("biseccion");
 
   const { result, loading, error, solve, reset } = useBisection();
 
@@ -71,6 +80,14 @@ export const BisectionPage: React.FC<BisectionPageProps> = ({ onMethodChange }) 
   return (
     <SolverTemplate
       header={<AppHeader method="bisection" onMethodChange={onMethodChange} />}
+      subNav={
+        <SubTabGroup
+          label="Método"
+          tabs={SUB_TABS}
+          value={subMethod}
+          onChange={setSubMethod}
+        />
+      }
       objective={
         <BisectionForm
           degree={degree}

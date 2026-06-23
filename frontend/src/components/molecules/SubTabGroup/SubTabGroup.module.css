@@ -1,0 +1,63 @@
+.bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: .75rem 1rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.bar::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563EB, #7C3AED);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+
+.barLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #7C3AED;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  flex-shrink: 0;
+}
+
+.tabs {
+  display: flex;
+  background: #F3F4F6;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 5px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #6B7280;
+  transition: all .15s;
+  font-family: inherit;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+.tab:hover { color: #374151; }
+
+.active {
+  background: var(--grad-primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(124,58,237,.35);
+}

@@ -1,5 +1,6 @@
 .switcher {
   display: flex;
+  flex-wrap: wrap;
   background: #F3F4F6;
   border: 1.5px solid #E5E7EB;
   border-radius: 10px;
