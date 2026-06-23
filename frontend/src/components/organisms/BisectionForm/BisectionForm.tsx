@@ -37,17 +37,23 @@ interface BisectionFormProps {
   goal: Goal;
   a: number;
   b: number;
-  tolerance: number;
-  maxIterations: number;
   loading: boolean;
   onDegreeChange: (d: number) => void;
   onCoefficientChange: (idx: number, value: number) => void;
   onGoalChange: (g: Goal) => void;
   onAChange: (v: number) => void;
   onBChange: (v: number) => void;
-  onToleranceChange: (v: number) => void;
-  onMaxIterationsChange: (v: number) => void;
   onSolve: () => void;
+  // Configurable: el mismo formulario sirve para bisección y para el método gráfico
+  title?: string;
+  description?: string;
+  solveLabel?: string;
+  // Parámetros propios de la bisección (ocultos en el método gráfico)
+  showIterationParams?: boolean;
+  tolerance?: number;
+  maxIterations?: number;
+  onToleranceChange?: (v: number) => void;
+  onMaxIterationsChange?: (v: number) => void;
 }
 
 export const BisectionForm: React.FC<BisectionFormProps> = ({
@@ -56,17 +62,21 @@ export const BisectionForm: React.FC<BisectionFormProps> = ({
   goal,
   a,
   b,
-  tolerance,
-  maxIterations,
   loading,
   onDegreeChange,
   onCoefficientChange,
   onGoalChange,
   onAChange,
   onBChange,
+  onSolve,
+  title = "Función Objetivo f(x)",
+  description = "Defina un polinomio de una variable de cualquier grado. La bisección buscará el punto donde f′(x) = 0 dentro del intervalo.",
+  solveLabel = "Resolver por Bisección",
+  showIterationParams = true,
+  tolerance = 1e-6,
+  maxIterations = 100,
   onToleranceChange,
   onMaxIterationsChange,
-  onSolve,
 }) => {
   const intervalValid = a < b;
 
@@ -75,12 +85,9 @@ export const BisectionForm: React.FC<BisectionFormProps> = ({
       <div className={styles.sectionHeader}>
         <div>
           <h2 id="bisec-heading" className={styles.cardTitle}>
-            Función Objetivo f(x)
+            {title}
           </h2>
-          <p className={styles.cardSub}>
-            Defina un polinomio de una variable de cualquier grado. La bisección
-            buscará el punto donde f′(x) = 0 dentro del intervalo.
-          </p>
+          <p className={styles.cardSub}>{description}</p>
         </div>
         <div className={styles.degreeBlock}>
           <Label htmlFor="degree-select">Grado</Label>
@@ -157,32 +164,36 @@ export const BisectionForm: React.FC<BisectionFormProps> = ({
           />
         </div>
 
-        <div className={styles.field}>
-          <Label htmlFor="tol-input">Tolerancia</Label>
-          <Input
-            id="tol-input"
-            type="number"
-            step="any"
-            min={0}
-            value={Number.isNaN(tolerance) ? "" : tolerance}
-            onChange={(e) => onToleranceChange(Number(e.target.value))}
-            className={styles.numInput}
-          />
-        </div>
+        {showIterationParams && (
+          <>
+            <div className={styles.field}>
+              <Label htmlFor="tol-input">Tolerancia</Label>
+              <Input
+                id="tol-input"
+                type="number"
+                step="any"
+                min={0}
+                value={Number.isNaN(tolerance) ? "" : tolerance}
+                onChange={(e) => onToleranceChange?.(Number(e.target.value))}
+                className={styles.numInput}
+              />
+            </div>
 
-        <div className={styles.field}>
-          <Label htmlFor="iter-input">Máx. iteraciones</Label>
-          <Input
-            id="iter-input"
-            type="number"
-            step="1"
-            min={1}
-            max={500}
-            value={Number.isNaN(maxIterations) ? "" : maxIterations}
-            onChange={(e) => onMaxIterationsChange(Number(e.target.value))}
-            className={styles.numInput}
-          />
-        </div>
+            <div className={styles.field}>
+              <Label htmlFor="iter-input">Máx. iteraciones</Label>
+              <Input
+                id="iter-input"
+                type="number"
+                step="1"
+                min={1}
+                max={500}
+                value={Number.isNaN(maxIterations) ? "" : maxIterations}
+                onChange={(e) => onMaxIterationsChange?.(Number(e.target.value))}
+                className={styles.numInput}
+              />
+            </div>
+          </>
+        )}
       </div>
 
       {!intervalValid && (
@@ -198,7 +209,7 @@ export const BisectionForm: React.FC<BisectionFormProps> = ({
           onClick={onSolve}
           icon={<PlayIcon />}
         >
-          Resolver por Bisección
+          {solveLabel}
         </Button>
       </div>
     </section>
