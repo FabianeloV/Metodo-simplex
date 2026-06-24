@@ -16,7 +16,8 @@ const META: Record<Method, { title: string; sub: string; logo: string }> = {
   simplex:   { title: "Método Simplex",  sub: "Solver de Programación Lineal",                    logo: "Σ"  },
   binary:    { title: "Entera Binaria",  sub: "Branch & Bound — Variables 0/1",                   logo: "01" },
   integer:   { title: "Entera Pura",     sub: "Branch & Bound — Variables enteras ≥ 0",           logo: "IP" },
-  bisection: { title: "No Restringida de una Variable", sub: "Optimización sin restricciones de una sola variable", logo: "ƒ"  },
+  bisection: { title: "No Restringida de una Variable",   sub: "Optimización sin restricciones de una sola variable",     logo: "ƒ" },
+  multivar:  { title: "No Restringida de varias Variables", sub: "Optimización sin restricciones — múltiples variables", logo: "∇" },
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({

@@ -237,6 +237,47 @@ class NewtonResponse(BaseModel):
     message: str
 
 
+# ─── Optimización no restringida de varias variables (Método del Gradiente) ──
+
+class GradientRequest(BaseModel):
+    expression: str
+    variables: list[str] = Field(..., min_length=2, max_length=3)
+    x0: list[float] = Field(..., min_length=2, max_length=3)
+    goal: Literal["max", "min"]
+    step_size: float = Field(default=0.1, gt=0)
+    tolerance: float = Field(default=1e-6, gt=0, le=1.0)
+    max_iterations: int = Field(default=100, ge=1, le=500)
+
+    @field_validator("x0")
+    @classmethod
+    def x0_matches_vars(cls, v: list[float], info) -> list[float]:
+        if "variables" in (info.data or {}):
+            if len(v) != len(info.data["variables"]):
+                raise ValueError("x0 debe tener el mismo número de elementos que variables")
+        return v
+
+
+class GradientIteration(BaseModel):
+    iteration: int
+    point: list[float]
+    gradient: list[float]
+    gradient_norm: float
+    f_value: float
+
+
+class GradientResponse(BaseModel):
+    status: Literal["optimal", "no_convergence"]
+    optimal_point: list[float] | None = None
+    optimal_value: float | None = None
+    gradient_norm: float | None = None
+    iterations_count: int
+    iterations: list[GradientIteration]
+    function_str: str
+    gradient_str: list[str]
+    variables: list[str]
+    message: str
+
+
 # ─── Simplex iteration snapshots ─────────────────────────────────────────────
 
 class IterationTableau(BaseModel):
