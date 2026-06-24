@@ -196,6 +196,47 @@ class BisectionResponse(BaseModel):
     message: str
 
 
+# ─── Optimización no restringida de una variable (Newton-Raphson) ────────────
+
+class NewtonRequest(BaseModel):
+    coefficients: list[float] = Field(..., min_length=1, max_length=11)
+    goal: Literal["max", "min"]
+    x0: float
+    tolerance: float = Field(default=1e-6, gt=0, le=1.0)
+    max_iterations: int = Field(default=100, ge=1, le=500)
+
+    @field_validator("coefficients")
+    @classmethod
+    def not_all_zero(cls, v: list[float]) -> list[float]:
+        if all(abs(c) < 1e-12 for c in v):
+            raise ValueError("La función no puede ser idénticamente cero")
+        return v
+
+
+class NewtonIteration(BaseModel):
+    iteration: int
+    x_n: float
+    f_xn: float
+    df_xn: float
+    d2f_xn: float
+    x_next: float
+    step: float
+
+
+class NewtonResponse(BaseModel):
+    status: Literal["optimal", "no_convergence"]
+    optimal_x: float | None = None
+    optimal_value: float | None = None
+    nature: str | None = None
+    goal_satisfied: bool
+    iterations_count: int
+    iterations: list[NewtonIteration]
+    function_str: str
+    derivative_str: str
+    second_derivative_str: str
+    message: str
+
+
 # ─── Simplex iteration snapshots ─────────────────────────────────────────────
 
 class IterationTableau(BaseModel):
