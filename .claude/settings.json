@@ -11,7 +11,8 @@
       "Bash(python3.13 -c \"import numpy; print\\('numpy ok'\\)\")",
       "Bash(python3.13 -m pip install numpy --quiet)",
       "Bash(python3.13 -c ' *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(npx vite *)"
     ]
   }
 }

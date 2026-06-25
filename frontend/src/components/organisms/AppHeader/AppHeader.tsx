@@ -29,20 +29,21 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   const meta = META[method];
   return (
     <header className={styles.header}>
-      <div className={styles.brand}>
-        <div className={styles.logoBox} aria-hidden="true">{meta.logo}</div>
-        <div>
-          <h1 className={styles.title}>{meta.title}</h1>
-          <p className={styles.sub}>{meta.sub}</p>
+      <div className={styles.topRow}>
+        <div className={styles.brand}>
+          <div className={styles.logoBox} aria-hidden="true">{meta.logo}</div>
+          <div>
+            <h1 className={styles.title}>{meta.title}</h1>
+            <p className={styles.sub}>{meta.sub}</p>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.controls}>
-        <MethodSwitcher value={method} onChange={onMethodChange} />
         {nVars !== undefined && onVarsChange !== undefined && (
           <TabGroup value={nVars} onChange={onVarsChange} />
         )}
       </div>
+
+      <MethodSwitcher value={method} onChange={onMethodChange} />
     </header>
   );
 };

@@ -1,10 +1,8 @@
 .header {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 14px;
 
   background: #ffffff;
   border: 1px solid rgba(229,231,235,.7);
@@ -50,4 +48,10 @@
 
 .sub { font-size: 11px; color: #9CA3AF; margin: 2px 0 0; }
 
-.controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
