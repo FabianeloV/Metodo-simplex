@@ -13,7 +13,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelect }) => (
       <header className={styles.hero}>
         <div className={styles.logoBox} aria-hidden="true">Σ</div>
         <h1 className={styles.title}>Método Simplex</h1>
-        <p className={styles.sub}>Elegí un módulo de optimización para comenzar</p>
+        <p className={styles.sub}>Elige un módulo de optimización para comenzar</p>
       </header>
 
       <div className={styles.grid}>
