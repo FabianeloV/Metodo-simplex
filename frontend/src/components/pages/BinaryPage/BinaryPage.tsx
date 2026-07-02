@@ -6,7 +6,6 @@ import { BinarySolutionDisplay } from "../../organisms/BinarySolutionDisplay";
 import { SolverTemplate }      from "../../templates/SolverTemplate";
 import { useConstraints }      from "../../../hooks/useConstraints";
 import { useBinary }           from "../../../hooks/useBinary";
-import type { Method }         from "../../molecules/MethodSwitcher";
 import type { Goal, VariableCount } from "../../../types/simplex";
 
 const DEFAULT_OBJ: Record<VariableCount, number[]> = {
@@ -17,10 +16,10 @@ const DEFAULT_OBJ: Record<VariableCount, number[]> = {
 };
 
 interface BinaryPageProps {
-  onMethodChange: (m: Method) => void;
+  onHome: () => void;
 }
 
-export const BinaryPage: React.FC<BinaryPageProps> = ({ onMethodChange }) => {
+export const BinaryPage: React.FC<BinaryPageProps> = ({ onHome }) => {
   const [nVars, setNVars]         = useState<VariableCount>(3);
   const [goal, setGoal]           = useState<Goal>("max");
   const [objCoeffs, setObjCoeffs] = useState<number[]>(DEFAULT_OBJ[3]);
@@ -54,7 +53,7 @@ export const BinaryPage: React.FC<BinaryPageProps> = ({ onMethodChange }) => {
       header={
         <AppHeader
           method="binary"
-          onMethodChange={onMethodChange}
+          onHome={onHome}
           nVars={nVars}
           onVarsChange={handleVarsChange}
         />

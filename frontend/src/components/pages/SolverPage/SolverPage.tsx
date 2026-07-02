@@ -6,7 +6,6 @@ import { SolutionDisplay }  from "../../organisms/SolutionDisplay";
 import { SolverTemplate }   from "../../templates/SolverTemplate";
 import { useConstraints }   from "../../../hooks/useConstraints";
 import { useSimplex }       from "../../../hooks/useSimplex";
-import type { Method }      from "../../molecules/MethodSwitcher";
 import type { Goal, VariableCount } from "../../../types/simplex";
 
 // ─── Default objective coefficients per variable count ───────────────────────
@@ -18,10 +17,10 @@ const DEFAULT_OBJ: Record<VariableCount, number[]> = {
 };
 
 interface SolverPageProps {
-  onMethodChange: (m: Method) => void;
+  onHome: () => void;
 }
 
-export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
+export const SolverPage: React.FC<SolverPageProps> = ({ onHome }) => {
   const [nVars, setNVars]         = useState<VariableCount>(3);
   const [goal, setGoal]           = useState<Goal>("max");
   const [objCoeffs, setObjCoeffs] = useState<number[]>(DEFAULT_OBJ[3]);
@@ -58,7 +57,7 @@ export const SolverPage: React.FC<SolverPageProps> = ({ onMethodChange }) => {
       header={
         <AppHeader
           method="simplex"
-          onMethodChange={onMethodChange}
+          onHome={onHome}
           nVars={nVars}
           onVarsChange={handleVarsChange}
         />

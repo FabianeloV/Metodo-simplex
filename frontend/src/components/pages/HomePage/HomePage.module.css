@@ -1,0 +1,95 @@
+.page {
+  min-height: 100vh;
+  padding: 3.5rem 1rem 5rem;
+  background:
+    radial-gradient(ellipse at 15% 40%,  rgba(37, 99,235,.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 15%,  rgba(124,58,237,.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 85%,  rgba(6, 182,212,.10) 0%, transparent 45%),
+    linear-gradient(145deg, #0D1117 0%, #161B2E 60%, #12101F 100%);
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  margin-bottom: 2.75rem;
+}
+
+.logoBox {
+  width: 56px; height: 56px;
+  background: var(--grad-primary);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 22px; font-family: 'DM Mono', monospace;
+  font-weight: 700; letter-spacing: -.04em;
+  box-shadow: 0 6px 20px rgba(124,58,237,.4);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 30px; font-weight: 700; margin: 0;
+  color: #F9FAFB;
+}
+
+.sub { font-size: 14px; color: #9CA3AF; margin: 4px 0 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 8px;
+  padding: 1.5rem;
+  border: 1px solid rgba(229,231,235,.7);
+  border-radius: var(--radius-card);
+  background: #ffffff;
+  box-shadow: var(--shadow-card-lg);
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.35), 0 2px 10px rgba(0,0,0,.2);
+}
+
+.cardIcon {
+  width: 36px; height: 36px;
+  background: var(--grad-primary);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 14px; font-family: 'DM Mono', monospace;
+  font-weight: 700; letter-spacing: -.04em;
+  box-shadow: 0 3px 10px rgba(124,58,237,.35);
+}
+
+.cardTitle { font-size: 15px; font-weight: 700; margin: 0; color: #111827; }
+
+.cardSub { font-size: 11px; color: #6B7280; margin: -4px 0 0; font-weight: 600; }
+
+.cardDesc { font-size: 12.5px; color: #4B5563; margin: 0; line-height: 1.5; flex: 1; }
+
+.cardCta {
+  font-size: 12px; font-weight: 700;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 4px;
+}

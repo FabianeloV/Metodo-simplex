@@ -6,7 +6,6 @@ import { IntegerSolutionDisplay }  from "../../organisms/IntegerSolutionDisplay"
 import { SolverTemplate }          from "../../templates/SolverTemplate";
 import { useConstraints }          from "../../../hooks/useConstraints";
 import { useInteger }              from "../../../hooks/useInteger";
-import type { Method }             from "../../molecules/MethodSwitcher";
 import type { Goal, VariableCount } from "../../../types/simplex";
 
 const DEFAULT_OBJ: Record<VariableCount, number[]> = {
@@ -17,10 +16,10 @@ const DEFAULT_OBJ: Record<VariableCount, number[]> = {
 };
 
 interface IntegerPageProps {
-  onMethodChange: (m: Method) => void;
+  onHome: () => void;
 }
 
-export const IntegerPage: React.FC<IntegerPageProps> = ({ onMethodChange }) => {
+export const IntegerPage: React.FC<IntegerPageProps> = ({ onHome }) => {
   const [nVars, setNVars]         = useState<VariableCount>(3);
   const [goal, setGoal]           = useState<Goal>("max");
   const [objCoeffs, setObjCoeffs] = useState<number[]>(DEFAULT_OBJ[3]);
@@ -50,7 +49,7 @@ export const IntegerPage: React.FC<IntegerPageProps> = ({ onMethodChange }) => {
       header={
         <AppHeader
           method="integer"
-          onMethodChange={onMethodChange}
+          onHome={onHome}
           nVars={nVars}
           onVarsChange={handleVarsChange}
         />

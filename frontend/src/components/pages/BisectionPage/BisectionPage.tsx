@@ -12,7 +12,6 @@ import { useBisection }                from "../../../hooks/useBisection";
 import { useNewton }                   from "../../../hooks/useNewton";
 import { solveGraphical }              from "../../../utils/graphical";
 import type { GraphicalResult }        from "../../../utils/graphical";
-import type { Method }                 from "../../molecules/MethodSwitcher";
 import type { Goal }                   from "../../../types/bisection";
 
 // Submétodos de optimización no restringida de una variable.
@@ -42,10 +41,10 @@ function resizeCoeffs(
 }
 
 interface BisectionPageProps {
-  onMethodChange: (m: Method) => void;
+  onHome: () => void;
 }
 
-export const BisectionPage: React.FC<BisectionPageProps> = ({ onMethodChange }) => {
+export const BisectionPage: React.FC<BisectionPageProps> = ({ onHome }) => {
   const [degree, setDegree]             = useState<number>(DEFAULT_DEGREE);
   const [coefficients, setCoefficients] = useState<number[]>(DEFAULT_COEFFS);
   const [goal, setGoal]                 = useState<Goal>("min");
@@ -205,7 +204,7 @@ export const BisectionPage: React.FC<BisectionPageProps> = ({ onMethodChange }) 
 
   return (
     <SolverTemplate
-      header={<AppHeader method="bisection" onMethodChange={onMethodChange} />}
+      header={<AppHeader method="bisection" onHome={onHome} />}
       subNav={
         <SubTabGroup
           label="Método"

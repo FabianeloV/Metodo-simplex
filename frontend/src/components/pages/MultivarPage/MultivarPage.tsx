@@ -7,7 +7,6 @@ import { SubTabGroup }              from "../../molecules/SubTabGroup";
 import type { SubTab }              from "../../molecules/SubTabGroup";
 import { useGradient }              from "../../../hooks/useGradient";
 import type { Goal }                from "../../../types/gradient";
-import type { Method }              from "../../molecules/MethodSwitcher";
 
 const SUB_TABS: SubTab[] = [
   { label: "Método del Gradiente", value: "gradiente" },
@@ -23,10 +22,10 @@ const DEFAULTS_BY_VARS: Record<number, { expression: string; x0: number[] }> = {
 };
 
 interface MultivarPageProps {
-  onMethodChange: (m: Method) => void;
+  onHome: () => void;
 }
 
-export const MultivarPage: React.FC<MultivarPageProps> = ({ onMethodChange }) => {
+export const MultivarPage: React.FC<MultivarPageProps> = ({ onHome }) => {
   const [subMethod, setSubMethod]       = useState<string>("gradiente");
   const [varCount, setVarCount]         = useState<number>(DEFAULT_VAR_COUNT);
   const [expression, setExpression]     = useState<string>(DEFAULT_EXPRESSION);
@@ -91,7 +90,7 @@ export const MultivarPage: React.FC<MultivarPageProps> = ({ onMethodChange }) =>
 
   return (
     <SolverTemplate
-      header={<AppHeader method="multivar" onMethodChange={onMethodChange} />}
+      header={<AppHeader method="multivar" onHome={onHome} />}
       subNav={
         <SubTabGroup
           label="Método"
