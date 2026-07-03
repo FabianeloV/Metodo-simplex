@@ -137,6 +137,7 @@ function toIntegerTree(nodes: IntegerNode[]): TreeNodeData[] {
       lpValue: n.lp_value,
       detail: parts.length ? parts.join(" ") : "raíz",
       edgeLabel: n.edge_label,
+      branchedOn: n.branched_on,
     };
   });
 }

@@ -117,6 +117,7 @@ function toBinaryTree(nodes: BBNode[]): TreeNodeData[] {
       lpValue: n.lp_value,
       detail: fixedStr || "raíz",
       edgeLabel: n.edge_label,
+      branchedOn: n.branched_on,
     };
   });
 }

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./BBTreeGraph.module.css";
 
 export interface TreeNodeData {
@@ -9,15 +9,20 @@ export interface TreeNodeData {
   lpValue: number | null;
   detail: string;
   edgeLabel: string | null;
+  branchedOn?: string | null;
 }
 
-const NODE_W = 82;
-const NODE_H = 52;
-const UNIT_W = 96;
-const LEVEL_H = 92;
+const NODE_W = 100;
+const NODE_H = 66;
+const UNIT_W = 116;
+const LEVEL_H = 108;
 const PAD_X = 24;
 const PAD_Y = 28;
-const MAX_DISPLAY = 120;
+const MAX_DISPLAY = 500;
+const FIT_WIDTH = 920;
+const ZOOM_MIN = 0.15;
+const ZOOM_MAX = 1.5;
+const ZOOM_STEP = 0.15;
 
 const STATUS_STYLE: Record<string, { fill: string; stroke: string }> = {
   branched:          { fill: "#4338CA", stroke: "#3730A3" },
@@ -37,6 +42,10 @@ function fmtLp(v: number | null): string {
   if (v === null) return "infact.";
   const r = Math.round(v * 100) / 100;
   return Number.isInteger(r) ? `Z=${r}` : `Z=${r.toFixed(2)}`;
+}
+
+function truncate(text: string, max: number): string {
+  return text.length > max ? text.slice(0, max - 1) + "…" : text;
 }
 
 function useLayout(nodes: TreeNodeData[]) {
@@ -94,8 +103,8 @@ interface BBTreeGraphProps {
 }
 
 export const BBTreeGraph: React.FC<BBTreeGraphProps> = ({ nodes, title }) => {
-  const truncated = nodes.length > MAX_DISPLAY;
-  const visible = truncated ? nodes.slice(0, MAX_DISPLAY) : nodes;
+  const truncatedList = nodes.length > MAX_DISPLAY;
+  const visible = truncatedList ? nodes.slice(0, MAX_DISPLAY) : nodes;
 
   // Filter out nodes whose parent was truncated so we don't get orphan edges
   const visibleIds = new Set(visible.map(n => n.id));
@@ -103,18 +112,41 @@ export const BBTreeGraph: React.FC<BBTreeGraphProps> = ({ nodes, title }) => {
 
   const { positions, svgW, svgH } = useLayout(displayNodes);
 
+  const defaultZoom = svgW > FIT_WIDTH ? Math.max(ZOOM_MIN, Math.round((FIT_WIDTH / svgW) * 100) / 100) : 1;
+  const [zoom, setZoom] = useState(defaultZoom);
+
+  // Recompute the fit-to-width zoom whenever a new tree is loaded.
+  useEffect(() => {
+    setZoom(defaultZoom);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [svgW, svgH]);
+
   if (displayNodes.length === 0) return null;
 
   const nodeX = (id: number) => PAD_X + (positions.get(id)?.x ?? 0) * UNIT_W;
   const nodeY = (id: number) => PAD_Y + (positions.get(id)?.y ?? 0) * LEVEL_H;
 
+  const zoomIn = () => setZoom(z => Math.min(ZOOM_MAX, Math.round((z + ZOOM_STEP) * 100) / 100));
+  const zoomOut = () => setZoom(z => Math.max(ZOOM_MIN, Math.round((z - ZOOM_STEP) * 100) / 100));
+  const zoomReset = () => setZoom(1);
+
   return (
     <div>
-      {title && <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, fontFamily: "ui-monospace,monospace", margin: "0 0 6px 2px" }}>{title}</p>}
+      <div className={styles.toolbar}>
+        {title && <p className={styles.title}>{title}</p>}
+        <div className={styles.zoomControls}>
+          <span className={styles.nodeCount}>{displayNodes.length} nodos</span>
+          <button type="button" className={styles.zoomBtn} onClick={zoomOut} aria-label="Alejar">−</button>
+          <span className={styles.zoomLabel}>{Math.round(zoom * 100)}%</span>
+          <button type="button" className={styles.zoomBtn} onClick={zoomIn} aria-label="Acercar">+</button>
+          <button type="button" className={styles.zoomResetBtn} onClick={zoomReset}>100%</button>
+        </div>
+      </div>
       <div className={styles.container}>
         <svg
-          width={Math.max(svgW, 200)}
-          height={Math.max(svgH, 100)}
+          width={Math.max(svgW, 200) * zoom}
+          height={Math.max(svgH, 100) * zoom}
+          viewBox={`0 0 ${Math.max(svgW, 200)} ${Math.max(svgH, 100)}`}
           className={styles.svg}
           aria-label="Árbol Branch & Bound"
         >
@@ -135,9 +167,9 @@ export const BBTreeGraph: React.FC<BBTreeGraphProps> = ({ nodes, title }) => {
                   {n.edgeLabel && (
                     <>
                       <rect
-                        x={mx - 22}
+                        x={mx - 26}
                         y={my - 8}
-                        width={44}
+                        width={52}
                         height={14}
                         rx={3}
                         className={styles.edgeLabelBg}
@@ -158,6 +190,7 @@ export const BBTreeGraph: React.FC<BBTreeGraphProps> = ({ nodes, title }) => {
             const sy = nodeY(n.id);
             const centerX = nodeX(n.id);
             const style = STATUS_STYLE[n.status] ?? STATUS_STYLE.branched;
+            const showBranchedOn = n.status === "branched" && !!n.branchedOn;
             return (
               <g key={`n-${n.id}`} className={styles.nodeGroup}>
                 <rect
@@ -169,17 +202,24 @@ export const BBTreeGraph: React.FC<BBTreeGraphProps> = ({ nodes, title }) => {
                   stroke={style.stroke}
                   strokeWidth={1.5}
                 />
-                <text x={centerX} y={sy + 13} className={styles.nodeId}>
-                  N{n.id}
+                <text x={centerX} y={sy + 14} className={styles.nodeId}>
+                  N{n.id} · P{n.depth}
                 </text>
-                <text x={centerX} y={sy + 28} className={styles.nodeVal}>
+                <text x={centerX} y={sy + 30} className={styles.nodeVal}>
                   {fmtLp(n.lpValue)}
                 </text>
-                <text x={centerX} y={sy + 44} className={styles.nodeDetail}>
-                  {n.detail.length > 13 ? n.detail.slice(0, 12) + "…" : n.detail}
+                <text x={centerX} y={sy + 45} className={styles.nodeDetail}>
+                  {truncate(n.detail, 18)}
+                </text>
+                <text x={centerX} y={sy + 59} className={styles.nodeBranch}>
+                  {showBranchedOn ? `divide: ${n.branchedOn}` : ""}
                 </text>
                 <title>
-                  {`Nodo ${n.id} | ${n.status}\nLP: ${n.lpValue ?? "infactible"}\n${n.detail}`}
+                  {`Nodo ${n.id} (padre: ${n.parentId ?? "—"}) | Profundidad ${n.depth} | ${n.status}` +
+                    `\nLP: ${n.lpValue ?? "infactible"}` +
+                    (n.branchedOn ? `\nRamifica en: ${n.branchedOn}` : "") +
+                    (n.edgeLabel ? `\nCondición: ${n.edgeLabel}` : "") +
+                    `\n${n.detail}`}
                 </title>
               </g>
             );
@@ -196,7 +236,7 @@ export const BBTreeGraph: React.FC<BBTreeGraphProps> = ({ nodes, title }) => {
         ))}
       </div>
 
-      {truncated && (
+      {truncatedList && (
         <p className={styles.maxNote}>
           Mostrando los primeros {MAX_DISPLAY} de {nodes.length} nodos explorados.
         </p>
