@@ -22,18 +22,29 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   return (
     <header className={styles.header}>
       <div className={styles.topRow}>
-        <button
-          type="button"
-          className={styles.brand}
-          onClick={onHome}
-          aria-label="Volver al menú principal"
-        >
-          <div className={styles.logoBox} aria-hidden="true">{meta.icon}</div>
-          <div className={styles.brandText}>
-            <h1 className={styles.title}>{meta.title}</h1>
-            <p className={styles.sub}>{meta.sub}</p>
-          </div>
-        </button>
+        <div className={styles.brandGroup}>
+          <button
+            type="button"
+            className={styles.backButton}
+            onClick={onHome}
+            aria-label="Volver al menú principal"
+          >
+            <span aria-hidden="true">←</span> Menú principal
+          </button>
+
+          <button
+            type="button"
+            className={styles.brand}
+            onClick={onHome}
+            aria-label="Volver al menú principal"
+          >
+            <div className={styles.logoBox} aria-hidden="true">{meta.icon}</div>
+            <div className={styles.brandText}>
+              <h1 className={styles.title}>{meta.title}</h1>
+              <p className={styles.sub}>{meta.sub}</p>
+            </div>
+          </button>
+        </div>
 
         {nVars !== undefined && onVarsChange !== undefined && (
           <TabGroup value={nVars} onChange={onVarsChange} />

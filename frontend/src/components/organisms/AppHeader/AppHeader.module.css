@@ -23,6 +23,34 @@
   border-radius: var(--radius-card) var(--radius-card) 0 0;
 }
 
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(229,231,235,.9);
+  background: #F9FAFB;
+  color: #4B5563;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+  flex-shrink: 0;
+}
+.backButton:hover {
+  background: #F3F4F6;
+  color: #111827;
+  border-color: rgba(124,58,237,.35);
+}
+
 .brand {
   display: flex;
   align-items: center;

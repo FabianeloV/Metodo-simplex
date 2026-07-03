@@ -9,11 +9,29 @@ import type { Method }   from "./types/method";
 
 type Screen = Method | "home";
 
+const LAST_METHOD_KEY = "simplex-app:last-method";
+
+function readLastMethod(): Method {
+  const stored = localStorage.getItem(LAST_METHOD_KEY);
+  if (stored === "simplex" || stored === "binary" || stored === "integer" ||
+      stored === "bisection" || stored === "multivar") {
+    return stored;
+  }
+  return "simplex";
+}
+
 function App() {
-  const [screen, setScreen] = useState<Screen>("home");
+  const [screen, setScreen]         = useState<Screen>("home");
+  const [lastMethod, setLastMethod] = useState<Method>(readLastMethod);
   const goHome = () => setScreen("home");
 
-  if (screen === "home")      return <HomePage      onSelect={setScreen} />;
+  const handleSelect = (m: Method) => {
+    setScreen(m);
+    setLastMethod(m);
+    localStorage.setItem(LAST_METHOD_KEY, m);
+  };
+
+  if (screen === "home")      return <HomePage      lastMethod={lastMethod} onSelect={handleSelect} />;
   if (screen === "binary")    return <BinaryPage    onHome={goHome} />;
   if (screen === "integer")   return <IntegerPage   onHome={goHome} />;
   if (screen === "bisection") return <BisectionPage onHome={goHome} />;
