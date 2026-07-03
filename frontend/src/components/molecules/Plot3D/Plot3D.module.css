@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.plotBox {
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: .75rem;
+}
+
+.plotTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin: 0 0 6px 4px;
+}

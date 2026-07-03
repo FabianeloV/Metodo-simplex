@@ -4,24 +4,26 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev":     "vite",
-    "build":   "vite build",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview",
-    "lint":    "eslint src --ext ts,tsx --report-unused-disable-directives"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives"
   },
   "dependencies": {
-    "react":     "^18.3.1",
-    "react-dom": "^18.3.1"
+    "plotly.js-dist-min": "^3.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-plotly.js": "^4.0.0"
   },
   "devDependencies": {
-    "@types/react":            "^18.3.3",
-    "@types/react-dom":        "^18.3.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser":        "^7.0.0",
-    "@vitejs/plugin-react":    "^4.3.1",
-    "eslint":                  "^8.57.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "typescript":              "^5.5.3",
-    "vite":                    "^5.4.1"
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
   }
 }

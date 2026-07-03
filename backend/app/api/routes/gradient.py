@@ -3,8 +3,14 @@ from app.models.schemas import (
     GradientRequest,
     GradientResponse,
     GradientIteration as GradientIterationSchema,
+    GraphicalMultivarRequest,
+    GraphicalMultivarResponse,
+    CriticalPointSchema,
+    SurfaceData,
+    VolumeData,
 )
 from app.core.gradient_engine import GradientEngine
+from app.core.graphical_multivar_engine import GraphicalMultivarEngine
 
 router = APIRouter(prefix="/gradient", tags=["gradient"])
 
@@ -53,6 +59,44 @@ def solve_gradient(payload: GradientRequest) -> GradientResponse:
         function_str=result.function_str,
         gradient_str=result.gradient_str,
         variables=result.variables,
+        message=result.message,
+    )
+
+
+@router.post(
+    "/graphical",
+    response_model=GraphicalMultivarResponse,
+    summary="Método gráfico para 2-3 variables",
+)
+def solve_graphical_multivar(payload: GraphicalMultivarRequest) -> GraphicalMultivarResponse:
+    """
+    Encuentra y clasifica los puntos críticos de f mediante Newton multivariable
+    desde múltiples arranques, y arma los datos de grilla (2 variables) o
+    volumen (3 variables) para graficar con Plotly en el frontend.
+    """
+    try:
+        engine = GraphicalMultivarEngine(
+            expression=payload.expression,
+            variables=payload.variables,
+            bounds=payload.bounds,
+            goal=payload.goal,
+        )
+        result = engine.solve()
+    except Exception as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+    return GraphicalMultivarResponse(
+        status=result.status,
+        variables=result.variables,
+        function_str=result.function_str,
+        optimal_point=result.optimal_point,
+        optimal_value=result.optimal_value,
+        critical_points=[
+            CriticalPointSchema(point=cp.point, value=cp.value, nature=cp.nature)
+            for cp in result.critical_points
+        ],
+        surface=SurfaceData(**result.surface) if result.surface else None,
+        volume=VolumeData(**result.volume) if result.volume else None,
         message=result.message,
     )
 

@@ -278,6 +278,57 @@ class GradientResponse(BaseModel):
     message: str
 
 
+# ─── Optimización no restringida de varias variables (Método Gráfico) ────────
+
+class GraphicalMultivarRequest(BaseModel):
+    expression: str
+    variables: list[str] = Field(..., min_length=2, max_length=3)
+    bounds: list[list[float]] = Field(..., min_length=2, max_length=3)
+    goal: Literal["max", "min"]
+
+    @field_validator("bounds")
+    @classmethod
+    def bounds_valid(cls, v: list[list[float]], info) -> list[list[float]]:
+        for b in v:
+            if len(b) != 2 or b[1] <= b[0]:
+                raise ValueError("Cada rango debe ser [min, max] con max > min")
+        if "variables" in (info.data or {}):
+            if len(v) != len(info.data["variables"]):
+                raise ValueError("bounds debe tener el mismo número de elementos que variables")
+        return v
+
+
+class CriticalPointSchema(BaseModel):
+    point: list[float]
+    value: float
+    nature: Literal["min", "max", "saddle", "degenerate"]
+
+
+class SurfaceData(BaseModel):
+    x: list[float]
+    y: list[float]
+    z: list[list[float | None]]
+
+
+class VolumeData(BaseModel):
+    x: list[float]
+    y: list[float]
+    z: list[float]
+    value: list[float | None]
+
+
+class GraphicalMultivarResponse(BaseModel):
+    status: Literal["optimal", "no_critical_point"]
+    variables: list[str]
+    function_str: str
+    optimal_point: list[float] | None = None
+    optimal_value: float | None = None
+    critical_points: list[CriticalPointSchema]
+    surface: SurfaceData | None = None
+    volume: VolumeData | None = None
+    message: str
+
+
 # ─── Simplex iteration snapshots ─────────────────────────────────────────────
 
 class IterationTableau(BaseModel):
