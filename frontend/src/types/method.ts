@@ -1,4 +1,4 @@
-export type Method = "simplex" | "binary" | "integer" | "bisection" | "multivar";
+export type Method = "simplex" | "binary" | "integer" | "bisection" | "multivar" | "kkt";
 
 export interface MethodInfo {
   value: Method;
@@ -49,5 +49,13 @@ export const METHODS: MethodInfo[] = [
     title: "No Restringida de varias Variables",
     sub: "Optimización sin restricciones — múltiples variables",
     description: "Optimizá funciones multivariable sin restricciones mediante el método del gradiente.",
+  },
+  {
+    value: "kkt",
+    icon: "λ",
+    label: "Método Karush-Kuhn-Tucker (KKT)",
+    title: "Método Karush-Kuhn-Tucker (KKT)",
+    sub: "Optimización no lineal con restricciones",
+    description: "Analizá cada combinación de restricciones activas y encontrá el óptimo mediante las condiciones de Karush-Kuhn-Tucker.",
   },
 ];

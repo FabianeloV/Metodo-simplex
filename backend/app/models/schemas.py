@@ -329,6 +329,46 @@ class GraphicalMultivarResponse(BaseModel):
     message: str
 
 
+# ─── Karush-Kuhn-Tucker (KKT) ────────────────────────────────────────────────
+
+class KKTConstraint(BaseModel):
+    expression: str
+    inequality: Literal["<=", ">=", "="]
+    rhs: float
+
+
+class KKTRequest(BaseModel):
+    expression: str
+    variables: list[str] = Field(..., min_length=2, max_length=3)
+    goal: Literal["max", "min"]
+    constraints: list[KKTConstraint] = Field(..., min_length=1, max_length=5)
+
+
+class KKTCase(BaseModel):
+    case_id: int
+    active_indices: list[int]
+    status: Literal["valid", "dual_infeasible", "primal_infeasible", "no_convergence"]
+    point: list[float] | None = None
+    lambdas: dict[str, float] | None = None
+    mus: dict[str, float] | None = None
+    objective_value: float | None = None
+    note: str
+
+
+class KKTResponse(BaseModel):
+    status: Literal["optimal", "infeasible"]
+    variables: list[str]
+    function_str: str
+    goal: Literal["max", "min"]
+    constraints_str: list[str]
+    optimal_point: list[float] | None = None
+    optimal_value: float | None = None
+    optimal_case_id: int | None = None
+    cases: list[KKTCase]
+    cases_explored: int
+    message: str
+
+
 # ─── Simplex iteration snapshots ─────────────────────────────────────────────
 
 class IterationTableau(BaseModel):

@@ -5,6 +5,7 @@ import { BinaryPage }    from "./components/pages/BinaryPage";
 import { IntegerPage }   from "./components/pages/IntegerPage";
 import { BisectionPage } from "./components/pages/BisectionPage";
 import { MultivarPage }  from "./components/pages/MultivarPage";
+import { KKTPage }       from "./components/pages/KKTPage";
 import type { Method }   from "./types/method";
 
 type Screen = Method | "home";
@@ -14,7 +15,7 @@ const LAST_METHOD_KEY = "simplex-app:last-method";
 function readLastMethod(): Method {
   const stored = localStorage.getItem(LAST_METHOD_KEY);
   if (stored === "simplex" || stored === "binary" || stored === "integer" ||
-      stored === "bisection" || stored === "multivar") {
+      stored === "bisection" || stored === "multivar" || stored === "kkt") {
     return stored;
   }
   return "simplex";
@@ -36,6 +37,7 @@ function App() {
   if (screen === "integer")   return <IntegerPage   onHome={goHome} />;
   if (screen === "bisection") return <BisectionPage onHome={goHome} />;
   if (screen === "multivar")  return <MultivarPage  onHome={goHome} />;
+  if (screen === "kkt")       return <KKTPage       onHome={goHome} />;
   return <SolverPage onHome={goHome} />;
 }
 

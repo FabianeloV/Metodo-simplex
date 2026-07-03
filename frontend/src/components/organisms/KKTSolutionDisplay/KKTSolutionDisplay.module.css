@@ -1,0 +1,124 @@
+.card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: fadeUp .35s ease;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, #059669, #2563EB, #06B6D4);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.resultHeader {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 12px; margin-bottom: 1.25rem;
+}
+.cardTitle { font-size: 15px; font-weight: 700; color: #111827; margin: 0 0 3px; }
+.cardSub   { font-size: 12px; color: #9CA3AF; margin: 0; max-width: 60ch; }
+
+.exprBlock {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: .85rem 1rem;
+  background: linear-gradient(90deg, #ECFDF5 0%, #EFF6FF 100%);
+  border: 1px solid #A7F3D0;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+}
+.exprRow { display: flex; align-items: center; gap: 10px; }
+.exprLabel {
+  font-family: 'DM Mono', monospace; font-weight: 700; color: #059669;
+  font-size: 12px; min-width: 60px;
+}
+.expr {
+  font-family: 'DM Mono', monospace; font-size: 13px; color: #1F2937;
+  font-weight: 500;
+}
+
+.metrics { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+
+.loadingCard {
+  display: flex; align-items: center; gap: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(229,231,235,.8);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+}
+.loadingText { font-size: 13px; color: #6B7280; }
+
+/* ── Casos ────────────────────────────────────────────────────────────────── */
+.tableSection { margin-top: 1.25rem; }
+.sectionLabel {
+  font-size: 10px; font-weight: 700; color: #059669;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px;
+}
+.caseList { display: flex; flex-direction: column; gap: 5px; }
+
+.caseBlock { border: 1px solid #E5E7EB; border-radius: 10px; overflow: hidden; }
+
+.caseHeader {
+  width: 100%;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 7px 12px;
+  background: #FAFAFA;
+  border: none; cursor: pointer;
+  font-family: inherit; font-size: 12px;
+  text-align: left;
+  transition: background .15s;
+}
+.caseHeader:hover { background: #ECFDF5; }
+.caseHeaderOpen   { background: #ECFDF5; }
+.caseHeaderOpen:hover { background: #D1FAE5; }
+
+.caseId      { font-weight: 700; color: #374151; font-size: 12px; flex-shrink: 0; }
+.activeChip  {
+  background: #EEF2FF; color: #3730A3;
+  border-radius: 5px; padding: 1px 7px;
+  font-size: 11px; font-weight: 600; font-family: 'DM Mono', monospace;
+}
+.objVal    { font-size: 11px; color: #6B7280; margin-left: auto; font-family: 'DM Mono', monospace; font-weight: 600; }
+.chevron   { font-size: 9px; color: #9CA3AF; flex-shrink: 0; }
+
+.caseBadge {
+  border-radius: 5px; padding: 2px 8px;
+  font-size: 10px; font-weight: 700; flex-shrink: 0;
+  letter-spacing: .02em;
+}
+.valid { background: #ECFDF5; color: #065F46; }
+.warn  { background: #FFFBEB; color: #92400E; }
+.gray  { background: #F3F4F6; color: #374151; }
+
+.caseBody {
+  padding: 10px 12px;
+  border-top: 1px solid #F3F4F6;
+  display: flex; flex-direction: column; gap: 8px;
+  background: #FDFCFF;
+}
+.detailRow { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.detailLabel {
+  font-size: 11px; font-weight: 600; color: #6B7280;
+  flex-shrink: 0; padding-top: 2px; min-width: 120px;
+}
+.chipGroup { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.chipPoint    { background: #EDE9FE; color: #5B21B6; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+.chipLambda   { background: #DBEAFE; color: #1E40AF; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+.chipMu       { background: #FCE7F3; color: #9D174D; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; }
+.chipActive   { background: #D1FAE5; color: #065F46; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-family: 'DM Mono', monospace; }
+.chipInactive { background: #F3F4F6; color: #6B7280; border-radius: 5px; padding: 2px 8px; font-size: 11px; font-family: 'DM Mono', monospace; }
+
+.note { font-size: 11px; color: #4B5563; margin: 0; font-weight: 500; }

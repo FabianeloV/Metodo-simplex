@@ -6,6 +6,7 @@ from app.api.routes.integer import router as integer_router
 from app.api.routes.bisection import router as bisection_router
 from app.api.routes.newton import router as newton_router
 from app.api.routes.gradient import router as gradient_router
+from app.api.routes.kkt import router as kkt_router
 
 app = FastAPI(
     title="API de Optimización",
@@ -29,6 +30,7 @@ app.include_router(integer_router, prefix="/api/v1")
 app.include_router(bisection_router, prefix="/api/v1")
 app.include_router(newton_router, prefix="/api/v1")
 app.include_router(gradient_router, prefix="/api/v1")
+app.include_router(kkt_router, prefix="/api/v1")
 
 
 @app.get("/", tags=["root"])
