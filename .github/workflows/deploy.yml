@@ -1,0 +1,48 @@
+name: Deploy App
+
+# Despliega la aplicación completa a GitHub Pages.
+#
+# El "backend" (los motores de optimización en Python) ya NO se despliega en
+# Railway: se empaqueta junto con la app y se ejecuta en el navegador con
+# Pyodide (Python -> WebAssembly). El build de Vite lee el código de `backend/`
+# y lo incrusta como estáticos, por lo que este workflow también redepliega
+# cuando cambian los motores del backend.
+on:
+  push:
+    branches: [master]
+    paths:
+      - "frontend/**"
+      - "backend/**"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: frontend
+
+      # Vite empaqueta el frontend + el código Python del backend (que corre en
+      # el navegador con Pyodide). No se ejecuta Python en CI.
+      - name: Build
+        run: npm run build -- --emptyOutDir
+        working-directory: frontend
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: frontend/dist

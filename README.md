@@ -3,7 +3,20 @@
 Solver de Programación Lineal con el método Simplex.
 
 - **Frontend**: React 18 + TypeScript + Vite  (arquitectura atómica)
-- **Backend**: Python 3.11 + FastAPI + NumPy
+- **Backend**: Python 3.11 + NumPy + SymPy  (motores de cómputo puro; API local opcional con FastAPI)
+
+### Ejecución y despliegue
+
+Los motores de optimización están escritos en Python, pero **no** se ejecutan en
+un servidor: corren **dentro del navegador** con [Pyodide](https://pyodide.org)
+(Python compilado a WebAssembly). Toda la aplicación —frontend + motores— se
+publica como archivos estáticos en **GitHub Pages** mediante GitHub Actions;
+**no hay servidor ni Railway**.
+
+- El mismo código de `backend/app/core` se reutiliza tal cual: en producción lo
+  carga Pyodide y, en desarrollo, puede ejecutarse además como API FastAPI local.
+- El puente [`backend/app/bridge.py`](backend/app/bridge.py) expone los motores
+  al navegador con el mismo contrato JSON que las rutas HTTP originales.
 
 ---
 
@@ -22,12 +35,13 @@ simplex-optimizer/
 │       │   ├── templates/           # SolverTemplate  (layout puro)
 │       │   └── pages/               # SolverPage      (lógica de composición)
 │       ├── hooks/                   # useConstraints, useSimplex
-│       ├── services/                # simplexApi.ts   (HTTP)
+│       ├── services/                # *Api.ts + pyodideClient.ts (Pyodide)
 │       └── types/                   # simplex.ts      (tipos compartidos)
 │
-└── backend/                         # FastAPI + NumPy
+└── backend/                         # Motores en Python (NumPy + SymPy)
     └── app/
-        ├── api/routes/simplex.py    # Endpoint POST /api/v1/simplex/solve
+        ├── bridge.py                # Puente para ejecución en el navegador (Pyodide)
+        ├── api/routes/simplex.py    # Endpoint POST /api/v1/simplex/solve (API local opcional)
         ├── core/simplex_engine.py   # Algoritmo Big-M puro
         └── models/schemas.py        # Pydantic request / response
 ```
@@ -36,7 +50,11 @@ simplex-optimizer/
 
 ## Puesta en marcha
 
-### 1. Backend
+### 1. Backend (API FastAPI local — opcional)
+
+> La app desplegada **no** necesita este servidor: los motores corren en el
+> navegador con Pyodide. Levanta FastAPI solo si quieres probar la API HTTP o la
+> documentación Swagger de forma local.
 
 ```bash
 cd backend
@@ -76,7 +94,25 @@ cp .env.example .env
 npm run dev
 ```
 
-Abre http://localhost:5173 en el navegador.
+Abre http://localhost:5173 en el navegador. No necesitas levantar el backend:
+los motores se ejecutan en el navegador con Pyodide.
+
+---
+
+## Despliegue (GitHub Pages + GitHub Actions)
+
+El workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) se
+dispara con cada push a `master` que toque `frontend/**` o `backend/**`:
+
+1. Instala dependencias y compila el frontend con Vite.
+2. Un plugin de Vite incrusta el código Python de `backend/app/core` (+
+   `bridge.py`) como estáticos, para que Pyodide los cargue en el navegador.
+3. Publica `frontend/dist` en la rama `gh-pages` (GitHub Pages).
+
+No se ejecuta Python en CI ni en ningún servidor: **no hay Railway**. El runtime
+de Pyodide (numpy + sympy) se descarga desde la CDN de jsDelivr la primera vez
+que el usuario resuelve un problema, y puede sobrescribirse con la variable
+`VITE_PYODIDE_INDEX_URL`.
 
 ---
 
